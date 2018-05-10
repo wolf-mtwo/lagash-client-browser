@@ -26,3 +26,28 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.wargos-slide-1 {
+  background-image: url('img/slider-1.jpg');
+}
+.wargos-slide-2 {
+  background-image: url('img/slider-2.jpg');
+}
+.wargos-square-1 {
+  background-image: url('img/img_1_square.jpg');
+}
+.wargos-square-2 {
+  background-image: url('img/img_2_square.jpg');
+}
+.wargos-square-4 {
+  background-image: url('img/img_4_square.jpg');
+}
+.wargos-square-3 {
+  background-image: url('img/img_3_square.jpg');
+}
+.wargos-square-2 {
+  background-image: url('img/img_2_square.jpg');
+}
+.wargos-square-2 {
+  background-image: url('img/img_2_square.jpg');
+}
