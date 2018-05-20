@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // import { HeroesComponent }      from './heroes/heroes.component';
 import { HomeComponent } from './home/home.component';
+import { BrowserComponent } from './browser/component';
 
 console.log(HomeComponent)
 
 const routes: Routes = [
-  { path: 'browser', component: HomeComponent }
+  { path: 'main', component: HomeComponent },
+  { path: 'browser', component: BrowserComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,49 @@
+.img-size {
+  width: 140px;
+  height: 140px;
+}
+
+.body-container {
+padding-top: 20px;
+padding-right: 15px;
+padding-left: 15px;
+}
+
+.body-container .col-lg-4 {
+margin-bottom: 20px;
+text-align: center;
+}
+
+.body-container h2 {
+font-weight: normal;
+}
+
+.body-container .col-lg-4 p {
+margin-right: 10px;
+margin-left: 10px;
+}
+
+body {
+/*min-height: 2000px;*/
+padding-top: 70px;
+}
+
+.cl-fixed-header {
+/*background-color: rgba(0, 0, 0, 0.52);*/
+}
+
+.image-back {
+  background: url('/assets/img/foto.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.image-back-footer {
+  background: url('/assets/img/footer.jpg') center center;
+}
+
+.navbar-default {
+  background-color: rgba(248, 248, 248, 0.75);
+}
