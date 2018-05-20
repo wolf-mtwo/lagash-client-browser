@@ -8,10 +8,12 @@ console.log(DemoService)
 })
 export class HomeComponent {
   title = 'app';
+  books = [];
   constructor(private _demoService: DemoService) {
     // console.log(_demoService)
     _demoService.getProductos().subscribe(
          result => {
+          this.books = result;
              console.log(result);
              // if(result.code != 200){
              //     console.log(result);
