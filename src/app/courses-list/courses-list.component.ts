@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { DemoService } from '../service/product.service';
 // import { Observable } from 'rxjs/Observable';
-// console.log(Observable)
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',

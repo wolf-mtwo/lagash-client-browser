@@ -5,8 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { BrowserComponent } from './browser/component';
 
-console.log(HomeComponent)
-
 const routes: Routes = [
   { path: 'main', component: HomeComponent },
   { path: 'browser', component: BrowserComponent }
