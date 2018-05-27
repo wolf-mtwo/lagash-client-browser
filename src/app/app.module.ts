@@ -7,12 +7,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DemoService } from './service/product.service'
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserRoutingModule } from './browser-2/routing.module';
 import { CoursesListComponent } from './courses-list/courses-list.component';
+import { BrowserRoutingModule } from './browser-2/routing.module';
 
 import { HomeComponent } from './home/home.component';
 import { BrowserComponent } from './browser/component';
 import { Browser2Component } from './browser-2/component';
+
+import { BooksComponent } from './modules/books/component';
+import { BooksRoutingModule } from './modules/books/routing.module';
+import { InformationComponent } from './modules/information/component';
+import { InformationRoutingModule } from './modules/information/routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,9 @@ import { Browser2Component } from './browser-2/component';
     HomeComponent,
     BrowserComponent,
     Browser2Component,
-    CoursesListComponent
+    CoursesListComponent,
+    BooksComponent,
+    InformationComponent,
   ],
   imports: [
     HttpModule,
@@ -28,7 +35,9 @@ import { Browser2Component } from './browser-2/component';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserRoutingModule
+    BrowserRoutingModule,
+    BooksRoutingModule,
+    InformationRoutingModule
   ],
   providers: [DemoService],
   bootstrap: [AppComponent]

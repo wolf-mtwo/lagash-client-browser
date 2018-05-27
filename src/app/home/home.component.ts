@@ -267,10 +267,8 @@ export class HomeComponent {
     			}
     	});
 
-    	//------- Google Map  js --------//
-
     	if (document.getElementById("map")) {
-    			google.maps.event.addDomListener(window, 'load', init);
+    			// google.maps.event.addDomListener(window, 'load', init);
 
     			function init() {
     					var mapOptions = {
@@ -394,12 +392,12 @@ export class HomeComponent {
     							}]
     					};
     					var mapElement = document.getElementById('map');
-    					var map = new google.maps.Map(mapElement, mapOptions);
-    					var marker = new google.maps.Marker({
-    							position: new google.maps.LatLng(40.6700, -73.9400),
-    							map: map,
-    							title: 'Snazzy!'
-    					});
+    					// var map = new google.maps.Map(mapElement, mapOptions);
+    					// var marker = new google.maps.Marker({
+    					// 		position: new google.maps.LatLng(40.6700, -73.9400),
+    					// 		map: map,
+    					// 		title: 'Snazzy!'
+    					// });
     			}
     	}
 

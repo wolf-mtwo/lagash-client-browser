@@ -21,9 +21,10 @@ a, a:focus, a:hover {
 }
 
 .about-banner {
-    background: url(../../assets/img/top-banner-2.jpg) right no-repeat;
+    background: url(../../../assets/img/top-banner-2.jpg) right no-repeat;
     background-size: cover;
 }
+
 .relative {
     position: relative;
 }
