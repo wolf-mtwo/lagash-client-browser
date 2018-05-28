@@ -4,10 +4,31 @@
 		<div class="row d-flex align-items-center justify-content-center">
 			<div class="about-content col-lg-12">
 				<h1 class="text-white">
-					Services
+					Libros
 				</h1>
-				<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="services.html"> Services</a></p>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <span class="input-group-text">Buscador</span>
+				  </div>
+				  <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+					<div class="input-group-append">
+				    <button type="button" class="btn btn-primary">Buscar</button>
+				  </div>
+				</div>
+				<p class="text-white link-nav">
+					<a routerLink="/main">Principal</a>
+					<span class="lnr lnr-arrow-right"></span>
+					<a href="services.html">Libros</a>
+				</p>
 			</div>
 		</div>
 	</div>
 </section>
+<div class="container">
+	<h1>djfksdjfsdkfj</h1>
+	<ul>
+		<li *ngFor="let book of books">
+	    {{book.title}}
+	  </li>
+	</ul>
+</div>

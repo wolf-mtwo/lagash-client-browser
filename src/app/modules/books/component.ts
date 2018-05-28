@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BooksService } from '../../service/books.service';
 
 @Component({
   selector: 'module-books',
@@ -6,6 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['../../wargos.css', './component.css', '../../linearicons.css']
 })
 export class BooksComponent {
-  constructor() {
+  books = [];
+  constructor(private _service: BooksService) {
+    _service.getProductos().subscribe(
+         (items) => {
+           console.log(items);
+          this.books = items;
+         },
+         (error) => {
+             console.log(<any>error);
+         }
+     );
   }
 }

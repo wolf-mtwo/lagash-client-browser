@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { DemoService } from './service/product.service'
 import { AppRoutingModule } from './app-routing.module';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { BrowserRoutingModule } from './browser-2/routing.module';
@@ -18,6 +17,9 @@ import { BooksComponent } from './modules/books/component';
 import { BooksRoutingModule } from './modules/books/routing.module';
 import { InformationComponent } from './modules/information/component';
 import { InformationRoutingModule } from './modules/information/routing.module';
+
+import { DemoService } from './service/product.service';
+import { BooksService } from './service/books.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,10 @@ import { InformationRoutingModule } from './modules/information/routing.module';
     BooksRoutingModule,
     InformationRoutingModule
   ],
-  providers: [DemoService],
+  providers: [
+    DemoService,
+    BooksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
