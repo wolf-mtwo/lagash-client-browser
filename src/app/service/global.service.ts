@@ -3,16 +3,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class BooksService {
+export class Global {
     public url: string;
 
-    constructor(
-        public http: HttpClient
-    ){
+    constructor() {
         this.url = 'http://localhost:5570';
     }
 
-    getProductos(): Observable<any> {
-        return this.http.get(this.url + '/v3/browser/books/suggestions');
+    getProductos(): String {
+        return this.url;
     }
 }

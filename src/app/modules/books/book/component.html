@@ -1,0 +1,19 @@
+<div class="container">
+	<div>
+		<h1>Libros</h1>
+	</div>
+	<div ngFor="let book of books">
+		<div class="card text-white bg-info mb-3">
+		  <div class="card-header" (click)="go_to_item(book)">{{book.title}}</div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{book.year}}</h5>
+		    <p class="card-text">{{book.tags}}</p>
+		  </div>
+		</div>
+  </div>
+</div>
+<style media="screen">
+.container {
+	padding: 120px 0px;
+}
+</style>

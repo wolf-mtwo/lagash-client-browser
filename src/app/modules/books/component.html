@@ -7,12 +7,12 @@
 					Libros
 				</h1>
 				<div class="input-group mb-3">
-				  <div class="input-group-prepend">
+				  <!-- <div class="input-group-prepend">
 				    <span class="input-group-text">Buscador</span>
-				  </div>
+				  </div> -->
 				  <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
 					<div class="input-group-append">
-				    <button type="button" class="btn btn-primary">Buscar</button>
+				    <button type="button" (click)="search()" class="btn btn-primary">Buscar</button>
 				  </div>
 				</div>
 				<p class="text-white link-nav">
@@ -25,10 +25,37 @@
 	</div>
 </section>
 <div class="container">
-	<h1>djfksdjfsdkfj</h1>
-	<ul>
-		<li *ngFor="let book of books">
-	    {{book.title}}
-	  </li>
-	</ul>
+	<div>
+		<h1>Libros</h1>
+	</div>
+	<div *ngFor="let book of books">
+		<div class="card text-white bg-info mb-3">
+		<!-- <div class="card text-white bg-dark mb-3"> -->
+		  <div class="card-header" (click)="go_to_item(book)">{{book.title}}</div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{book.year}}</h5>
+		    <p class="card-text">{{book.tags}}</p>
+		  </div>
+		</div>
+  </div>
+	<!-- <div *ngFor="let book of books">
+		<div class="card bg-dark text-white">
+			<img class="card-img" src="http://localhost:5570/files/{{book.image}}" alt="Card image">
+		  <div class="card-img-overlay">
+		    <h5 class="card-title">Card title</h5>
+		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		    <p class="card-text">Last updated 3 mins ago</p>
+		  </div>
+		</div>
+  </div> -->
 </div>
+<style media="screen">
+/*.card-img {
+	object-fit: cover;
+	height: 120px;
+}*/
+.container h1 {
+	padding: 20px;
+	text-align: center;
+}
+</style>

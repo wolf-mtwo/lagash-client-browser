@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { BooksService } from '../../service/books.service';
+import { BooksService } from '../../../service/books.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'module-books',
+  selector: 'module-books-id',
   templateUrl: './component.html',
-  styleUrls: ['../../wargos.css', './component.css', '../../linearicons.css']
+  styleUrls: ['../../../wargos.css', './component.css', '../../../linearicons.css']
 })
-export class BooksComponent {
+export class BookComponent {
   books = [];
   constructor( private router: Router, private _service: BooksService) {
     _service.getProductos().subscribe(
          (items) => {
            console.log(items);
-          this.books = items;
+          // this.books = items;
          },
          (error) => {
              console.log(<any>error);
