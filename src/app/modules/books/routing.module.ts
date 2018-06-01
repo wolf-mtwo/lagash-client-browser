@@ -5,12 +5,12 @@ import { BookComponent } from './book/component';
 
 const routes: Routes = [
   { path: 'books', component: BooksComponent },
-  { path: 'books/:_id', component: BookComponent }
+  { path: 'books/:book_id', component: BookComponent }
 ];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ],
-  declarations: [BookComponent]
+  // declarations: [BookComponent]
 })
 export class BooksRoutingModule { }

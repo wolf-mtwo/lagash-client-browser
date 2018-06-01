@@ -13,10 +13,14 @@ import { HomeComponent } from './home/home.component';
 import { BrowserComponent } from './browser/component';
 import { Browser2Component } from './browser-2/component';
 
+import { BookComponent } from './modules/books/book/component';
+// import { BooksComponent } from './modules/books/component';
 import { BooksComponent } from './modules/books/component';
 import { BooksRoutingModule } from './modules/books/routing.module';
 import { InformationComponent } from './modules/information/component';
 import { InformationRoutingModule } from './modules/information/routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import { BootstrapAutocompleteModule } from 'angular-bootstrap-autocomplete';
 
 import { DemoService } from './service/product.service';
 import { BooksService } from './service/books.service';
@@ -28,10 +32,12 @@ import { BooksService } from './service/books.service';
     BrowserComponent,
     Browser2Component,
     CoursesListComponent,
+    BookComponent,
     BooksComponent,
     InformationComponent,
   ],
   imports: [
+    NgbModule.forRoot(),
     HttpModule,
     FormsModule,
     HttpClientModule,
@@ -39,6 +45,7 @@ import { BooksService } from './service/books.service';
     AppRoutingModule,
     BrowserRoutingModule,
     BooksRoutingModule,
+    // BootstrapAutocompleteModule,
     InformationRoutingModule
   ],
   providers: [

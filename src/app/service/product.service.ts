@@ -26,5 +26,15 @@ export class DemoService {
     //     return this.http.post(this.url+'productos', params, {headers: headers});
     // }
 
-
+    // addUser(user){
+    //   return this.http.post(this.url, JSON.stringify(user));
+    // }
+    //
+    // updateUser(user){
+    //   return this.http.put(this.getUserUrl(user.id), JSON.stringify(user)));
+    // }
+    //
+    // deleteUser(id){
+    //   return this.http.delete(this.getUserUrl(id)));
+    // }
 }

@@ -6,6 +6,22 @@
 				<h1 class="text-white">
 					Libros
 				</h1>
+				<div class="form-group">
+					<ng-template #rt let-r="result" let-t="term">
+					  {{ r.title}}
+					</ng-template>
+				  <label for="typeahead-http">Search for a wiki page:</label>
+				  <input id="typeahead-http" type="text" class="form-control"
+									[class.is-invalid]="searchFailed" [(ngModel)]="model"
+									[ngbTypeahead]="search"
+									[resultTemplate]="rt"
+									[inputFormatter]="formatter"
+									placeholder="Wikipedia search" />
+				  <span *ngIf="searching">searching...</span>
+				  <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
+				</div>
+				<!-- {{ model | json }} -->
+				<!-- <bootstrap-autocomplete></bootstrap-autocomplete> -->
 				<div class="input-group mb-3">
 				  <!-- <div class="input-group-prepend">
 				    <span class="input-group-text">Buscador</span>

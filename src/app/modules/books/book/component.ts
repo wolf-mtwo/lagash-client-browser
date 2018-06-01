@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BooksService } from '../../../service/books.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'module-books-id',
@@ -8,25 +9,44 @@ import { Router } from '@angular/router';
   styleUrls: ['../../../wargos.css', './component.css', '../../../linearicons.css']
 })
 export class BookComponent {
-  books = [];
-  constructor( private router: Router, private _service: BooksService) {
-    _service.getProductos().subscribe(
-         (items) => {
-           console.log(items);
-          // this.books = items;
-         },
-         (error) => {
-             console.log(<any>error);
-         }
-     );
+  book_id = null;
+  book = {};
+  ejemplares = [];
+  book_service = null;
+  private sub: any;
+
+  constructor(private route: ActivatedRoute, private router: Router, private _service: BooksService) {
+    this.book_service = _service;
   }
 
-  public search() {
-    console.log('sss');
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.book_id = params.book_id;
+      this.sub = this.book_service.get_by_id(this.book_id).subscribe(
+           (item) => {
+            this.book = item;
+           },
+           (error) => {
+               console.log(<any>error);
+           }
+       );
+      this.book_service.get_ejemplares(this.book_id).subscribe(
+           (items) => {
+            this.ejemplares = items;
+           },
+           (error) => {
+               console.log(<any>error);
+           }
+       );
+    });
+
   }
 
-  public go_to_item(book) {
-    console.log(book);
-     this.router.navigate(['/books', book._id]);
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  public go_to_item(ejemplar) {
+     console.log(ejemplar);
   }
 }
