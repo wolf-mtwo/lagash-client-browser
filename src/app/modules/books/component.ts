@@ -14,18 +14,22 @@ export class BooksComponent {
   model: any;
   searching = false;
   searchFailed = false;
+  item = {};
+  query = {
+    search: '',
+    total: 0,
+    page: 1,
+    limit: 20
+  };
   hideSearchingWhenUnsubscribed = new Observable(() => () => this.searching = false);
 
   constructor( private router: Router, private _service: BooksService) {
-    _service.get_suggestions().subscribe(
-         (items) => {
-           console.log(items);
-          this.books = items;
-         },
-         (error) => {
-             console.log(<any>error);
-         }
-     );
+    _service.get_suggestions().subscribe((items) => {
+        this.books = items;
+      }, (error) => {
+        console.log(<any>error);
+      }
+    );
   }
 
   search = (text$: Observable<string>) =>
@@ -48,6 +52,20 @@ export class BooksComponent {
     );
 
   formatter = (x: {title: string}) => x.title;
+
+  search_text(text) {
+    if (text._id) {
+        this.go_to_item(text);
+        return;
+    }
+    this.query.search = text;
+    this._service.paginate(this.query).subscribe((items) => {
+        this.books = items;
+      }, (error) => {
+        console.log(<any>error);
+      }
+    );
+  }
 
   public go_to_item(book) {
     console.log(book);

@@ -12,7 +12,7 @@
 					</ng-template>
 				  <label for="typeahead-http">Search for a wiki page:</label>
 				  <input id="typeahead-http" type="text" class="form-control"
-									[class.is-invalid]="searchFailed" [(ngModel)]="model"
+									[class.is-invalid]="searchFailed" [(ngModel)]="item"
 									[ngbTypeahead]="search"
 									[resultTemplate]="rt"
 									[inputFormatter]="formatter"
@@ -20,17 +20,13 @@
 				  <span *ngIf="searching">searching...</span>
 				  <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
 				</div>
-				<!-- {{ model | json }} -->
-				<!-- <bootstrap-autocomplete></bootstrap-autocomplete> -->
-				<div class="input-group mb-3">
-				  <!-- <div class="input-group-prepend">
-				    <span class="input-group-text">Buscador</span>
-				  </div> -->
+				<!-- <div class="input-group mb-3">
 				  <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
 					<div class="input-group-append">
 				    <button type="button" (click)="search()" class="btn btn-primary">Buscar</button>
 				  </div>
-				</div>
+				</div> -->
+				<button type="button" (click)="search_text(item)" class="btn btn-primary">Buscar</button>
 				<p class="text-white link-nav">
 					<a routerLink="/main">Principal</a>
 					<span class="lnr lnr-arrow-right"></span>
