@@ -4,6 +4,11 @@
 			<div class="row">
 				<h1>Tesis</h1>
 			</div>
+			<div *ngIf="ejemplares.length <= 0">
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				  <strong>Ups!</strong> La tesis no tiene ejemplares disponibles.
+				</div>
+			</div>
 			<div *ngFor="let item of ejemplares">
 				<div class="card text-white bg-dark mb-3">
 				  <div class="card-header">Codigo</div>
@@ -56,7 +61,7 @@
 							<div>{{item.length + ' x ' + item.width}}</div>
 						</div>
 						<div>
-							<div class="lagash-detail-title">Tamaño</div>
+							<div class="lagash-detail-title">Paginas</div>
 							<div>{{item.pages || 'NO EXISTE'}}</div>
 						</div>
 						<div>

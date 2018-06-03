@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class ThesisService {
-    private url: string = 'http://localhost:5570/v3/browser/thesis';
+export class MagazinesService {
+    private url: string = 'http://localhost:5570/v3/browser/magazines';
     constructor(public http: HttpClient) { }
 
     get_by_id(_id) {

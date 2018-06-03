@@ -13,25 +13,30 @@ import { HomeComponent } from './home/home.component';
 import { BrowserComponent } from './browser/component';
 import { Browser2Component } from './browser-2/component';
 
-import { BookComponent } from './modules/books/book/component';
-// import { BooksComponent } from './modules/books/component';
-import { BooksComponent } from './modules/books/component';
-import { BooksRoutingModule } from './modules/books/routing.module';
 import { InformationComponent } from './modules/information/component';
 import { InformationRoutingModule } from './modules/information/routing.module';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import { BooksComponent } from './modules/books/component';
+import { BookComponent } from './modules/books/book/component';
+import { BooksComponent } from './modules/books/component';
+import { BooksRoutingModule } from './modules/books/routing.module';
 // import { BootstrapAutocompleteModule } from 'angular-bootstrap-autocomplete';
 
 // tesis
 import { ThesisComponent } from './modules/thesises/thesis/component';
 import { ThesisesComponent } from './modules/thesises/component';
-
 import { ThesisRoutingModule } from './modules/thesises/routing.module';
+
+// magazine
+import { MagazineComponent } from './modules/magazines/magazine/component';
+import { MagazinesComponent } from './modules/magazines/component';
+import { MagazinesRoutingModule } from './modules/magazines/routing.module';
 
 import { DemoService } from './service/product.service';
 import { BooksService } from './service/books.service';
 import { ThesisService } from './service/thesis.service';
+import { MagazinesService } from './service/magazines.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,9 @@ import { ThesisService } from './service/thesis.service';
     BooksComponent,
     InformationComponent,
     ThesisComponent,
-    ThesisesComponent
+    ThesisesComponent,
+    MagazineComponent,
+    MagazinesComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -57,12 +64,14 @@ import { ThesisService } from './service/thesis.service';
     BooksRoutingModule,
     // BootstrapAutocompleteModule,
     InformationRoutingModule,
-    ThesisRoutingModule
+    ThesisRoutingModule,
+    MagazinesRoutingModule
   ],
   providers: [
     DemoService,
     BooksService,
-    ThesisService
+    ThesisService,
+    MagazinesService
   ],
   bootstrap: [AppComponent]
 })
