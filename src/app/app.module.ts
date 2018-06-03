@@ -33,10 +33,16 @@ import { MagazineComponent } from './modules/magazines/magazine/component';
 import { MagazinesComponent } from './modules/magazines/component';
 import { MagazinesRoutingModule } from './modules/magazines/routing.module';
 
+// newspapers
+import { NewspaperComponent } from './modules/newspapers/newspaper/component';
+import { NewspapersComponent } from './modules/newspapers/component';
+import { NewspapersRoutingModule } from './modules/newspapers/routing.module';
+
 import { DemoService } from './service/product.service';
 import { BooksService } from './service/books.service';
 import { ThesisService } from './service/thesis.service';
 import { MagazinesService } from './service/magazines.service';
+import { NewspapersService } from './service/newspapers.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +57,9 @@ import { MagazinesService } from './service/magazines.service';
     ThesisComponent,
     ThesisesComponent,
     MagazineComponent,
-    MagazinesComponent
+    MagazinesComponent,
+    NewspaperComponent,
+    NewspapersComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -65,13 +73,15 @@ import { MagazinesService } from './service/magazines.service';
     // BootstrapAutocompleteModule,
     InformationRoutingModule,
     ThesisRoutingModule,
-    MagazinesRoutingModule
+    MagazinesRoutingModule,
+    NewspapersRoutingModule
   ],
   providers: [
     DemoService,
     BooksService,
     ThesisService,
-    MagazinesService
+    MagazinesService,
+    NewspapersService
   ],
   bootstrap: [AppComponent]
 })

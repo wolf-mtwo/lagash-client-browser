@@ -1,0 +1,113 @@
+<div class="container container-lagash">
+	<div class="row">
+		<h1>Libros</h1>
+		<div style="flex: auto;">
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-end">
+					<li class="page-item" *ngIf="query.page > 1">
+						<a class="page-link" (click)="pagination(-1)">Anterior</a>
+					</li>
+					<li class="page-item disabled" *ngIf="query.page <= 1">
+						<a class="page-link" (click)="pagination(-1)">Anterior</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">{{query.page}}</a></li>
+					<li class="page-item">
+						<a class="page-link" (click)="pagination(1)">Siguiente</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+    <div class="col-3">
+			<div class="input-group">
+			  <input type="text"
+							 class="form-control"
+							 aria-label="Default"
+							 aria-describedby="inputGroup-sizing-default"
+							 [(ngModel)]="query.search"
+							 (change)="search()">
+			<div class="input-group-append">
+		    <span class="input-group-text btn-primary" (click)="search()">Buscar</span>
+	  	</div>
+			</div>
+			<div class="lagash-radio mb-3">
+				<label>
+		      <input type="radio" [(ngModel)]="query.type" value="TITLE">Titulo
+		    </label>
+		    <label>
+		      <input type="radio" [(ngModel)]="query.type" value="SUBJECT">Tema
+		    </label>
+		    <label>
+		      <input type="radio" [(ngModel)]="query.type" value="ALL">Todos
+		    </label>
+			</div>
+			<div class="list-group catalogs-lagash">
+			  <button type="button" class="list-group-item list-group-item-action active">
+			    Catalogo de libros
+			  </button>
+			  <button type="button"
+								class="list-group-item list-group-item-action"
+								(click)="reset()">
+			    <i><b>Todos</b></i>
+			  </button>
+			  <button type="button"
+								class="list-group-item list-group-item-action"
+								*ngFor="let catalog of catalogs"
+								(click)="go_to_catalog(catalog)">
+					{{catalog.title}}
+				</button>
+			</div>
+    </div>
+    <div class="col-9">
+			<div *ngIf="items.length == 0">
+				<div class="alert alert-warning" role="alert">
+				  No existen resultados para esta busqueda
+				</div>
+				<!-- <div class="alert alert-warning" role="alert" *ngIf="query.search != ''">
+				  No se encontraron tesis con la palabra <a href="#" class="alert-link">"{{query.search}}"</a>
+				</div> -->
+			</div>
+			<div class="card card-lagash"
+					 style="width: 33%;"
+					 *ngFor="let item of items"
+					 (click)="go_to_item(item)">
+			  <img class="card-img-top" *ngIf="item.image" src="http://localhost:5570/files/{{item.image}}" alt="Card image cap">
+			  <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/thesis.png" alt="Card image cap">
+			  <div class="card-body">
+			    <p class="card-text">{{item.title}}</p>
+			  </div>
+			</div>
+    </div>
+  </div>
+</div>
+<style media="screen">
+.container h1 {
+	padding: 20px;
+	text-align: center;
+}
+.container-lagash {
+	padding: 100px 0px;
+}
+.container-lagash .card-lagash {
+	background: url(./assets/img/legacy/milky.png) no-repeat;
+	background-size: 100% 100%;
+	float: left;
+}
+/*.container-lagash img.card-img-top {
+		width: 100%;
+		height: 150px;
+}*/
+.container-lagash .card-lagash:hover {
+	filter:brightness(0.4);
+}
+.container-lagash nav {
+	padding: 25px 15px 0 0;
+}
+.container-lagash .lagash-radio {
+  /*text-align: end;*/
+}
+.container-lagash .lagash-radio label {
+  padding: 0px 5px;
+}
+</style>
