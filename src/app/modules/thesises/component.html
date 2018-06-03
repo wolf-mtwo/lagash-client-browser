@@ -1,23 +1,21 @@
 <div class="container container-lagash">
-	<div>
-		<div class="row">
-			<h1>Tesis</h1>
-			<div style="flex: auto;">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-end">
-						<li class="page-item" *ngIf="query.page > 1">
-							<a class="page-link" (click)="pagination(-1)">Previous</a>
-						</li>
-						<li class="page-item disabled" *ngIf="query.page <= 1">
-							<a class="page-link" (click)="pagination(-1)">Previous</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">{{query.page}}</a></li>
-						<li class="page-item">
-							<a class="page-link" (click)="pagination(1)">Next</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
+	<div class="row">
+		<h1>Tesis</h1>
+		<div style="flex: auto;">
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-end">
+					<li class="page-item" *ngIf="query.page > 1">
+						<a class="page-link" (click)="pagination(-1)">Previous</a>
+					</li>
+					<li class="page-item disabled" *ngIf="query.page <= 1">
+						<a class="page-link" (click)="pagination(-1)">Previous</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">{{query.page}}</a></li>
+					<li class="page-item">
+						<a class="page-link" (click)="pagination(1)">Next</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
 	<div class="row">

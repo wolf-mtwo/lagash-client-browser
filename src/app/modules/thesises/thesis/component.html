@@ -1,35 +1,114 @@
-<div class="container">
-	<h1>Libros</h1>
-	<div>{{book.title}}</div>
-	<div>{{book.brings}}</div>
-	<div>{{book.catalog_id}}</div>
-	<div>{{book.cover}}</div>
-	<div>{{book.created}}</div>
-	<div>{{book.editorial_id}}</div>
-	<div>{{book.enabled}}</div>
-	<div>{{book.illustrations}}</div>
-	<div>{{book.image}}</div>
-	<div>{{book.index}}</div>
-	<div>{{book.isbn}}</div>
-	<div>{{book.length}}</div>
-	<div>{{book.pages}}</div>
-	<div>{{book.price}}</div>
-	<div>{{book.tags}}</div>
-	<div>{{book.type}}</div>
-	<div>{{book.width}}</div>
-	<div>{{book.year}}</div>
-	<div *ngFor="let item of ejemplares">
-		<div class="card text-white bg-info mb-3">
-		  <div class="card-header" (click)="go_to_item(item)">{{item.code}}</div>
-		  <div class="card-body">
-		    <h5 class="card-title">{{item.index}}</h5>
-		    <p class="card-text">{{item.inventory}}</p>
+<div class="container container-lagash">
+	<div class="row">
+		<h1>Tesis</h1>
+	</div>
+	<div class="row">
+		<div class="col-3">
+			<div *ngFor="let item of ejemplares">
+				<div class="card text-white bg-dark mb-3">
+				  <div class="card-header">Codigo</div>
+				  <div class="card-body" style="text-align: center;">
+				    <h5 class="card-title">{{item.code}}</h5>
+						<small>Ejemplar: {{item.index}} Inv.: {{item.inventory}}</small>
+				  </div>
+				</div>
 		  </div>
-		</div>
+    </div>
+    <div class="col-6">
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title">{{item.title}}</h5>
+			    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+			  </div>
+				<img class="card-img-top" *ngIf="item.image" src="http://localhost:5570/files/{{item.image}}" alt="Card image cap">
+			  <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/thesis.png" alt="Card image cap">
+				<div class="card-body">
+			    <h5 class="card-title">Información</h5>
+					<div class="lagash-detail">
+						<div>
+							<div class="lagash-detail-title">Incluye</div>
+							<div>
+								<small class="badge badge-info" *ngFor="let bring of item.brings">
+									{{bring}}
+								</small>
+							</div>
+						</div>
+
+						<div>
+							<div class="lagash-detail-title">Ilustraciones</div>
+							<span class="badge badge-info"
+										*ngFor="let illustration of item.illustrations">
+								{{illustration}}
+							</span>
+						</div>
+						<div>
+							<div class="lagash-detail-title">ISBN</div>
+							<div>{{item.isbn || 'NO EXISTE'}}</div>
+						</div>
+						<div>
+							<div class="lagash-detail-title">ISBN</div>
+							<div>{{item.isbn || 'NO EXISTE'}}</div>
+						</div>
+						<div>
+							<div class="lagash-detail-title">Tamaño</div>
+							<div>{{item.length + ' x ' + item.width}}</div>
+						</div>
+						<div>
+							<div class="lagash-detail-title">Tamaño</div>
+							<div>{{item.pages || 'NO EXISTE'}}</div>
+						</div>
+						<div>
+							<div class="lagash-detail-title">Fecha de creación</div>
+							<div>{{item.created | date : 'medium'}}</div>
+						</div>
+					</div>
+			    <p class="card-text">
+						<small class="text-muted">{{item.year}}</small>
+					</p>
+			  </div>
+			</div>
+    </div>
+		<div class="col-3">
+			<div class="card bg-light mb-3">
+				<div class="card-header">Indice</div>
+				<div class="card-body">
+					<div *ngFor="let index of item.indexes">
+						<u>
+							{{index}}
+						</u>
+					</div>
+				</div>
+			</div>
+			<div class="card bg-light">
+				<div class="card-header">Descriptores</div>
+				<p class="card-body">
+					<a href="#" class="badge badge-info lagash-tag-link" *ngFor="let tag of item.tags">{{tag}}</a>
+				</p>
+			</div>
+    </div>
   </div>
 </div>
 <style media="screen">
-.container {
-	padding: 120px 0px;
+.container h1 {
+	padding: 20px;
+	text-align: center;
+}
+.container-lagash {
+	padding: 100px 0px;
+}
+.container-lagash .lagash-detail {
+	font-family: "Poppins", sans-serif;
+}
+.container-lagash .lagash-detail div div {
+	padding: 0 1%;
+	float: left;
+	width: 49%;
+}
+.container-lagash .lagash-detail .lagash-detail-title {
+	font-weight: 600;
+	text-align: right;
+}
+.container-lagash .lagash-tag-link {
+	margin: 2px 2px;
 }
 </style>

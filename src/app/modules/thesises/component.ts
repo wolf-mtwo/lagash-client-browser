@@ -76,6 +76,6 @@ export class ThesisesComponent {
 
   public go_to_item(book) {
     console.log(book);
-     this.router.navigate(['/books', book._id]);
+     this.router.navigate(['/thesis', book._id]);
   }
 }

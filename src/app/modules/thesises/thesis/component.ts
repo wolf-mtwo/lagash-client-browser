@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BooksService } from '../../../service/books.service';
+import { ThesisService } from '../../../service/thesis.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,28 +9,29 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['../../../wargos.css', './component.css', '../../../linearicons.css']
 })
 export class ThesisComponent {
-  book_id = null;
-  book = {};
-  ejemplares = [];
-  book_service = null;
+  _id = null;
+  item = {};
+  ejemplares: any = [];
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, private _service: BooksService) {
-    this.book_service = _service;
+  constructor(private route: ActivatedRoute, private router: Router, private _service: ThesisService) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.book_id = params.book_id;
-      this.sub = this.book_service.get_by_id(this.book_id).subscribe(
-           (item) => {
-            this.book = item;
-           },
-           (error) => {
-               console.log(<any>error);
-           }
-       );
-      this.book_service.get_ejemplares(this.book_id).subscribe(
+      this._id = params.thesis_id;
+      this.sub = this._service.get_by_id(this._id).subscribe((item) => {
+          item.brings = item.brings ? item.brings.split(',') : ['NO EXISTE'];
+          item.tags = item.tags ? item.tags.split(',') : ['NO EXISTE'];
+          item.indexes = item.index ? item.index.split('\n') : ['NO EXISTE'];
+          item.illustrations = item.illustrations ? item.illustrations.split(',') : ['NO EXISTE'];
+          this.item = item;
+        },
+        (error) => {
+          console.log(<any>error);
+        }
+      );
+      this._service.get_ejemplares(this._id).subscribe(
            (items) => {
             this.ejemplares = items;
            },
