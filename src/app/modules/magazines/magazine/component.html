@@ -2,11 +2,11 @@
 	<div class="row">
 		<div class="col-3">
 			<div class="row">
-				<h1>Libro</h1>
+				<h1>Revista</h1>
 			</div>
 			<div *ngIf="ejemplares.length <= 0">
 				<div class="alert alert-warning alert-dismissible fade show" role="alert">
-				  <strong>Ups!</strong> El libro no tiene ejemplares disponibles.
+				  <strong>Ups!</strong> La revista no tiene ejemplares disponibles.
 				</div>
 			</div>
 			<div *ngFor="let item of ejemplares">
@@ -23,14 +23,6 @@
 			<div class="card">
 			  <div class="card-body">
 			    <h5 class="card-title">{{item.title}}</h5>
-			    <div class="card-text">
-						Autor:
-						<b *ngFor="let author of authors">
-							|<small class="text-muted">
-								{{author.last_name}} {{author.first_name}}
-							</small>
-						</b>
-					</div>
 			  </div>
 				<img class="card-img-top" *ngIf="item.image" src="http://localhost:5570/files/{{item.image}}" alt="Card image cap">
 			  <img class="card-img-top" *ngIf="!item.image" src="./assets/img/default/thesis.png" alt="Card image cap">
@@ -38,41 +30,22 @@
 			    <h5 class="card-title">Información</h5>
 					<div class="lagash-detail">
 						<div>
-							<div class="lagash-detail-title">Incluye</div>
-							<div>
-								<small class="badge badge-info" *ngFor="let bring of item.brings">
-									{{bring}}
-								</small>
-							</div>
-						</div>
-
-						<div>
-							<div class="lagash-detail-title">Ilustraciones</div>
-							<span class="badge badge-info"
-										*ngFor="let illustration of item.illustrations">
-								{{illustration}}
-							</span>
+							<div class="lagash-detail-title">Edición</div>
+							<div>{{item.edition || 'NO EXISTE'}}</div>
 						</div>
 						<div>
-							<div class="lagash-detail-title">ISBN</div>
-							<div>{{item.isbn || 'NO EXISTE'}}</div>
-						</div>
-						<div>
-							<div class="lagash-detail-title">Tamaño</div>
-							<div>{{item.length + ' x ' + item.width}}</div>
-						</div>
-						<div>
-							<div class="lagash-detail-title">Paginas</div>
-							<div>{{item.pages || 'NO EXISTE'}}</div>
+							<div class="lagash-detail-title">Mes</div>
+							<div>{{item.month || 'NO EXISTE'}}</div>
 						</div>
 						<div>
 							<div class="lagash-detail-title">Fecha de creación</div>
 							<div>{{item.created | date : 'medium'}}</div>
 						</div>
+						<div>
+							<div class="lagash-detail-title">Año</div>
+							<div>{{item.year}}</div>
+						</div>
 					</div>
-			    <p class="card-text">
-						<small class="text-muted">{{item.year}}</small>
-					</p>
 			  </div>
 			</div>
     </div>
@@ -82,16 +55,6 @@
 				<p class="card-body">
 					<a href="#" class="badge badge-info lagash-tag-link" *ngFor="let tag of item.tags">{{tag}}</a>
 				</p>
-			</div>
-			<div class="card bg-light">
-				<div class="card-header">Indice</div>
-				<div class="card-body">
-					<div *ngFor="let index of item.indexes">
-						<u>
-							{{index}}
-						</u>
-					</div>
-				</div>
 			</div>
     </div>
   </div>

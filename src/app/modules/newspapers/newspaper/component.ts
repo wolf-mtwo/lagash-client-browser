@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 export class NewspaperComponent {
   _id = null;
   item: any = {};
-  authors: any = [];
   ejemplares: any = [];
   private sub: any;
 
@@ -29,12 +28,6 @@ export class NewspaperComponent {
       });
       this._service.get_ejemplares(this._id).subscribe((items) => {
         this.ejemplares = items;
-      },
-      (error) => {
-        console.log(<any>error);
-      });
-      this._service.get_authors(this._id).subscribe((items) => {
-        this.authors = items;
       },
       (error) => {
         console.log(<any>error);
