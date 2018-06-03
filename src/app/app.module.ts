@@ -19,11 +19,19 @@ import { BooksComponent } from './modules/books/component';
 import { BooksRoutingModule } from './modules/books/routing.module';
 import { InformationComponent } from './modules/information/component';
 import { InformationRoutingModule } from './modules/information/routing.module';
+
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // import { BootstrapAutocompleteModule } from 'angular-bootstrap-autocomplete';
 
+// tesis
+import { ThesisComponent } from './modules/thesises/thesis/component';
+import { ThesisesComponent } from './modules/thesises/component';
+
+import { ThesisRoutingModule } from './modules/thesises/routing.module';
+
 import { DemoService } from './service/product.service';
 import { BooksService } from './service/books.service';
+import { ThesisService } from './service/thesis.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +43,8 @@ import { BooksService } from './service/books.service';
     BookComponent,
     BooksComponent,
     InformationComponent,
+    ThesisComponent,
+    ThesisesComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -46,11 +56,13 @@ import { BooksService } from './service/books.service';
     BrowserRoutingModule,
     BooksRoutingModule,
     // BootstrapAutocompleteModule,
-    InformationRoutingModule
+    InformationRoutingModule,
+    ThesisRoutingModule
   ],
   providers: [
     DemoService,
-    BooksService
+    BooksService,
+    ThesisService
   ],
   bootstrap: [AppComponent]
 })

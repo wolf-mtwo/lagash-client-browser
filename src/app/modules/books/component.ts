@@ -10,7 +10,7 @@ import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, mer
   styleUrls: ['../../wargos.css', './component.css', '../../linearicons.css']
 })
 export class BooksComponent {
-  books = [];
+  books: any = [];
   model: any;
   searching = false;
   searchFailed = false;

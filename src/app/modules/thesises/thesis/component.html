@@ -1,0 +1,35 @@
+<div class="container">
+	<h1>Libros</h1>
+	<div>{{book.title}}</div>
+	<div>{{book.brings}}</div>
+	<div>{{book.catalog_id}}</div>
+	<div>{{book.cover}}</div>
+	<div>{{book.created}}</div>
+	<div>{{book.editorial_id}}</div>
+	<div>{{book.enabled}}</div>
+	<div>{{book.illustrations}}</div>
+	<div>{{book.image}}</div>
+	<div>{{book.index}}</div>
+	<div>{{book.isbn}}</div>
+	<div>{{book.length}}</div>
+	<div>{{book.pages}}</div>
+	<div>{{book.price}}</div>
+	<div>{{book.tags}}</div>
+	<div>{{book.type}}</div>
+	<div>{{book.width}}</div>
+	<div>{{book.year}}</div>
+	<div *ngFor="let item of ejemplares">
+		<div class="card text-white bg-info mb-3">
+		  <div class="card-header" (click)="go_to_item(item)">{{item.code}}</div>
+		  <div class="card-body">
+		    <h5 class="card-title">{{item.index}}</h5>
+		    <p class="card-text">{{item.inventory}}</p>
+		  </div>
+		</div>
+  </div>
+</div>
+<style media="screen">
+.container {
+	padding: 120px 0px;
+}
+</style>
