@@ -1,9 +1,9 @@
 <div class="container container-lagash">
 	<div class="row">
-		<h1>Tesis</h1>
-	</div>
-	<div class="row">
 		<div class="col-3">
+			<div class="row">
+				<h1>Tesis</h1>
+			</div>
 			<div *ngFor="let item of ejemplares">
 				<div class="card text-white bg-dark mb-3">
 				  <div class="card-header">Codigo</div>
@@ -18,10 +18,17 @@
 			<div class="card">
 			  <div class="card-body">
 			    <h5 class="card-title">{{item.title}}</h5>
-			    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+			    <div class="card-text">
+						Autor:
+						<b *ngFor="let author of authors">
+							|<small class="text-muted">
+								{{author.last_name}} {{author.first_name}}
+							</small>
+						</b>
+					</div>
 			  </div>
 				<img class="card-img-top" *ngIf="item.image" src="http://localhost:5570/files/{{item.image}}" alt="Card image cap">
-			  <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/thesis.png" alt="Card image cap">
+			  <img class="card-img-top" *ngIf="!item.image" src="./assets/img/default/thesis.png" alt="Card image cap">
 				<div class="card-body">
 			    <h5 class="card-title">Información</h5>
 					<div class="lagash-detail">
@@ -33,17 +40,12 @@
 								</small>
 							</div>
 						</div>
-
 						<div>
 							<div class="lagash-detail-title">Ilustraciones</div>
 							<span class="badge badge-info"
 										*ngFor="let illustration of item.illustrations">
 								{{illustration}}
 							</span>
-						</div>
-						<div>
-							<div class="lagash-detail-title">ISBN</div>
-							<div>{{item.isbn || 'NO EXISTE'}}</div>
 						</div>
 						<div>
 							<div class="lagash-detail-title">ISBN</div>
@@ -70,6 +72,12 @@
     </div>
 		<div class="col-3">
 			<div class="card bg-light mb-3">
+				<div class="card-header">Descriptores</div>
+				<p class="card-body">
+					<a href="#" class="badge badge-info lagash-tag-link" *ngFor="let tag of item.tags">{{tag}}</a>
+				</p>
+			</div>
+			<div class="card bg-light">
 				<div class="card-header">Indice</div>
 				<div class="card-body">
 					<div *ngFor="let index of item.indexes">
@@ -78,12 +86,6 @@
 						</u>
 					</div>
 				</div>
-			</div>
-			<div class="card bg-light">
-				<div class="card-header">Descriptores</div>
-				<p class="card-body">
-					<a href="#" class="badge badge-info lagash-tag-link" *ngFor="let tag of item.tags">{{tag}}</a>
-				</p>
 			</div>
     </div>
   </div>

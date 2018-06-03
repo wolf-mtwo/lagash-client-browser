@@ -19,6 +19,10 @@ export class BooksService {
       return this.http.get(this.get_url( _id + '/ejemplares'));
     }
 
+    get_authors(_id) {
+      return this.http.get(this.get_url(_id + '/authors'));
+    }
+
     search(text) {
       return this.http.get(this.get_url('page/1/limit/15'), {
         params: {
@@ -30,12 +34,21 @@ export class BooksService {
     paginate(query) {
       return this.http.get(this.get_url(`page/${query.page}/limit/${query.limit}`), {
         params: {
-          search: query.search
+          search: query.search,
+          type: query.type
         }
       });
     }
 
     private get_url(sufix) {
       return this.url + '/' + sufix;
+    }
+    
+    get_catalogs(query) {
+      return this.http.get(this.get_url(`catalogs/page/${query.page}/limit/${query.limit}`));
+    }
+
+    catalog_items(_id) {
+      return this.http.get(this.get_url('catalogs/' + _id));
     }
 }

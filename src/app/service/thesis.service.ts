@@ -19,6 +19,10 @@ export class ThesisService {
       return this.http.get(this.get_url( _id + '/ejemplares'));
     }
 
+    get_authors(_id) {
+      return this.http.get(this.get_url(_id + '/authors'));
+    }
+
     search(text) {
       return this.http.get(this.get_url('page/1/limit/15'), {
         params: {

@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ThesisComponent {
   _id = null;
-  item = {};
+  item: any = {};
+  authors: any = [];
   ejemplares: any = [];
   private sub: any;
 
@@ -21,33 +22,35 @@ export class ThesisComponent {
     this.route.params.subscribe(params => {
       this._id = params.thesis_id;
       this.sub = this._service.get_by_id(this._id).subscribe((item) => {
-          item.brings = item.brings ? item.brings.split(',') : ['NO EXISTE'];
-          item.tags = item.tags ? item.tags.split(',') : ['NO EXISTE'];
-          item.indexes = item.index ? item.index.split('\n') : ['NO EXISTE'];
-          item.illustrations = item.illustrations ? item.illustrations.split(',') : ['NO EXISTE'];
-          this.item = item;
-        },
-        (error) => {
-          console.log(<any>error);
-        }
-      );
-      this._service.get_ejemplares(this._id).subscribe(
-           (items) => {
-            this.ejemplares = items;
-           },
-           (error) => {
-               console.log(<any>error);
-           }
-       );
+        this.reload(item);
+      },
+      (error) => {
+        console.log(<any>error);
+      });
+      this._service.get_ejemplares(this._id).subscribe((items) => {
+        this.ejemplares = items;
+      },
+      (error) => {
+        console.log(<any>error);
+      });
+      this._service.get_authors(this._id).subscribe((items) => {
+        this.authors = items;
+      },
+      (error) => {
+        console.log(<any>error);
+      });
     });
+  }
 
+  reload(item) {
+    item.brings = item.brings ? item.brings.split(',') : ['NO EXISTE'];
+    item.tags = item.tags ? item.tags.split(',') : ['NO EXISTE'];
+    item.indexes = item.index ? item.index.split('\n') : ['NO EXISTE'];
+    item.illustrations = item.illustrations ? item.illustrations.split(',') : ['NO EXISTE'];
+    this.item = item;
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
-  }
-
-  public go_to_item(ejemplar) {
-     console.log(ejemplar);
   }
 }

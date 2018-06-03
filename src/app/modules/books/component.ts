@@ -10,65 +10,65 @@ import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, mer
   styleUrls: ['../../wargos.css', './component.css', '../../linearicons.css']
 })
 export class BooksComponent {
-  books: any = [];
-  model: any;
-  searching = false;
-  searchFailed = false;
-  item = {};
+  items: any = [];
+  catalogs: any = [];
   query = {
     search: '',
+    type: 'TITLE',
     total: 0,
     page: 1,
     limit: 20
   };
-  hideSearchingWhenUnsubscribed = new Observable(() => () => this.searching = false);
-
+  config = 'TITLE';
+  query_catalog = {
+    page: 1,
+    limit: 15
+  };
   constructor( private router: Router, private _service: BooksService) {
-    _service.get_suggestions().subscribe((items) => {
-        this.books = items;
+    this.search();
+    _service.get_catalogs(this.query_catalog).subscribe((items) => {
+        this.catalogs = items;
       }, (error) => {
         console.log(<any>error);
       }
     );
   }
 
-  search = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      tap(() => this.searching = true),
-      switchMap(term =>
-        this._service.search(term)
-        .pipe(
-          tap(() => this.searchFailed = false),
-          catchError(() => {
-            this.searchFailed = true;
-            return of([]);
-          })
-        )
-      ),
-      tap(() => this.searching = false),
-      merge(this.hideSearchingWhenUnsubscribed)
-    );
-
-  formatter = (x: {title: string}) => x.title;
-
-  search_text(text) {
-    if (text._id) {
-        this.go_to_item(text);
-        return;
-    }
-    this.query.search = text;
+  search() {
     this._service.paginate(this.query).subscribe((items) => {
-        this.books = items;
+        this.items = items;
       }, (error) => {
         console.log(<any>error);
       }
     );
   }
 
-  public go_to_item(book) {
-    console.log(book);
-     this.router.navigate(['/books', book._id]);
+  reset() {
+    this.query = {
+      search: '',
+      type: 'TITLE',
+      total: 0,
+      page: 1,
+      limit: 20
+    };
+    this.search();
+  }
+
+  pagination(count) {
+    this.query.page += count;
+    this.search();
+  }
+
+  go_to_catalog(item) {
+    this._service.catalog_items(item._id).subscribe((items) => {
+        this.items = items;
+      }, (error) => {
+        console.log(<any>error);
+      }
+    );
+  }
+
+  public go_to_item(item) {
+     this.router.navigate(['/books', item._id]);
   }
 }

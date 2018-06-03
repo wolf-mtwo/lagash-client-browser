@@ -9,44 +9,48 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['../../../wargos.css', './component.css', '../../../linearicons.css']
 })
 export class BookComponent {
-  book_id = null;
-  book = {};
-  ejemplares = [];
-  book_service = null;
+  _id = null;
+  item: any = {};
+  authors: any = [];
+  ejemplares: any = [];
   private sub: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private _service: BooksService) {
-    this.book_service = _service;
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.book_id = params.book_id;
-      this.sub = this.book_service.get_by_id(this.book_id).subscribe(
-           (item) => {
-            this.book = item;
-           },
-           (error) => {
-               console.log(<any>error);
-           }
-       );
-      this.book_service.get_ejemplares(this.book_id).subscribe(
-           (items) => {
-            this.ejemplares = items;
-           },
-           (error) => {
-               console.log(<any>error);
-           }
-       );
+      this._id = params.book_id;
+      this.sub = this._service.get_by_id(this._id).subscribe((item) => {
+        this.reload(item);
+      },
+      (error) => {
+        console.log(<any>error);
+      });
+      this._service.get_ejemplares(this._id).subscribe((items) => {
+        this.ejemplares = items;
+      },
+      (error) => {
+        console.log(<any>error);
+      });
+      this._service.get_authors(this._id).subscribe((items) => {
+        this.authors = items;
+      },
+      (error) => {
+        console.log(<any>error);
+      });
     });
+  }
 
+  reload(item) {
+    item.brings = item.brings ? item.brings.split(',') : ['NO EXISTE'];
+    item.tags = item.tags ? item.tags.split(',') : ['NO EXISTE'];
+    item.indexes = item.index ? item.index.split('\n') : ['NO EXISTE'];
+    item.illustrations = item.illustrations ? item.illustrations.split(',') : ['NO EXISTE'];
+    this.item = item;
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
-  }
-
-  public go_to_item(ejemplar) {
-     console.log(ejemplar);
   }
 }

@@ -5,14 +5,14 @@
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-end">
 					<li class="page-item" *ngIf="query.page > 1">
-						<a class="page-link" (click)="pagination(-1)">Previous</a>
+						<a class="page-link" (click)="pagination(-1)">Anterior</a>
 					</li>
 					<li class="page-item disabled" *ngIf="query.page <= 1">
-						<a class="page-link" (click)="pagination(-1)">Previous</a>
+						<a class="page-link" (click)="pagination(-1)">Anterior</a>
 					</li>
 					<li class="page-item"><a class="page-link" href="#">{{query.page}}</a></li>
 					<li class="page-item">
-						<a class="page-link" (click)="pagination(1)">Next</a>
+						<a class="page-link" (click)="pagination(1)">Siguiente</a>
 					</li>
 				</ul>
 			</nav>
@@ -21,16 +21,15 @@
 	<div class="row">
     <div class="col-3">
 			<div class="input-group">
-			  <div class="input-group-prepend">
-			    <span class="input-group-text btn-primary" (click)="search()">Buscar</span>
-			  </div>
 			  <input type="text"
 							 class="form-control"
 							 aria-label="Default"
 							 aria-describedby="inputGroup-sizing-default"
 							 [(ngModel)]="query.search"
-							 >
-							 <!-- (change)="search()" -->
+							 (change)="search()">
+			<div class="input-group-append">
+		    <span class="input-group-text btn-primary" (click)="search()">Buscar</span>
+	  	</div>
 			</div>
 			<div class="lagash-radio mb-3">
 				<label>
@@ -50,7 +49,7 @@
 			  <button type="button"
 								class="list-group-item list-group-item-action"
 								(click)="reset()">
-			    <i>Todas las tesis</i>
+			    <i><b>Todos</b></i>
 			  </button>
 			  <button type="button"
 								class="list-group-item list-group-item-action"
@@ -61,6 +60,14 @@
 			</div>
     </div>
     <div class="col-9">
+			<div *ngIf="items.length == 0">
+				<div class="alert alert-warning" role="alert">
+				  No existen resultados para esta busqueda
+				</div>
+				<!-- <div class="alert alert-warning" role="alert" *ngIf="query.search != ''">
+				  No se encontraron tesis con la palabra <a href="#" class="alert-link">"{{query.search}}"</a>
+				</div> -->
+			</div>
 			<div class="card card-lagash"
 					 style="width: 33%;"
 					 *ngFor="let item of items"
@@ -98,7 +105,7 @@
 	padding: 25px 15px 0 0;
 }
 .container-lagash .lagash-radio {
-  text-align: end;
+  /*text-align: end;*/
 }
 .container-lagash .lagash-radio label {
   padding: 0px 5px;
