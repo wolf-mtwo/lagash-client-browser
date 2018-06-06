@@ -7,12 +7,22 @@
         		<a class="contact-texts" routerLink="/main">BIBLIOTECA SIGHART KLAUSS</a>
   			</div>
   			<div class="col-md-4 col-4 header-top-bottom no-padding">
-        		<a href="index.html"><img class="img-fluid" src="./assets/img/logo.jpg" alt="" title="" /></a>
+        		<a routerLink="/main"><img class="img-fluid" src="./assets/img/logo.jpg" /></a>
   			</div>
-  			<div class="col-md-4 col-4 header-top-right no-padding">
-        		<a class="contact-texts" href="tel:+951 70156988">+951 70156988</a>
-        		<a href="tel:+440 123 12 658 439"><span class="lnr lnr-phone-handset"></span></a>
+  			<div *ngIf="!user" class="col-md-4 col-4 header-top-right no-padding">
+					<a class="primary-btn" routerLink="/login">Iniciar session</a>
+					<span class="lnr lnr-book">5</span>
   			</div>
+  			<div *ngIf="user" class="col-md-4 col-4 header-top-right no-padding lagash-user">
+					<a routerLink="/login" class="user"><img src="./assets/img/user.png">{{user.name}}</a>
+					<a href=""><span class="lnr lnr-book">5</span></a>
+					<div class="dropdown">
+						<span (click)="show_elements()" class="lnr lnr-chevron-down"></span>
+					  <div id="myDropdown" class="dropdown-content">
+					    <a (click)="logout()">Salir</a>
+					  </div>
+					</div>
+	  		</div>
   		</div>
 		</div>
   </div>
@@ -59,4 +69,65 @@
   width: 40px;
   height: auto;
 }
+.lagash-user img {
+	padding-right: 5px;
+	width: 30px;
+  height: auto;
+}
+.lagash-user a {
+  line-height: 42px;
+  color: black;
+  display: inline-block;
+  font-weight: 500;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.lagash-user .user {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.lagash-user a:hover {
+	background: #d7d7d794;
+}
+</style>
+<style>
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 0 16px;
+		text-align: left;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
 </style>

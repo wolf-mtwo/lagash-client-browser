@@ -1,0 +1,18 @@
+<div class="login-page">
+  <div class="form">
+    <!-- <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form> -->
+    <form (ngSubmit)="login(user)" class="login-form">
+      <input type="text" [(ngModel)]="user.email" name="email" placeholder="username" required/>
+      <input type="password" [(ngModel)]="user.password" name="password" placeholder="password" required/>
+      <button *ngIf="!isloading">Iniciar session</button>
+      <button type="button" *ngIf="isloading">Cargando...</button>
+      <!-- <p class="message">Not registered? <a href="#">Create an account</a></p> -->
+    </form>
+  </div>
+</div>

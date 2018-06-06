@@ -14,6 +14,7 @@ import { BrowserComponent } from './browser/component';
 import { Browser2Component } from './browser-2/component';
 
 import { InformationComponent } from './modules/information/component';
+import { LoginComponent } from './modules/information/login/component';
 import { InformationRoutingModule } from './modules/information/routing.module';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -43,6 +44,7 @@ import { BooksService } from './service/books.service';
 import { ThesisService } from './service/thesis.service';
 import { MagazinesService } from './service/magazines.service';
 import { NewspapersService } from './service/newspapers.service';
+import { IntegrationService } from './service/integration.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { NewspapersService } from './service/newspapers.service';
     BookComponent,
     BooksComponent,
     InformationComponent,
+    LoginComponent,
     ThesisComponent,
     ThesisesComponent,
     MagazineComponent,
@@ -81,7 +84,8 @@ import { NewspapersService } from './service/newspapers.service';
     BooksService,
     ThesisService,
     MagazinesService,
-    NewspapersService
+    NewspapersService,
+    IntegrationService
   ],
   bootstrap: [AppComponent]
 })
