@@ -78,14 +78,13 @@ export class LoansComponent {
         data_id: loan.item.material._id,
         ejemplar_id: loan.item.ejemplar._id,
         information: JSON.stringify({}),
-        state: 'CREATED',
+        state: 'BOOKED',
         user_id: config._id,
         name: config.name,
         third_system: config.third_system
       }
       this.integration_service.store_loan(item)
       .subscribe((item) => {
-        console.log('1');
         loan.state = true;
       }, (error) => {
         console.log(<any>error);
