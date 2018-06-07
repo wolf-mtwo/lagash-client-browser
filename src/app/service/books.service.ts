@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class BooksService {
     private url: string = 'http://localhost:5570/v3/browser/books';
+
     constructor(public http: HttpClient) { }
 
     get_by_id(_id) {

@@ -24,7 +24,7 @@ export class StoreService {
   load(key, state) {
     this.validate_key(key);
     if (state) {
-        return localStorage.getItem(key);
+      return localStorage.getItem(key);
     }
     return JSON.parse(localStorage.getItem(key));
   }

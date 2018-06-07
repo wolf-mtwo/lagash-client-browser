@@ -24,7 +24,7 @@ export class LoginComponent {
     .subscribe((item) => {
       this.isloading = false;
       this.save(item);
-      this._service.setup(item);
+      this._service.emit(item);
       this.router.navigate(['/main']);
     }, (error) => {
       this.isloading = false;

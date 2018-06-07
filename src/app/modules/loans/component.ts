@@ -3,7 +3,10 @@ import { BooksService } from '../../service/books.service';
 import { Router } from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, merge} from 'rxjs/operators';
+import { StoreService } from '../../service/store.service';
 import { BackpackService } from '../../service/backpack.service';
+import { IntegrationService } from '../../service/integration.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'module-books',
@@ -14,25 +17,89 @@ export class LoansComponent {
   items: any = [];
   loans: any = [];
   I18N = null;
+  user = null;
+  person: string = null;
   constructor(
     private router: Router,
+    private toastr: ToastrService,
     private _service: BooksService,
-    private store: BackpackService
+    private integration_service: IntegrationService,
+    private loans_store: BackpackService,
+    private store: StoreService
   ) {
-    this.loans = this.populate(store.load());
-    this.I18N = store.I18N;
+    this.user = store.load('user', false) || null;
+    this.loans = this.populate(loans_store.load());
+    this.I18N = loans_store.I18N;
+    integration_service.on((item) => {
+      this.user = item;
+    });
   }
 
   populate(loans) {
     return loans.map((loan) => {
       loan.code = [
         loan.item.material.code,
-         loan.item.authors.length > 0 ? loan.item.authors[0].code: '',
-        loan.item.ejemplar.suffix,
-        'Ej.' + loan.item.ejemplar.order
+         loan.item.authors.length > 0 ? loan.item.authors[0].code : '',
+         loan.item.ejemplar.suffix,
+         'Ej.' + loan.item.ejemplar.order
       ].join(' ');
       return loan;
     });
+  }
+
+  booking() {
+    var config = null;
+    if (!this.user && !this.person) {
+        this.toastr.warning('Para realizar una reservacion tiene que llenar en el campo su nombre', 'Nombre completo');
+        return;
+    }
+    if (!confirm('Esta seguro que quiere reservar estos materiales bibliograficos')) {
+        return;
+    }
+    if (this.person) {
+      config = {
+        user_id: null,
+        name: this.person,
+        third_system: null
+      };
+    }
+    if (this.user) {
+      config = {
+        user_id: this.user._id,
+        name: this.user.name,
+        third_system: 'api.atendance.ninja'
+      };
+    }
+    this.loans.forEach((loan) => {
+        var item = {
+        _id: this.next(),
+        type: loan.key,
+        code: loan.code,
+        data_id: loan.item.material._id,
+        ejemplar_id: loan.item.ejemplar._id,
+        information: JSON.stringify({}),
+        state: 'CREATED',
+        user_id: config._id,
+        name: config.name,
+        third_system: config.third_system
+      }
+      this.integration_service.store_loan(item)
+      .subscribe((item) => {
+        console.log('1');
+        loan.state = true;
+      }, (error) => {
+        console.log(<any>error);
+      });
+      return ;
+    });
+    this.loans_store.remove_all();
+    // this.integration_service.store_loan();
+
+    // items.forEach((item) => {
+    //
+    //
+    // });
+
   }
 
   public go_to_item(loan) {
@@ -53,8 +120,17 @@ export class LoansComponent {
       throw new Error('not supported resource');
     }
   }
+
+  next() {
+    var code = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+    return code;
+  }
+
   public remove_loan(item, i) {
     this.loans.splice(i, 1);
-    this.store.remove_position(i);
+    this.loans_store.remove_position(i);
   }
 }

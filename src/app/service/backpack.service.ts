@@ -37,6 +37,11 @@ export class BackpackService {
     });
   }
 
+  remove_all() {
+    this.store.remove(this.KEY);
+    this.emit(0);
+  }
+
   remove_position(index) {
     var items = this.store.load(this.KEY, false);
     items.splice(index, 1);

@@ -33,3 +33,52 @@ h1, h2, h3, h4, h5, h6 {
 .lagash-pointer {
   cursor: pointer;
 }
+.primary-btn {
+  background: #f6214b;
+  line-height: 38px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 20px;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  font-weight: 500;
+  position: relative;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  position: relative;
+}
+.primary-btn:focus {
+  outline: none;
+}
+.container h1 {
+	padding: 20px;
+	text-align: center;
+}
+.container-lagash {
+	padding: 100px 0px;
+}
+.container-lagash .card-lagash {
+	background: url(../assets/img/legacy/milky.png) no-repeat;
+	background-size: 100% 100%;
+	float: left;
+}
+/*.container-lagash img.card-img-top {
+		width: 100%;
+		height: 150px;
+}*/
+.container-lagash .card-lagash:hover {
+	filter:brightness(0.4);
+}
+.container-lagash nav {
+	padding: 25px 15px 0 0;
+}
+.container-lagash .lagash-radio {
+  /*text-align: end;*/
+}
+.container-lagash .lagash-radio label {
+  padding: 0px 5px;
+}

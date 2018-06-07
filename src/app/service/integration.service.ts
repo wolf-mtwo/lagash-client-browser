@@ -4,15 +4,17 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class IntegrationService {
-    private url: string = 'http://api.attendance.ninja';
+    private integration_url: string = 'http://api.attendance.ninja';
+    private url: string = 'http://localhost:5570/v4/booking';
     listeners = [];
+
     constructor(public http: HttpClient) { }
 
     login(user) {
       return this.http.post(this.get_url('p1/login'), user);
     }
 
-    setup(user) {
+    emit(user) {
       this.listeners.forEach((call) => {
         call(user);
       });
@@ -22,7 +24,11 @@ export class IntegrationService {
       this.listeners.push(call);
     }
 
+    store_loan(item) {
+      return this.http.post(this.url, item);
+    }
+
     private get_url(sufix) {
-      return this.url + '/' + sufix;
+      return this.integration_url + '/' + sufix;
     }
 }

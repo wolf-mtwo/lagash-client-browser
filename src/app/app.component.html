@@ -11,12 +11,12 @@
   			</div>
   			<div *ngIf="!user" class="col-md-4 col-4 header-top-right no-padding">
 					<a class="primary-btn" routerLink="/login">Iniciar session</a>
-					<a routerLink="/loans"><span class="lnr lnr-book">{{loans}}</span></a>
+					<a routerLink="/loans"><span class="lnr lnr-book" style="font-size:20px;">{{loans}}</span></a>
 
   			</div>
   			<div *ngIf="user" class="col-md-4 col-4 header-top-right no-padding lagash-user">
 					<a routerLink="/login" class="user"><img src="./assets/img/user.png">{{user.name}}</a>
-					<a href=""><span class="lnr lnr-book">5</span></a>
+					<a routerLink="/loans"><span class="lnr lnr-book" style="font-size:20px;">{{loans}}</span></a>
 					<div class="dropdown">
 						<span (click)="show_elements()" class="lnr lnr-chevron-down"></span>
 					  <div id="myDropdown" class="dropdown-content">

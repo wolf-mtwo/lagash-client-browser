@@ -20,15 +20,11 @@ export class AppComponent {
     this.user = JSON.parse(localStorage.getItem('user')) || null;
     this.loans = store.load().length;
     integration_service.on((item) => {
-      this.listener(item);
+      this.user = item;
     });
     store.on((item) => {
       this.update_loans(item);
     });
-  }
-
-  listener(item) {
-    this.user = item;;
   }
 
   update_loans(item) {
@@ -39,6 +35,7 @@ export class AppComponent {
     this.user = null;
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    this.integration_service.emit(null);
   }
 
   show_elements() {
