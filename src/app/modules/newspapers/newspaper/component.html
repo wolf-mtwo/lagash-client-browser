@@ -6,15 +6,15 @@
 			</div>
 			<div *ngIf="ejemplares.length <= 0">
 				<div class="alert alert-warning alert-dismissible fade show" role="alert">
-				  <strong>Ups!</strong> El libro no tiene ejemplares disponibles.
+				  <strong>Ups!</strong> Este diario no tiene ejemplares disponibles.
 				</div>
 			</div>
-			<div *ngFor="let item of ejemplares">
+			<div *ngFor="let ejemplar of ejemplares">
 				<div class="card text-white bg-dark mb-3">
-				  <div class="card-header">Codigo</div>
+				  <div class="card-header">Codigo<span class="lnr lnr-book close" (click)="pick_item(ejemplar)"></span></div>
 				  <div class="card-body" style="text-align: center;">
-				    <h5 class="card-title">{{item.code}}</h5>
-						<small>Ejemplar: {{item.index}} Inv.: {{item.inventory}}</small>
+				    <h5 class="card-title">{{item.code}} <br> {{ejemplar.suffix}} <br> Ej.{{ejemplar.order}}</h5>
+						<small>Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}</small>
 				  </div>
 				</div>
 		  </div>
@@ -67,27 +67,3 @@
     </div>
   </div>
 </div>
-<style media="screen">
-.container h1 {
-	padding: 20px;
-	text-align: center;
-}
-.container-lagash {
-	padding: 100px 0px;
-}
-.container-lagash .lagash-detail {
-	font-family: "Poppins", sans-serif;
-}
-.container-lagash .lagash-detail div div {
-	padding: 0 1%;
-	float: left;
-	width: 49%;
-}
-.container-lagash .lagash-detail .lagash-detail-title {
-	font-weight: 600;
-	text-align: right;
-}
-.container-lagash .lagash-tag-link {
-	margin: 2px 2px;
-}
-</style>

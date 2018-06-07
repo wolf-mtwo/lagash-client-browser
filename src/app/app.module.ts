@@ -39,12 +39,21 @@ import { NewspaperComponent } from './modules/newspapers/newspaper/component';
 import { NewspapersComponent } from './modules/newspapers/component';
 import { NewspapersRoutingModule } from './modules/newspapers/routing.module';
 
+// loans
+import { LoansComponent } from './modules/loans/component';
+import { LoansRoutingModule } from './modules/loans/routing.module';
+
 import { DemoService } from './service/product.service';
 import { BooksService } from './service/books.service';
 import { ThesisService } from './service/thesis.service';
 import { MagazinesService } from './service/magazines.service';
 import { NewspapersService } from './service/newspapers.service';
 import { IntegrationService } from './service/integration.service';
+import { StoreService } from './service/store.service';
+import { BackpackService } from './service/backpack.service';
+
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -62,10 +71,15 @@ import { IntegrationService } from './service/integration.service';
     MagazineComponent,
     MagazinesComponent,
     NewspaperComponent,
-    NewspapersComponent
+    NewspapersComponent,
+    LoansComponent
   ],
   imports: [
     NgbModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    }),
+    BrowserAnimationsModule,
     HttpModule,
     FormsModule,
     HttpClientModule,
@@ -77,7 +91,8 @@ import { IntegrationService } from './service/integration.service';
     InformationRoutingModule,
     ThesisRoutingModule,
     MagazinesRoutingModule,
-    NewspapersRoutingModule
+    NewspapersRoutingModule,
+    LoansRoutingModule
   ],
   providers: [
     DemoService,
@@ -85,7 +100,9 @@ import { IntegrationService } from './service/integration.service';
     ThesisService,
     MagazinesService,
     NewspapersService,
-    IntegrationService
+    IntegrationService,
+    StoreService,
+    BackpackService
   ],
   bootstrap: [AppComponent]
 })

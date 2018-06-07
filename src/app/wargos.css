@@ -4,3 +4,32 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2em !important;
     font-weight: 600;
 }
+
+.container h1 {
+	padding: 20px;
+	text-align: center;
+}
+.container-lagash {
+	padding: 100px 0px;
+}
+.container-lagash .lagash-detail {
+	font-family: "Poppins", sans-serif;
+}
+.container-lagash .lagash-detail div div {
+	padding: 0 1%;
+	float: left;
+	width: 49%;
+}
+.container-lagash .lagash-detail .lagash-detail-title {
+	font-weight: 600;
+	text-align: right;
+}
+.container-lagash .lagash-tag-link {
+	margin: 2px 2px;
+}
+.container-lagash .close {
+	color: white;
+}
+.lagash-pointer {
+  cursor: pointer;
+}

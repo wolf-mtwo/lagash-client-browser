@@ -1,0 +1,27 @@
+<div class="container container-lagash">
+	<div class="row">
+		<h1>Prestamos</h1>
+	</div>
+	<div class="row">
+		<div class="col-2">
+    </div>
+    <div class="col-8">
+			<div class="list-group">
+			  <div class="list-group-item list-group-item-action flex-column align-items-start"
+				 		 *ngFor="let loan of loans; let i = index">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h5 class="mb-1">Codigo: {{loan.code}}</h5>
+			      <small>{{I18N[loan.key]}} <span class="badge badge-danger lagash-pointer" (click)="remove_loan(loan, i)">Eliminar</span></small>
+			    </div>
+			    <p class="mb-1 lagash-pointer" (click)="go_to_item(loan)">{{loan.item.material.title}}</p>
+					<div *ngIf="loan.item.authors.length > 0">
+						<small>Autor: </small>
+						<small *ngFor="let author of loan.item.authors"><b>|</b> {{author.last_name}} {{author.first_name}} </small>
+					</div>
+			  </div>
+			</div>
+    </div>
+		<div class="col-2">
+    </div>
+  </div>
+</div>

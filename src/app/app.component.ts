@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import $ from 'jquery';
 import { IntegrationService } from './service/integration.service';
+import { BackpackService } from './service/backpack.service';
 // import 'owl.carousel';
 
 @Component({
@@ -11,15 +12,27 @@ import { IntegrationService } from './service/integration.service';
 export class AppComponent {
   title = 'app';
   user = null;
-  constructor(private integration_service: IntegrationService) {
+  loans = 0;
+  constructor(
+    private integration_service: IntegrationService,
+    private store: BackpackService
+  ) {
     this.user = JSON.parse(localStorage.getItem('user')) || null;
+    this.loans = store.load().length;
     integration_service.on((item) => {
       this.listener(item);
+    });
+    store.on((item) => {
+      this.update_loans(item);
     });
   }
 
   listener(item) {
     this.user = item;;
+  }
+
+  update_loans(item) {
+    this.loans = item;
   }
 
   logout() {

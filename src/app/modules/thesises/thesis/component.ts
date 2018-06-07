@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ThesisService } from '../../../service/thesis.service';
+import { BackpackService } from '../../../service/backpack.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'module-thesis-id',
@@ -15,24 +17,30 @@ export class ThesisComponent {
   ejemplares: any = [];
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private router: Router, private _service: ThesisService) {
-  }
+  constructor(
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private _service: ThesisService,
+    private store: BackpackService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this._id = params.thesis_id;
       this.sub = this._service.get_by_id(this._id).subscribe((item) => {
         this.reload(item);
+        this._service.get_ejemplares(this._id).subscribe((items) => {
+          this.ejemplares = items;
+        },
+        (error) => {
+          console.log(<any>error);
+        });
       },
       (error) => {
         console.log(<any>error);
       });
-      this._service.get_ejemplares(this._id).subscribe((items) => {
-        this.ejemplares = items;
-      },
-      (error) => {
-        console.log(<any>error);
-      });
+
       this._service.get_authors(this._id).subscribe((items) => {
         this.authors = items;
       },
@@ -48,6 +56,14 @@ export class ThesisComponent {
     item.indexes = item.index ? item.index.split('\n') : ['NO EXISTE'];
     item.illustrations = item.illustrations ? item.illustrations.split(',') : ['NO EXISTE'];
     this.item = item;
+  }
+
+  pick_item(item) {
+    this.store.save('THESIS', {
+      material: this.item,
+      authors: this.authors,
+      ejemplar: item
+    });
   }
 
   ngOnDestroy() {
