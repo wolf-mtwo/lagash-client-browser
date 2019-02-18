@@ -38,8 +38,8 @@ export class LoansComponent {
   populate(loans) {
     return loans.map((loan) => {
       loan.code = [
-        loan.item.material.code,
-         loan.item.authors.length > 0 ? loan.item.authors[0].code : '',
+         loan.item.material.code_material,
+         loan.item.material.code_author,
          loan.item.ejemplar.suffix,
          'Ej.' + loan.item.ejemplar.order
       ].join(' ');
