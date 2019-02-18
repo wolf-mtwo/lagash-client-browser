@@ -1,16 +1,31 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class Global {
-    public url: string;
+    public PATH: string;
 
     constructor() {
-        this.url = 'http://localhost:5570';
+        // this.PATH = 'http://localhost:5570';
+        this.PATH = 'http://bibliotecaserver.uab.edu.bo';
     }
 
-    getProductos(): String {
-        return this.url;
+    get_url(sufix) {
+      return this.PATH + '/' + sufix;
+    }
+
+    get_book_url(sufix) {
+      return this.PATH + '/v3/browser/books/' + sufix;
+    }
+
+    get_thesis_url(sufix) {
+      return this.PATH + '/v3/browser/thesis/' + sufix;
+    }
+
+    get_magazine_url(sufix) {
+      return this.PATH + '/v3/browser/magazines/' + sufix;
+    }
+
+    get_newspaper_url(sufix) {
+      return this.PATH + '/v3/browser/newspapers/' + sufix;
     }
 }

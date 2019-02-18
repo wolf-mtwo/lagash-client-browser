@@ -52,6 +52,8 @@ import { IntegrationService } from './service/integration.service';
 import { StoreService } from './service/store.service';
 import { BackpackService } from './service/backpack.service';
 
+import { Global } from './service/global.service';
+
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -102,7 +104,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NewspapersService,
     IntegrationService,
     StoreService,
-    BackpackService
+    BackpackService,
+    Global
   ],
   bootstrap: [AppComponent]
 })

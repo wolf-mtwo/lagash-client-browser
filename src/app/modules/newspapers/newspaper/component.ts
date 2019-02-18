@@ -44,7 +44,7 @@ export class NewspaperComponent {
 
   reload(item) {
     item.brings = item.brings ? item.brings.split(',') : ['NO EXISTE'];
-    item.tags = item.tags ? item.tags.split(',') : ['NO EXISTE'];
+    item.tags = item.tags ? this.store.get_tags(item.tags) : ['NO EXISTE'];
     item.indexes = item.index ? item.index.split('\n') : ['NO EXISTE'];
     item.illustrations = item.illustrations ? item.illustrations.split(',') : ['NO EXISTE'];
     this.item = item;

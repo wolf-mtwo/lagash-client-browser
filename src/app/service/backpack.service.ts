@@ -52,4 +52,14 @@ export class BackpackService {
   on(call) {
     this.listeners.push(call);
   }
+
+  get_tags(tags) {
+      var regex = /\[.*?\]/g;
+      var match;
+      var items = [];
+      while ((match = regex.exec(tags)) !== null) {
+          items.push(match[0]);
+      }
+      return items;
+  }
 }

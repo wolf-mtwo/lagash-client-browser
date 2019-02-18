@@ -75,7 +75,7 @@
 					 style="width: 33%;"
 					 *ngFor="let item of items"
 					 (click)="go_to_item(item)">
-			  <img class="card-img-top" *ngIf="item.image" src="http://localhost:5570/files/{{item.image}}" alt="Card image cap">
+			  <img class="card-img-top" *ngIf="item.image" src="http://bibliotecaserver.uab.edu.bo/files/{{item.image}}" alt="Card image cap">
 			  <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/thesis.png" alt="Card image cap">
 			  <div class="card-body">
 			    <p class="card-text">{{item.title}}</p>
