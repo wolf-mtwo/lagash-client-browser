@@ -75,7 +75,7 @@ export class LoansComponent {
         _id: this.next(),
         type: loan.key,
         code: loan.code,
-        data_id: loan.item.material._id,
+        material_id: loan.item.material._id,
         ejemplar_id: loan.item.ejemplar._id,
         information: JSON.stringify({}),
         state: 'BOOKED',
