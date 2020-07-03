@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'module-login',
   templateUrl: './component.html',
-  styleUrls: ['../../../wargos.css', './component.css', '../../../linearicons.css']
+  styleUrls: ['../../../wargos.css', './component.css']
 })
 export class LoginComponent {
   user: any = {

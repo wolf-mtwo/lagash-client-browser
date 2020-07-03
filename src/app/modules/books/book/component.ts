@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'module-books-id',
   templateUrl: './component.html',
-  styleUrls: ['../../../wargos.css', './component.css', '../../../linearicons.css']
+  styleUrls: ['../../../wargos.css', './component.css']
 })
 export class BookComponent {
   _id = null;

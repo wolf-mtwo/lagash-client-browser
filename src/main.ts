@@ -3,17 +3,12 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import $ from 'jquery';
 
-// import './app/main.css';
-
-// window.$ = window.jQuery = $;
-// import 'owl.carousel/dist/assets/owl.carousel.css';
-// import 'owl.carousel';
+//@import '~ngx-toastr/toastr';
 
 if (environment.production) {
   enableProdMode();
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));

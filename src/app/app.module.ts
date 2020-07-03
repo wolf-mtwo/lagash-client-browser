@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
+
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { BrowserRoutingModule } from './browser-2/routing.module';
 
@@ -17,12 +18,12 @@ import { InformationComponent } from './modules/information/component';
 import { LoginComponent } from './modules/information/login/component';
 import { InformationRoutingModule } from './modules/information/routing.module';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-// import { BooksComponent } from './modules/books/component';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { BookComponent } from './modules/books/book/component';
 import { BooksComponent } from './modules/books/component';
 import { BooksRoutingModule } from './modules/books/routing.module';
-// import { BootstrapAutocompleteModule } from 'angular-bootstrap-autocomplete';
 
 // tesis
 import { ThesisComponent } from './modules/thesises/thesis/component';
@@ -77,14 +78,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoansComponent
   ],
   imports: [
-    NgbModule.forRoot(),
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
-    }),
-    BrowserAnimationsModule,
-    HttpModule,
-    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+    NgbPaginationModule,
+    NgbAlertModule,
     HttpClientModule,
+    FormsModule,
+
     BrowserModule,
     AppRoutingModule,
     BrowserRoutingModule,

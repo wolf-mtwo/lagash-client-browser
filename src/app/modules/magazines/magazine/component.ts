@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'module-magazines-id',
   templateUrl: './component.html',
-  styleUrls: ['../../../wargos.css', './component.css', '../../../linearicons.css']
+  styleUrls: ['../../../wargos.css', './component.css']
 })
 export class MagazineComponent {
   _id = null;

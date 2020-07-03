@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import $ from 'jquery';
+
 import { IntegrationService } from './service/integration.service';
 import { BackpackService } from './service/backpack.service';
-// import 'owl.carousel';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', './main.css', './linearicons.css']
+  styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'lagash-client-browser';
   user = null;
   loans = 0;
   constructor(

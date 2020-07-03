@@ -7,7 +7,7 @@ import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, mer
 @Component({
   selector: 'module-books',
   templateUrl: './component.html',
-  styleUrls: ['../../wargos.css', './component.css', '../../linearicons.css']
+  styleUrls: ['../../wargos.css', './component.css']
 })
 export class BooksComponent {
   items: any = [];
