@@ -4,13 +4,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2em !important;
     font-weight: 600;
 }
-
 .container h1 {
 	padding: 20px;
 	text-align: center;
-}
-.container-lagash {
-	padding: 100px 0px;
 }
 .container-lagash .lagash-detail {
 	font-family: "Poppins", sans-serif;
@@ -59,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 .container-lagash {
-	padding: 110px 0px;
+	padding: 10px 0px;
 }
 .container-lagash .card-lagash {
 	background: url(../assets/img/legacy/milky.png) no-repeat;

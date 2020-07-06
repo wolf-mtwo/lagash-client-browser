@@ -1,93 +1,91 @@
-<div class="klauss-navbar-header fixed-top">
+<div class="lagash-navbar-header fixed-top">
   <div class="header-container">
     <div class="container">
       <div class="logo">
         <a routerLink="/"><img src="./assets/img/logo-uab.png" /></a>
       </div>
-      <div>
-        <svg class="bi" width="32" height="32" fill="currentColor">
-          <use xlink:href="./asset/icons/download.svg"/>
-        </svg>
-        <div></div>
+      <div class="header-information">
+        <div class="header-icon">
+          <mat-icon>location_on</mat-icon>
+        </div>
+        <div>
+          <h5>Av. Simón I. Patiño Km1</h5>
+          <span>Vinto - Cochabamba - Bolivia</span>
+        </div>
       </div>
-      <div>asd</div>
-      <div>asd</div>
+      <div class="header-information">
+        <div class="header-icon">
+          <mat-icon>phone_enabled</mat-icon>
+        </div>
+        <div>
+          <h5>800 10 91 91</h5>
+          <p>Línea Gratuita</p>
+        </div>
+      </div>
+      <div class="lagash-media">
+        <div>
+          <mat-icon>linked_camera</mat-icon>
+        </div>
+        <div>
+          <mat-icon>share</mat-icon>
+        </div>
+      </div>
     </div>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-dark klauss-navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark lagash-navbar">
+    <div class="col-lg-2"></div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/main">BIBLIOTECA SIGHART lagash<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" routerLink="/books">Libros</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/thesis">Tesis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/magazines">Revistas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/newspapers">Periodicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/information">Informacion</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-2">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <div *ngIf="!user">
+            <a class="nav-link" routerLink="/login">Iniciar session</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <div *ngIf="!user">
+            <a class="nav-link" routerLink="/loans">{{loans}}</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <!-- // not tested -->
+          <div *ngIf="user" class="lagash-user">
+            <a class="nav-link" routerLink="/login" class="user"><img src="./assets/img/user.png">{{user.name}}</a>
+            <a class="nav-link" routerLink="/loans">{{loans}}</a>
+            <div class="dropdown">
+              <span (click)="show_elements()" class="lnr lnr-chevron-down"></span>
+              <div id="myDropdown" class="dropdown-content">
+                <a (click)="logout()">Salir</a>
+              </div>
+            </div>
+          </div>
+          <!-- // not tested -->
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
     </div>
   </nav>
 </div>
-
-<header id="header">
-  <div class="header-top">
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        <div class="col-md-4 col-4 header-top-left no-padding">
-        <a href=""><span class="lnr lnr-location"></span></a>
-          <a class="contact-texts" routerLink="/main">BIBLIOTECA SIGHART KLAUSS</a>
-        </div>
-        <div class="col-md-4 col-4 header-top-bottom no-padding">
-          <a routerLink="/main"><img class="img-fluid" src="./assets/img/logo.jpg" /></a>
-        </div>
-        <div *ngIf="!user" class="col-md-4 col-4 header-top-right no-padding">
-          <a class="primary-btn" routerLink="/login">Iniciar session</a>
-          <a routerLink="/loans"><span class="lnr lnr-book" style="font-size:20px;">{{loans}}</span></a>
-        </div>
-        <div *ngIf="user" class="col-md-4 col-4 header-top-right no-padding lagash-user">
-          <a routerLink="/login" class="user"><img src="./assets/img/user.png">{{user.name}}</a>
-          <a routerLink="/loans"><span class="lnr lnr-book" style="font-size:20px;">{{loans}}</span></a>
-          <div class="dropdown">
-            <span (click)="show_elements()" class="lnr lnr-chevron-down"></span>
-            <div id="myDropdown" class="dropdown-content">
-              <a (click)="logout()">Salir</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container main-menu">
-    <div class="row align-items-center justify-content-center">
-    <nav id="nav-menu-container">
-      <ul class="nav-menu">
-        <li class="menu-active"><a routerLink="/main">Principal</a></li>
-        <!-- <li><a routerLink="/browser-2">Buscador</a></li> -->
-        <li><a routerLink="/books">Libros</a></li>
-        <li><a routerLink="/thesis">Tesis</a></li>
-        <li><a routerLink="/magazines">Revistas</a></li>
-        <li><a routerLink="/newspapers">Periodicos</a></li>
-        <li><a routerLink="/information">Informacion</a></li>
-      </ul>
-    </nav>
-    </div>
-  </div>
-</header>
-<router-outlet></router-outlet>
+<div class="lagash-container">
+  <router-outlet></router-outlet>  
+</div>
