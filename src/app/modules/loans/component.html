@@ -1,54 +1,54 @@
 <div class="container container-lagash">
-	<div class="row">
-		<h1>Prestamos</h1>
-		<div style="flex: auto;">
-			<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-end">
-					<li class="page-item">
-						<h2 *ngIf="user">{{user.name}}</h2>
-						<div class="input-group mb-3" *ngIf="!user">
-						  <div class="input-group-prepend">
-						    <span class="input-group-text">Nombre completo</span>
-						  </div>
-						  <input type="text" class="form-control" aria-label="Default" name="name" [(ngModel)]="person" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</li>
-					<li class="page-item disabled">
-						<div class="primary-btn" (click)="booking()">Reservar</div>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-2">
+  <div class="row">
+    <h1>Prestamos</h1>
+    <div style="flex: auto;">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item">
+            <h2 *ngIf="user">{{user.name}}</h2>
+            <div class="input-group mb-3" *ngIf="!user">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Nombre completo</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Default" name="name" [(ngModel)]="person" aria-describedby="inputGroup-sizing-default">
+            </div>
+          </li>
+          <li class="page-item disabled">
+            <div class="primary-btn" (click)="booking()">Reservar</div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
     </div>
     <div class="col-8">
-			<div *ngIf="loans.length <= 0">
-				<div class="alert alert-warning alert-dismissible fade show" role="alert">
-				  <strong>Ups!</strong> Utiliza el buscador y seleciona el material bibliografico que deseas prestarte.
-				</div>
-			</div>
-			<div class="list-group">
-			  <div class="list-group-item list-group-item-action flex-column align-items-start"
-				 		 *ngFor="let loan of loans; let i = index">
-			    <div class="d-flex w-100 justify-content-between">
-			      <h5 class="mb-1">Codigo: {{loan.code}}</h5>
-			      <small>
-							{{I18N[loan.key]}}
-							<span class="badge badge-danger lagash-pointer" (click)="remove_loan(loan, i)" *ngIf="!loan.state">Eliminar</span>
-							<span class="badge badge-success lagash-pointer" *ngIf="loan.state">guardado</span>
-						</small>
-			    </div>
-			    <p class="mb-1 lagash-pointer" (click)="go_to_item(loan)">{{loan.item.material.title}}</p>
-					<div *ngIf="loan.item.authors.length > 0">
-						<small>Autor: </small>
-						<small *ngFor="let author of loan.item.authors"><b>|</b> {{author.last_name}} {{author.first_name}} </small>
-					</div>
-			  </div>
-			</div>
+      <div *ngIf="loans.length <= 0">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Ups!</strong> Utiliza el buscador y seleciona el material bibliografico que deseas prestarte.
+        </div>
+      </div>
+      <div class="list-group">
+        <div class="list-group-item list-group-item-action flex-column align-items-start"
+              *ngFor="let loan of loans; let i = index">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Codigo: {{loan.code}}</h5>
+            <small>
+              {{I18N[loan.key]}}
+              <span class="badge badge-danger lagash-pointer" (click)="remove_loan(loan, i)" *ngIf="!loan.state">Eliminar</span>
+              <span class="badge badge-success lagash-pointer" *ngIf="loan.state">guardado</span>
+            </small>
+          </div>
+          <p class="mb-1 lagash-pointer" (click)="go_to_item(loan)">{{loan.item.material.title}}</p>
+          <div *ngIf="loan.item.authors.length > 0">
+            <small>Autor: </small>
+            <small *ngFor="let author of loan.item.authors"><b>|</b> {{author.last_name}} {{author.first_name}} </small>
+          </div>
+        </div>
+      </div>
     </div>
-		<div class="col-2">
+    <div class="col-2">
     </div>
   </div>
 </div>

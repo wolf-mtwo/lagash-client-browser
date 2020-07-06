@@ -1,134 +1,45 @@
 <header id="header">
-	<div class="header-top">
-		<div class="container">
-  		<div class="row align-items-center justify-content-center">
-  			<div class="col-md-4 col-4 header-top-left no-padding">
-        		<a href=""><span class="lnr lnr-location"></span></a>
-        		<a class="contact-texts" routerLink="/main">BIBLIOTECA SIGHART KLAUSS</a>
-  			</div>
-  			<div class="col-md-4 col-4 header-top-bottom no-padding">
-        		<a routerLink="/main"><img class="img-fluid" src="./assets/img/logo.jpg" /></a>
-  			</div>
-  			<div *ngIf="!user" class="col-md-4 col-4 header-top-right no-padding">
-					<a class="primary-btn" routerLink="/login">Iniciar session</a>
-					<a routerLink="/loans"><span class="lnr lnr-book" style="font-size:20px;">{{loans}}</span></a>
-
-  			</div>
-  			<div *ngIf="user" class="col-md-4 col-4 header-top-right no-padding lagash-user">
-					<a routerLink="/login" class="user"><img src="./assets/img/user.png">{{user.name}}</a>
-					<a routerLink="/loans"><span class="lnr lnr-book" style="font-size:20px;">{{loans}}</span></a>
-					<div class="dropdown">
-						<span (click)="show_elements()" class="lnr lnr-chevron-down"></span>
-					  <div id="myDropdown" class="dropdown-content">
-					    <a (click)="logout()">Salir</a>
-					  </div>
-					</div>
-	  		</div>
-  		</div>
-		</div>
+  <div class="header-top">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-4 col-4 header-top-left no-padding">
+        <a href=""><span class="lnr lnr-location"></span></a>
+          <a class="contact-texts" routerLink="/main">BIBLIOTECA SIGHART KLAUSS</a>
+        </div>
+        <div class="col-md-4 col-4 header-top-bottom no-padding">
+          <a routerLink="/main"><img class="img-fluid" src="./assets/img/logo.jpg" /></a>
+        </div>
+        <div *ngIf="!user" class="col-md-4 col-4 header-top-right no-padding">
+          <a class="primary-btn" routerLink="/login">Iniciar session</a>
+          <a routerLink="/loans"><span class="lnr lnr-book" style="font-size:20px;">{{loans}}</span></a>
+        </div>
+        <div *ngIf="user" class="col-md-4 col-4 header-top-right no-padding lagash-user">
+          <a routerLink="/login" class="user"><img src="./assets/img/user.png">{{user.name}}</a>
+          <a routerLink="/loans"><span class="lnr lnr-book" style="font-size:20px;">{{loans}}</span></a>
+          <div class="dropdown">
+            <span (click)="show_elements()" class="lnr lnr-chevron-down"></span>
+            <div id="myDropdown" class="dropdown-content">
+              <a (click)="logout()">Salir</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="container main-menu">
-  	<div class="row align-items-center justify-content-center">
-		<nav id="nav-menu-container">
-			<ul class="nav-menu">
-			  <li class="menu-active"><a routerLink="/main">Principal</a></li>
-			  <!-- <li><a routerLink="/browser-2">Buscador</a></li> -->
-			  <li><a routerLink="/books">Libros</a></li>
-			  <li><a routerLink="/thesis">Tesis</a></li>
-			  <li><a routerLink="/magazines">Revistas</a></li>
-			  <li><a routerLink="/newspapers">Periodicos</a></li>
-			  <!-- <li><a routerLink="/newspapers">Autores</a></li> -->
-			  <li><a routerLink="/information">Informacion</a></li>
-			  <!-- <li class="menu-has-children"><a href="">Blog</a>
-			    <ul>
-			      <li><a href="blog-home.html">Blog Home</a></li>
-			      <li><a href="blog-single.html">Blog Single</a></li>
-			      <li class="menu-has-children"><a href="">Level 2</a>
-			        <ul>
-			          <li><a href="#">Item One</a></li>
-			          <li><a href="#">Item Two</a></li>
-			        </ul>
-			      </li>
-			    </ul>
-			  </li>
-			  <li class="menu-has-children"><a href="">Pages</a>
-			    <ul>
-			      <li><a href="schedule.html">Schedule</a></li>
-			      <li><a href="packages.html">Packages</a></li>
-			    </ul>
-			  </li>
-			  <li><a href="elements.html">Elements</a></li>
-			  <li><a href="contact.html">Contact</a></li> -->
-			</ul>
-		</nav>
-  	</div>
+    <div class="row align-items-center justify-content-center">
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        <li class="menu-active"><a routerLink="/main">Principal</a></li>
+        <!-- <li><a routerLink="/browser-2">Buscador</a></li> -->
+        <li><a routerLink="/books">Libros</a></li>
+        <li><a routerLink="/thesis">Tesis</a></li>
+        <li><a routerLink="/magazines">Revistas</a></li>
+        <li><a routerLink="/newspapers">Periodicos</a></li>
+        <li><a routerLink="/information">Informacion</a></li>
+      </ul>
+    </nav>
+    </div>
   </div>
 </header>
 <router-outlet></router-outlet>
-<style media="screen">
-.img-fluid {
-  width: 40px;
-  height: auto;
-}
-.lagash-user img {
-	padding-right: 5px;
-	width: 30px;
-  height: auto;
-}
-.lagash-user a {
-  line-height: 42px;
-  color: black;
-  display: inline-block;
-  font-weight: 500;
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-}
-.lagash-user .user {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-.lagash-user a:hover {
-	background: #d7d7d794;
-}
-</style>
-<style>
-.dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 0 16px;
-		text-align: left;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown a:hover {background-color: #ddd}
-
-.show {display:block;}
-</style>
