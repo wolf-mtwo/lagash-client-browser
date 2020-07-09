@@ -11,7 +11,7 @@
       </div>
       <div *ngFor="let ejemplar of ejemplares">
         <div class="card text-white bg-dark mb-3">
-          <div class="card-header">Codigo<span class="lnr lnr-book close" (click)="pick_item(ejemplar)"></span></div>
+          <div class="card-header">Codigo<span class="lnr lnr-book close" (click)="pick_item(ejemplar)">Reservar</span></div>
           <div class="card-body" style="text-align: center;">
             <h5 class="card-title">{{item.code_material}} <br> {{item.code_author}} {{ejemplar.suffix}} <br> Ej.{{ejemplar.order}}</h5>
             <small>Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}</small>
@@ -32,7 +32,7 @@
             </b>
           </div>
         </div>
-        <img class="card-img-top" *ngIf="item.image" src="http://bibliotecaserver.uab.edu.bo/files/{{item.image}}" alt="Card image cap">
+        <img class="card-img-top" *ngIf="item.image" src="{{global.get_image(item.image)}}" alt="Card image cap">
         <img class="card-img-top" *ngIf="!item.image" src="./assets/img/default/thesis.png" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Información</h5>

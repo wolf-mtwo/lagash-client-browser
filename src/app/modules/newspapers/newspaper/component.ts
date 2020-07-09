@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Global } from './../../../service/global.service';
 import { NewspapersService } from '../../../service/newspapers.service';
 import { BackpackService } from '../../../service/backpack.service';
 import { Router } from '@angular/router';
@@ -17,6 +18,7 @@ export class NewspaperComponent {
   private sub: any;
 
   constructor(
+    private global: Global,
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Global } from './../../service/global.service';
 import { NewspapersService } from '../../service/newspapers.service';
 import { Router } from '@angular/router';
 import {Observable, of} from 'rxjs';
@@ -24,7 +25,11 @@ export class NewspapersComponent {
     page: 1,
     limit: 15
   };
-  constructor( private router: Router, private _service: NewspapersService) {
+  constructor(
+    private global: Global,
+    private router: Router,
+    private _service: NewspapersService
+  ) {
     this.search();
     _service.get_catalogs(this.query_catalog).subscribe((items) => {
         this.catalogs = items;

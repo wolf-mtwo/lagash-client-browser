@@ -5,12 +5,20 @@ export class Global {
     public PATH: string;
 
     constructor() {
-        this.PATH = 'http://localhost:5570';
-        //this.PATH = 'http://bibliotecaserver.uab.edu.bo';
+        // this.PATH = 'http://localhost:5570';
+        this.PATH = 'http://bibliotecaserver.uab.edu.bo';
     }
 
     get_url(sufix) {
       return this.PATH + '/' + sufix;
+    }
+
+    get_thumbnail(name) {
+      return this.PATH + '/files/thumbnail/' + name;
+    }
+
+    get_image(name) {
+      return this.PATH + '/files/hd/' + name;
     }
 
     get_book_url(sufix) {

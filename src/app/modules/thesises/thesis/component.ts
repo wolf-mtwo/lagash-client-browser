@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Global } from './../../../service/global.service';
 import { ThesisService } from '../../../service/thesis.service';
 import { BackpackService } from '../../../service/backpack.service';
 import { Router } from '@angular/router';
@@ -18,6 +19,7 @@ export class ThesisComponent {
   private sub: any;
 
   constructor(
+    private global: Global,
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router,

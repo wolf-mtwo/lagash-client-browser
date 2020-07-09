@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Global } from './../../../service/global.service';
 import { BooksService } from '../../../service/books.service';
 import { BackpackService } from '../../../service/backpack.service';
 import { Router } from '@angular/router';
@@ -18,6 +19,7 @@ export class BookComponent {
   private sub: any;
 
   constructor(
+    private global: Global,
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router,
