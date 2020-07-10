@@ -1,4 +1,5 @@
-.img-size {
-  width: 140px;
-  height: 140px;
+.lagash-coursel-images img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }

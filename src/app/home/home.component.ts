@@ -9,7 +9,11 @@ import { DemoService } from '../service/product.service';
 export class HomeComponent {
   title = 'app';
   books = [];
+  images = [
+    './assets/img/carousel/integral.jpg',
+    './assets/img/carousel/top-banner.jpg',
+    './assets/img/carousel/top-banner-2.jpg'
+  ];
   constructor(private _demoService: DemoService) {
-
   }
 }
