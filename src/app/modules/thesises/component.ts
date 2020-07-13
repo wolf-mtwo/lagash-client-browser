@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Global } from './../../service/global.service';
 import { ThesisService } from '../../service/thesis.service';
 import { Router } from '@angular/router';
-import {Observable, of} from 'rxjs';
-import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, merge} from 'rxjs/operators';
 
 @Component({
   selector: 'module-books',

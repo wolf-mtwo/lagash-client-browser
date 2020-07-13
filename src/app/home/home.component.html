@@ -1,157 +1,98 @@
-<section class="banner-area relative" id="home">
-  <div class="overlay overlay-bg"></div>
-  <div class="container">
-    <div class="row fullscreen d-flex align-items-center justify-content-between">
-      <div class="banner-content col-lg-6 col-md-12 ">
-        <h1 class="text-uppercase">
-          BIBLIOTECA <br>
-          SIGHART KLAUSS
-        </h1>
-        <button type="button" class="btn btn-primary">Primary</button>
-        <p class="pt-10 pb-10 text-white">
-          Actualmente  la Biblioteca  Sighart Klauss  cuenta  con 36133 libros, 7210 revistas y suscripciones a periódicos; trabajo de investigación (tesis, proyectos  educativos y monografías 4163).
-        </p>
-        <a class="primary-btn" routerLink="/books">Ir a buscar</a>
-      </div>
+<ngb-carousel *ngIf="images" class="lagash-coursel-images">
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[0]" alt="Random first slide">
     </div>
+    <div class="carousel-caption">
+      <h3>BIBLIOTECA SIGHART KLAUSS</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[1]" alt="Random second slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>BIBLIOTECA SIGHART KLAUSS</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="images[2]" alt="Random third slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>BIBLIOTECA SIGHART KLAUSS</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
+<div class="lagash-main-container container">
+  <div class="jumbotron">
+    <h1 class="display-4">Galeria de images</h1>
+    <hr class="my-4">
+    <p>Fotos de los pabellones de la biblioteca</p>
   </div>
-</section>
-
-<section class="feature-area section-gap">
-  <div class="container">
-    <div class="row section-title">
-      <h1>CRAI</h1>
-      <p>Centro de Recursos para el Aprendizaje y la Investigación</p>
-    </div>
-    <div class="row justify-content-between align-items-center">
-      <div class="col-lg-4 feature-left">
-        <img class="img-fluid" src="./assets/img/logo.jpg" alt="">
-      </div>
-      <div class="col-lg-8">
-        <div class="single-feature">
-          <h4>Historia</h4>
-          <p>
-            La biblioteca nace en forma conjunta con la Universidad Adventista de Bolivia (UAB), en agosto de 1991, bajo la dirección profesional del bibliotecólogo Walter Meza Rivera. El fondo bibliográfico inicial perteneció al Colegio Secundario.
-          </p>
-          <p>
-            A partir del 3 de septiembre del 2003 lleva el nombre de Biblioteca SIGHART KLAUSS, nuevo edificio inaugurado por el Dr. Jan Paulsen Presidente de la Asociación General de la Iglesia Adventista del 7mo Día.
-          </p>
-        </div>
-        <div class="single-feature">
-          <h4>Visión</h4>
-          <p>
-            La Biblioteca Sighart Klauss de la "UAB", aspira aser una biblioteca moderna que privilegie el conocimiento de la verdad, como unidad de información innovadora en su programa de servicio.
-          </p>
-        </div>
-        <div class="single-feature">
-          <h4>Misión</h4>
-          <p>
-            Promover el interés de la lectura de libros edificantes en los jóvenes, para formar caracteres sólidos en su formación integral.
-          </p>
-          <p>
-            Promover la búsqueda del conocimiento por medio del uso de los recursos virtuales para mejorar los procesos de investigación y aprendizaje; y así contribuir con la calidad académica de la UAB.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="image-gallery-area section-gap">
-  <div class="container">
-    <div class="row section-title">
-      <h1>Galeria de images</h1>
-      <p>Pabellones</p>
-    </div>
+  <section>
     <div class="row">
-      <div class="col-lg-4 single-gallery">
+      <div class="col-lg-4">
         <a href="./assets/img/galeria/1.jpg" class="img-gal"><img class="img-fluid" src="./assets/img/galeria/1.jpg" alt=""></a>
         <a href="./assets/img/galeria/2.jpg" class="img-gal"><img class="img-fluid" src="./assets/img/galeria/2.jpg" alt=""></a>
       </div>
-      <div class="col-lg-4 single-gallery">
+      <div class="col-lg-4">
         <a href="./assets/img/galeria/3.jpg" class="img-gal"><img class="img-fluid" src="./assets/img/galeria/3.jpg" alt=""></a>
         <a href="./assets/img/galeria/4.jpg" class="img-gal"><img class="img-fluid" src="./assets/img/galeria/4.jpg" alt=""></a>
       </div>
-      <div class="col-lg-4 single-gallery">
+      <div class="col-lg-4">
         <a href="./assets/img/galeria/5.jpg" class="img-gal"><img class="img-fluid" src="./assets/img/galeria/5.jpg" alt=""></a>
         <a href="./assets/img/galeria/6.jpg" class="img-gal"><img class="img-fluid" src="./assets/img/galeria/6.jpg" alt=""></a>
       </div>
     </div>
+  </section>
+</div>
+<div class="lagash-main-lists container">
+  <div class="jumbotron">
+    <h1 class="display-4">Libros recientes</h1>
+    <hr class="my-4">
+    <p>La biblioteca actualiza periodicamente los recursos bibiograficos</p>
   </div>
-</section>
-
-<section class="callto-area section-gap relative">
-  <div class="overlay overlay-bg"></div>
-  <div class="container">
-    <div class="row">
-      <div class="call-wrap mx-auto">
-        <h1>It's never late to start, join us today!</h1>
-        <p>
-          Thinking about overseas adventure travel? Have you put any thought into the best places to go when it comes to overseas adventure travel? Nepal is one of the most popular places of all.
-        </p>
-        <a href="#" class="primary-btn">Become a Member</a>
+  <div id="style-1" class="images-list">
+    <div *ngFor="let item of books" (click)="go_to_item(item, 'BOOK')">
+      <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
+      <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
+    </div> 
+  </div>
+  <div class="jumbotron">
+    <h1 class="display-4">Tesis recientes</h1>
+    <hr class="my-4">
+    <p>La biblioteca actualiza periodicamente los recursos bibiograficos</p>
+  </div>
+  <div id="style-1" class="images-list">
+    <div *ngFor="let item of theses" (click)="go_to_item(item, 'THESIS')">
+      <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
+      <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
+    </div> 
+  </div>
+</div>
+<div class="container">
+  <div class="lagash-main-stats">
+    <div class="best">
+      <h3>Libros más leídos</h3>
+      <div *ngFor="let item of best_books" (click)="go_to_item(item, 'BOOK')">
+        <mat-icon>location_on</mat-icon>{{item.title}}
+      </div>
+    </div>
+    <div class="best">
+      <h3>Tesis más leídos</h3>
+      <div *ngFor="let item of best_books" (click)="go_to_item(item, 'THESIS')">
+        <mat-icon>location_on</mat-icon> {{item.title}}
+      </div>
+    </div>
+    <div class="stats">
+      <div *ngFor="let item of stats">
+        <span><mat-icon>location_on</mat-icon></span> {{item.total}} {{item.title}}
       </div>
     </div>
   </div>
-</section>
-
-
-<footer class="footer-area section-gap">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3  col-md-6 col-sm-6">
-        <div class="single-footer-widget">
-          <h4>About Us</h4>
-          <p>
-            The state of Utah in the United States is home to lots of beautiful National Parks, & Bryce Canyon National Park ranks as three of the magnificent & awe inspiring.
-          </p>
-        </div>
-      </div>
-      <div class="col-lg-4  col-md-6 col-sm-6">
-        <div class="single-footer-widget">
-          <h4>Contact Us</h4>
-          <p>
-            56/8, rockybeach road, santa monica, Los angeles, California - 59620.
-          </p>
-          <p class="number">
-            012-6532-568-9746 <br>
-            012-6532-569-9748
-          </p>
-        </div>
-      </div>
-      <div class="col-lg-5  col-md-6 col-sm-6">
-        <div class="single-footer-widget">
-          <h4>Newsletter</h4>
-          <p>You can trust us. we only send  offers, not a single spam.</p>
-          <div class="d-flex flex-row" id="mc_embed_signup">
-
-
-              <form class="navbar-form" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get">
-                <div class="input-group add-on align-items-center d-flex">
-                    <input class="form-control" name="EMAIL" placeholder="Your Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email address'" required="" type="email">
-                <div style="position: absolute; left: -5000px;">
-                  <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-                </div>
-                  <div class="input-group-btn">
-                    <button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
-                  </div>
-                </div>
-                  <div class="info mt-20"></div>
-              </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom row align-items-center">
-      <p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-      <div class="col-lg-6 col-sm-12 footer-social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-dribbble"></i></a>
-        <a href="#"><i class="fa fa-behance"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
+</div>
+<div style="clear: both;"></div>

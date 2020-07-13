@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,9 +18,6 @@ import { Browser2Component } from './browser-2/component';
 import { InformationComponent } from './modules/information/component';
 import { LoginComponent } from './modules/information/login/component';
 import { InformationRoutingModule } from './modules/information/routing.module';
-
-//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BookComponent } from './modules/books/book/component';
 import { BooksComponent } from './modules/books/component';
@@ -91,6 +89,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     NgbPaginationModule,
     NgbAlertModule,
+    NgbModule,
     HttpClientModule,
     FormsModule,
     MatIconModule,
