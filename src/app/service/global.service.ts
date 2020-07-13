@@ -5,8 +5,8 @@ export class Global {
     public PATH: string;
 
     constructor() {
-        // this.PATH = 'http://localhost:5570';
-        this.PATH = 'http://bibliotecaserver.uab.edu.bo';
+         this.PATH = 'http://localhost:5570';
+        //this.PATH = 'http://bibliotecaserver.uab.edu.bo';
     }
 
     get_url(sufix) {
@@ -35,5 +35,8 @@ export class Global {
 
     get_newspaper_url(sufix) {
       return this.PATH + '/v3/browser/newspapers/' + sufix;
+    }
+    get_search_url(sufix) {
+      return this.PATH + '/v6/search/' + sufix;
     }
 }

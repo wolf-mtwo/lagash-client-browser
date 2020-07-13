@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="card-header col-2">
+      
+      <div id="accordion">
+        <div class="card mb-2">
+          <div class="text-left" id="headingOne">
+            <h6 class="">
+              <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+               <b>AÑO</b> 
+              </button>
+            </h6>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="list-group">
+              <span class="ml-3"> <input type="checkbox" /> 2020 </span>
+              <span class="ml-3"> <input type="checkbox" /> 2019 </span>
+              <span class="ml-3"> <input type="checkbox" /> 2018 </span>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-2">
+          <div class="text-left" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+               <b>AUTOR</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="list-group text-left">
+              <span class="ml-3"> <input type="checkbox" /> Autor 1 </span>
+              <span class="ml-3"> <input type="checkbox" /> Autor 2 </span>
+              <span class="ml-3"> <input type="checkbox" /> Autor 3 </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="text-left" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true " aria-controls="collapseThree">
+               <b>EDITORIAL</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="list-group text-left">
+              <span class="ml-3"> <input type="checkbox" /> Editorial 1 </span>
+              <span class="ml-3"> <input type="checkbox" /> Editorial 2 </span>
+              <span class="ml-3"> <input type="checkbox" /> Editorial 3 </span>
+            </div> 
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-10">
+      <div class="card-header offset-md-1 col-9 ">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Buscar... " aria-label="Busca algo" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="search()">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="card-header col-10" style="margin-left: 3.7%;">
+        <div class="row">
+          <div class="col-4">
+            <h4>Resultados por pagina:</h4>
+          </div>
+          <div class="col-4">Total de Resultados: 1234</div>
+          <div class="col-4 text-right"> 
+            <mat-icon>view_headline</mat-icon>
+            <mat-icon>view_module</mat-icon>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col">
+            <img class="img-thumbnail"  src="img.jpg"/>
+            Variable width content Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod saepe beatae atque assumenda quos tempore iusto facilis veritatis rem corporis fuga obcaecati natus laudantium, pariatur, a minima quidem tempora commodi.
+          </div>
+          <div class="col">
+            Variable width content Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus sint nobis quo eum cum excepturi ratione aut, aliquid, cumque nesciunt a illum necessitatibus? Odio animi, beatae quidem vel eligendi corporis.
+          </div>
+          <div class="col">
+            Variable width content Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci similique aliquid explicabo, exercitationem voluptas possimus est hic natus asperiores quo debitis. Sit accusantium suscipit, corporis quo porro minus voluptatem?
+          </div>
+          <div class="col">
+            Variable width content Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam cum doloribus molestias a quas rerum provident sint, libero, tenetur voluptas, assumenda soluta sit! Tempora, deleniti magni? Ipsa totam libero ullam?
+          </div>
+          <div class="col">
+            Variable width content Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, recusandae totam iure provident unde eligendi eveniet rem culpa ipsam maxime saepe incidunt commodi officia, voluptate reiciendis! Officiis est incidunt excepturi.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

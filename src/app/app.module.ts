@@ -25,6 +25,12 @@ import { BookComponent } from './modules/books/book/component';
 import { BooksComponent } from './modules/books/component';
 import { BooksRoutingModule } from './modules/books/routing.module';
 
+//search
+import { SearchComponent } from './modules/search/component';
+import { SearchDetailComponent } from './modules/search/detail/component';
+import { SearchRoutingModule } from './modules/search/routing.module';
+
+
 // tesis
 import { ThesisComponent } from './modules/thesises/thesis/component';
 import { ThesisesComponent } from './modules/thesises/component';
@@ -46,6 +52,7 @@ import { LoansRoutingModule } from './modules/loans/routing.module';
 
 import { DemoService } from './service/product.service';
 import { BooksService } from './service/books.service';
+import { SearchService } from './service/search.service';
 import { ThesisService } from './service/thesis.service';
 import { MagazinesService } from './service/magazines.service';
 import { NewspapersService } from './service/newspapers.service';
@@ -67,6 +74,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoursesListComponent,
     BookComponent,
     BooksComponent,
+    SearchComponent,
+    SearchDetailComponent,
     InformationComponent,
     LoginComponent,
     ThesisComponent,
@@ -75,7 +84,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MagazinesComponent,
     NewspaperComponent,
     NewspapersComponent,
-    LoansComponent
+    LoansComponent,
   ],
   imports: [
     BrowserAnimationsModule, // required animations module
@@ -94,12 +103,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InformationRoutingModule,
     ThesisRoutingModule,
     MagazinesRoutingModule,
+    SearchRoutingModule,
     NewspapersRoutingModule,
     LoansRoutingModule
   ],
   providers: [
     DemoService,
     BooksService,
+    SearchService,
     ThesisService,
     MagazinesService,
     NewspapersService,
