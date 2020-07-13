@@ -16,6 +16,23 @@ export class HomeComponent {
   title = 'app';
   books: any = [];
   theses: any = [];
+  best_books: any = [{
+    _id: 1,
+    title: 'test 1'
+  }, {
+    _id: 1,
+    title: 'test 1'
+  }];
+  stats: any = [{
+    total: 1000,
+    title: 'Libros'
+  }, {
+    total: 1000,
+    title: 'Libros'
+  }, {
+    total: 1000,
+    title: 'Libros'
+  }];
   images = [
     './assets/img/carousel/integral.jpg',
     './assets/img/carousel/top-banner.jpg',

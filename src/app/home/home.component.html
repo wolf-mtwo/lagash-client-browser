@@ -67,10 +67,32 @@
     <hr class="my-4">
     <p>La biblioteca actualiza periodicamente los recursos bibiograficos</p>
   </div>
-  <div class="images-list">
+  <div id="style-1" class="images-list">
     <div *ngFor="let item of theses" (click)="go_to_item(item, 'THESIS')">
       <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
       <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
     </div> 
   </div>
 </div>
+<div class="container">
+  <div class="lagash-main-stats">
+    <div class="best">
+      <h3>Libros más leídos</h3>
+      <div *ngFor="let item of best_books" (click)="go_to_item(item, 'BOOK')">
+        <mat-icon>location_on</mat-icon>{{item.title}}
+      </div>
+    </div>
+    <div class="best">
+      <h3>Tesis más leídos</h3>
+      <div *ngFor="let item of best_books" (click)="go_to_item(item, 'THESIS')">
+        <mat-icon>location_on</mat-icon> {{item.title}}
+      </div>
+    </div>
+    <div class="stats">
+      <div *ngFor="let item of stats">
+        <span><mat-icon>location_on</mat-icon></span> {{item.total}} {{item.title}}
+      </div>
+    </div>
+  </div>
+</div>
+<div style="clear: both;"></div>
