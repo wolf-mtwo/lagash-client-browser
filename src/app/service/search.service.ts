@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Query } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Global } from './global.service';
@@ -30,9 +30,12 @@ export class SearchService {
       return this.http.get(this.global.get_search_url(`page/${query.page}/limit/${query.limit}`), {
         params: {
           search: query.search,
-          type: query.type
+          type: query.type,
+          isAll: query.isAll
         }
       });
+
+      ///typeSearch/{typeSearch}/isAll/{isAll}/search/{search}
     }
 
     get_catalogs(query) {

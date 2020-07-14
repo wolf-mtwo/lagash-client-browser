@@ -36,6 +36,7 @@ export class Global {
     get_newspaper_url(sufix) {
       return this.PATH + '/v3/browser/newspapers/' + sufix;
     }
+    
     get_search_url(sufix) {
       return this.PATH + '/v6/search/' + sufix;
     }
