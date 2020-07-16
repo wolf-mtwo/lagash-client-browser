@@ -59,7 +59,7 @@
     <div class="col-10">
       <div class="card-header offset-md-1 col-9 ">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Buscar... " aria-label="Busca algo" aria-describedby="button-addon2">
+          <input type="text" class="form-control" placeholder="Buscar... " aria-label="Busca algo" [(ngModel)]="query.search" aria-describedby="button-addon2">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="search()">
               <mat-icon>search</mat-icon>
@@ -77,30 +77,55 @@
           </div>
           <div class="col-4">Total de Resultados: 1234</div>
           <div class="col-4 text-right"> 
-            <mat-icon>view_headline</mat-icon>
-            <mat-icon>view_module</mat-icon>
+            <mat-icon (click)="showList=true">view_headline</mat-icon>
+            <mat-icon (click)="showList=false">view_module</mat-icon>
           </div>
         </div>
-        <div class="row ">
-          <div class="col">
-            <img class="img-thumbnail"  src="img.jpg"/>
-            Variable width content Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod saepe beatae atque assumenda quos tempore iusto facilis veritatis rem corporis fuga obcaecati natus laudantium, pariatur, a minima quidem tempora commodi.
+
+        <div class="">
+        <div *ngIf="!showList" class="row highlight" > 
+          <div class="col-2 h-100 mb-3" *ngFor="let item of items"> 
+             <div class="card card-lagash" (click)="go_to_item(item)">
+              <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}" alt="Card image cap">
+              <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/thesis.png" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text"><b>{{item.title}}</b> {{item.autor}} </p>
+              </div>
+             </div>
           </div>
-          <div class="col">
-            Variable width content Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus sint nobis quo eum cum excepturi ratione aut, aliquid, cumque nesciunt a illum necessitatibus? Odio animi, beatae quidem vel eligendi corporis.
-          </div>
-          <div class="col">
-            Variable width content Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci similique aliquid explicabo, exercitationem voluptas possimus est hic natus asperiores quo debitis. Sit accusantium suscipit, corporis quo porro minus voluptatem?
-          </div>
-          <div class="col">
-            Variable width content Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam cum doloribus molestias a quas rerum provident sint, libero, tenetur voluptas, assumenda soluta sit! Tempora, deleniti magni? Ipsa totam libero ullam?
-          </div>
-          <div class="col">
-            Variable width content Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, recusandae totam iure provident unde eligendi eveniet rem culpa ipsam maxime saepe incidunt commodi officia, voluptate reiciendis! Officiis est incidunt excepturi.
-          </div>
+        </div>
+        </div>
+
+        <div class="card">
+            <table *ngIf="showList" class="table table-bordered table-hover" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
+              <thead>
+                  <tr >
+                      <th style="width:3%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Codigo</th>
+                      <th style="width:15%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Titulo</th>
+                      <th style="width:10%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Autor</th>
+                      <th style="width:10%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Codigo Autor</th>
+                      <th style="width:10%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Editorial</th>
+                      <th style="width:10%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Año</th>
+                      <th style="width:1%"></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of items">
+                    <td class="title"><a class="link" col="1">{{item.materialCode}}</a></td>
+                    <td class="title"><a class="link" col="1">{{item.title}}</a></td>
+                    <td class="title"><a class="link" col="1">{{item.autor}}</a></td>
+                    <td class="title"><a class="link" col="1">{{item.autorCode}}</a></td>
+                    <td class="title"><a class="link" col="1">{{item.editorial}}</a></td>
+                    <td class="title"><a class="link" col="1">{{item.materialYear}}</a></td>
+                    <td class="text-center">
+                        <button type="button" (click)="go_to_item(item)" class="btn btn-secondary btn-sm"><span class="fa fa-plus"></span> Reservar </button>
+                    </td>
+                  </tr>
+                  <tr> </tr>
+              </tbody>
+          </table>
         </div>
       </div>
-
     </div>
   </div>
 </div>

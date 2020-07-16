@@ -17,6 +17,7 @@ export class SearchComponent {
   query = {
     search: '',
     type: 'TITLE',
+    isAll: true,
     total: 0,
     page: 1,
     limit: 20
@@ -28,6 +29,7 @@ export class SearchComponent {
     limit: 15
   };
 
+  public showList:boolean =false;
 
   constructor(
     private global: Global,
@@ -35,12 +37,6 @@ export class SearchComponent {
     private _service: SearchService
   ) {
     this.search();
-    _service.get_catalogs(this.query_catalog).subscribe((items) => {
-        this.catalogs = items;
-      }, (error) => {
-        console.log(<any>error);
-      }
-    );
   }
 
   search() {
@@ -56,6 +52,7 @@ export class SearchComponent {
     this.query = {
       search: '',
       type: 'TITLE',
+      isAll: true,
       total: 0,
       page: 1,
       limit: 20
@@ -68,16 +65,7 @@ export class SearchComponent {
     this.search();
   }
 
-  // go_to_catalog(item) {
-  //   this._service.catalog_items(item._id).subscribe((items) => {
-  //       this.items = items;
-  //     }, (error) => {
-  //       console.log(<any>error);
-  //     }
-  //   );
-  // }
-
   public go_to_item(item) {
-     this.router.navigate(['/detail', item._id]);
+     this.router.navigate(['/detail', item.id]);
   }
 }
