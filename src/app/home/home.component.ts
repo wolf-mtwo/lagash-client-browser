@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { DemoService } from '../service/product.service';
 import { Global } from './../service/global.service';
 import { BooksService } from '../service/books.service';
 import { ThesisService } from '../service/thesis.service';
@@ -50,8 +49,7 @@ export class HomeComponent {
     private global: Global,
     private router: Router,
     private book_service: BooksService,
-    private thesis_service: ThesisService,
-    private _demoService: DemoService
+    private thesis_service: ThesisService
   ) {
     config.interval = 5000;
     config.wrap = false;
