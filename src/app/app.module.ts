@@ -8,12 +8,7 @@ import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { CoursesListComponent } from './courses-list/courses-list.component';
-import { BrowserRoutingModule } from './browser-2/routing.module';
-
 import { HomeComponent } from './home/home.component';
-import { BrowserComponent } from './browser/component';
-import { Browser2Component } from './browser-2/component';
 
 import { InformationComponent } from './modules/information/component';
 import { LoginComponent } from './modules/information/login/component';
@@ -48,7 +43,6 @@ import { NewspapersRoutingModule } from './modules/newspapers/routing.module';
 import { LoansComponent } from './modules/loans/component';
 import { LoansRoutingModule } from './modules/loans/routing.module';
 
-import { DemoService } from './service/product.service';
 import { BooksService } from './service/books.service';
 import { SearchService } from './service/search.service';
 import { ThesisService } from './service/thesis.service';
@@ -67,9 +61,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     HomeComponent,
-    BrowserComponent,
-    Browser2Component,
-    CoursesListComponent,
     BookComponent,
     BooksComponent,
     SearchComponent,
@@ -96,7 +87,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
     BrowserModule,
     AppRoutingModule,
-    BrowserRoutingModule,
     BooksRoutingModule,
     // BootstrapAutocompleteModule,
     InformationRoutingModule,
@@ -107,7 +97,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoansRoutingModule
   ],
   providers: [
-    DemoService,
     BooksService,
     SearchService,
     ThesisService,

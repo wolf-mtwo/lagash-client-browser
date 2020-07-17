@@ -12,6 +12,7 @@ export class BackpackService {
     'MAGAZINE': 'REVISTAR',
     'NEWSPAPER': 'PERIODICO'
   };
+
   constructor(
     private toastr: ToastrService,
     private store: StoreService
@@ -54,12 +55,12 @@ export class BackpackService {
   }
 
   get_tags(tags) {
-      var regex = /\[.*?\]/g;
-      var match;
-      var items = [];
-      while ((match = regex.exec(tags)) !== null) {
-          items.push(match[0]);
-      }
-      return items;
+    var regex = /\[.*?\]/g;
+    var match;
+    var items = [];
+    while ((match = regex.exec(tags)) !== null) {
+        items.push(match[0]);
+    }
+    return items;
   }
 }

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { BooksService } from '../../service/books.service';
 import { Router } from '@angular/router';
-import {Observable, of} from 'rxjs';
-import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, merge} from 'rxjs/operators';
 import { StoreService } from '../../service/store.service';
 import { BackpackService } from '../../service/backpack.service';
 import { IntegrationService } from '../../service/integration.service';
@@ -48,6 +46,10 @@ export class LoansComponent {
   }
 
   booking() {
+    
+  }
+
+  booking2() {
     var config = null;
     if (!this.user && !this.person) {
         this.toastr.warning('Para realizar una reservacion tiene que llenar en el campo su nombre', 'Nombre completo');
@@ -92,13 +94,6 @@ export class LoansComponent {
       return ;
     });
     this.loans_store.remove_all();
-    // this.integration_service.store_loan();
-
-    // items.forEach((item) => {
-    //
-    //
-    // });
-
   }
 
   public go_to_item(loan) {
