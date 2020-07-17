@@ -16,7 +16,7 @@
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="list-group">
               <span class="ml-3" *ngFor="let item of items.years">
-                <label><input type="checkbox" [id]="item" (change)="onChange($event.srcElement, item, 'year', query.listYear)"/> {{item}} </label>
+                <label><input #filters  type="checkbox" [id]="item" (change)="onChange($event.srcElement, item, 'year', query.listYear)"/> {{item}} </label>
                </span>
             </div>
           </div>
@@ -32,7 +32,7 @@
           <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="list-group text-left">
                 <span class="ml-3" *ngFor="let item of items.authors">
-                  <label class="link-nav"><input type="checkbox" (change)="onChange($event.srcElement, item, 'autor', query.listAuthor)"/> {{item}}</label>
+                  <label ><input #filters type="checkbox" (change)="onChange($event.srcElement, item, 'autor', query.listAuthor)"/> {{item}}</label>
                 </span>
             </div>
           </div>
@@ -49,7 +49,7 @@
           <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="list-group text-left">
               <span class="ml-3" *ngFor="let item of items.editorials">
-                <label><input type="checkbox" (change)="onChange($event.srcElement, item, 'editorial', query.listEditorial)"/> {{item}}</label>
+                <label><input #filters type="checkbox" (change)="onChange($event.srcElement, item, 'editorial', query.listEditorial)"/> {{item}}</label>
                </span>
             </div> 
           </div>

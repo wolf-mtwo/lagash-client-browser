@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { Global } from './../../service/global.service';
 import { BooksService } from '../../service/books.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { FormArray, FormControl } from '@angular/forms';
 })
 
 export class SearchComponent {
+  @ViewChildren("filters") filters: QueryList<ElementRef>;
 
   items:any ={}
   query = {
@@ -65,6 +66,7 @@ export class SearchComponent {
       limit: 20
     };
     this.search();
+    this.uncheckAll();
   }
 
   pagination(count) {
@@ -105,4 +107,9 @@ export class SearchComponent {
     return array;
   }
   
+  uncheckAll() {
+    this.filters.forEach((element) => {
+      element.nativeElement.checked = false;
+    });
+  }
 }
