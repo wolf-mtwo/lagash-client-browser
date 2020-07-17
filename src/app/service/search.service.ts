@@ -31,7 +31,10 @@ export class SearchService {
         params: {
           search: query.search,
           type: query.type,
-          isAll: query.isAll
+          isAll: query.isAll,
+          listAuthor:query.listAuthor,
+          listEditorial:query.listEditorial,
+          listYear:query.listYear
         }
       });
 

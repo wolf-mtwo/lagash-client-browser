@@ -4,6 +4,7 @@
       
       <div id="accordion">
         <div class="card mb-2">
+          <button class="btn btn-outline-info btn-sm" (click)="reset()">Limpiar</button>
           <div class="text-left" id="headingOne">
             <h6 class="">
               <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -14,9 +15,9 @@
       
           <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="list-group">
-              <span class="ml-3"> <input type="checkbox" /> 2020 </span>
-              <span class="ml-3"> <input type="checkbox" /> 2019 </span>
-              <span class="ml-3"> <input type="checkbox" /> 2018 </span>
+              <span class="ml-3" *ngFor="let item of items.years">
+                <label><input type="checkbox" [id]="item" (change)="onChange($event.srcElement, item, 'year', query.listYear)"/> {{item}} </label>
+               </span>
             </div>
           </div>
         </div>
@@ -30,9 +31,9 @@
           </div>
           <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="list-group text-left">
-              <span class="ml-3"> <input type="checkbox" /> Autor 1 </span>
-              <span class="ml-3"> <input type="checkbox" /> Autor 2 </span>
-              <span class="ml-3"> <input type="checkbox" /> Autor 3 </span>
+                <span class="ml-3" *ngFor="let item of items.authors">
+                  <label class="link-nav"><input type="checkbox" (change)="onChange($event.srcElement, item, 'autor', query.listAuthor)"/> {{item}}</label>
+                </span>
             </div>
           </div>
         </div>
@@ -47,9 +48,9 @@
           </div>
           <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="list-group text-left">
-              <span class="ml-3"> <input type="checkbox" /> Editorial 1 </span>
-              <span class="ml-3"> <input type="checkbox" /> Editorial 2 </span>
-              <span class="ml-3"> <input type="checkbox" /> Editorial 3 </span>
+              <span class="ml-3" *ngFor="let item of items.editorials">
+                <label><input type="checkbox" (change)="onChange($event.srcElement, item, 'editorial', query.listEditorial)"/> {{item}}</label>
+               </span>
             </div> 
           </div>
         </div>
@@ -75,7 +76,7 @@
           <div class="col-4">
             <h4>Resultados por pagina:</h4>
           </div>
-          <div class="col-4">Total de Resultados: 1234</div>
+          <div class="col-4">Total de Resultados: {{items.totalRows}}</div>
           <div class="col-4 text-right"> 
             <mat-icon (click)="showList=true">view_headline</mat-icon>
             <mat-icon (click)="showList=false">view_module</mat-icon>
@@ -84,7 +85,7 @@
 
         <div class="">
         <div *ngIf="!showList" class="row highlight" > 
-          <div class="col-2 h-100 mb-3" *ngFor="let item of items"> 
+          <div class="col-2 h-100 mb-3" *ngFor="let item of items.data"> 
              <div class="card card-lagash" (click)="go_to_item(item)">
               <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}" alt="Card image cap">
               <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/thesis.png" alt="Card image cap">
@@ -110,7 +111,7 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let item of items">
+                  <tr *ngFor="let item of items.data">
                     <td class="title"><a class="link" col="1">{{item.materialCode}}</a></td>
                     <td class="title"><a class="link" col="1">{{item.title}}</a></td>
                     <td class="title"><a class="link" col="1">{{item.autor}}</a></td>
