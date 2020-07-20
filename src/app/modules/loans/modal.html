@@ -1,0 +1,103 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Lector</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="readerForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label>Nombre</label>
+        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fields.firstName.errors }" />
+        <div *ngIf="submitted && fields.firstName.errors" class="invalid-feedback">
+          <div *ngIf="fields.firstName.errors.required">
+            Tienes que registrar un nombre
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Apellido</label>
+        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fields.lastName.errors }" />
+        <div *ngIf="submitted && fields.lastName.errors" class="invalid-feedback">
+          <div *ngIf="fields.lastName.errors.required">
+            Tienes que registrar un apellido
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label>Facultad</label>
+        <select class="form-control" formControlName="faculty_id" [ngClass]="{ 'is-invalid': submitted && fields.faculty_id.errors }">
+          <option selected disabled>Seleccionar...</option>
+          <option *ngFor="let faculty of faculties" [ngValue]="faculty._id">
+            {{ faculty.name }}
+          </option>
+        </select>
+        <div *ngIf="submitted && fields.faculty_id.errors" class="invalid-feedback">
+          <div *ngIf="fields.faculty_id.errors.required">Seleccione una facultad.</div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Carrera</label>
+        <select class="form-control" formControlName="carrer_id" [ngClass]="{ 'is-invalid': submitted && fields.carrer_id.errors }">
+          <option selected disabled>Seleccionar...</option>
+          <option *ngFor="let carrer of filter(carrers, fields)" [ngValue]="carrer._id">
+            {{ carrer.name }}
+          </option>
+        </select>
+        <div *ngIf="submitted && fields.carrer_id.errors" class="invalid-feedback">
+          <div *ngIf="fields.carrer_id.errors.required">Seleccione una carrera</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label>Tipo de credencial</label>
+        <select class="form-control" formControlName="card_type" [ngClass]="{ 'is-invalid': submitted && fields.card_type.errors }">
+          <option selected disabled>Seleccionar...</option>
+          <option value="ci">Carnet de estudiante</option>
+          <option value="student">Cedula de identidad</option>
+        </select>
+        <div *ngIf="submitted && fields.card_type.errors" class="invalid-feedback">
+          <div *ngIf="fields.card_type.errors.required">Seleccione una carrera</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label>Numero</label>
+        <input type="text" formControlName="card_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && fields.card_id.errors }" />
+        <div *ngIf="submitted && fields.card_id.errors" class="invalid-feedback">
+          <div *ngIf="fields.card_id.errors.required">
+            Tienes que registrar un numero de credencial
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Semestre</label>
+        <select class="form-control" formControlName="semester" [ngClass]="{ 'is-invalid': submitted && fields.semester.errors }">
+          <option selected disabled>Seleccionar...</option>
+          <option value="1">Primero</option>
+          <option value="2">Segundo</option>
+          <option value="3">Tercero</option>
+          <option value="4">Cuarto</option>
+          <option value="5">Quinto</option>
+          <option value="4">Sexto</option>
+          <option value="7">Septimo</option>
+          <option value="8">Octavo</option>
+          <option value="9">Noveno</option>
+          <option value="10">Decimo</option>
+          <option value="11">ANTIGUO</option>
+        </select>
+        <div *ngIf="submitted && fields.semester.errors" class="invalid-feedback">
+          <div *ngIf="fields.semester.errors.required">Seleccione un semestre</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+  <button type="button" ngbAutofocus class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+</div>

@@ -25,4 +25,12 @@ export class IntegrationService {
   store_loan(item) {
     return this.http.post(this.global.get_url('v4/booking'), item);
   }
+
+  get_faculties() {
+    return this.http.get(this.global.get_url('v4/faculties'));
+  }
+
+  get_carrers() {
+    return this.http.get(this.global.get_url('v4/carrers'));
+  }
 }

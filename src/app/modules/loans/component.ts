@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-import { BooksService } from '../../service/books.service';
 import { Router } from '@angular/router';
+import { Component, Type } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BooksService } from '../../service/books.service';
 import { StoreService } from '../../service/store.service';
 import { BackpackService } from '../../service/backpack.service';
+import { ReaderService } from '../../service/readers.service';
 import { IntegrationService } from '../../service/integration.service';
-import { ToastrService } from 'ngx-toastr';
+import { NgbdModalReaderCreate } from './modal';
 
 @Component({
   selector: 'module-books',
@@ -14,6 +17,8 @@ import { ToastrService } from 'ngx-toastr';
 export class LoansComponent {
   items: any = [];
   loans: any = [];
+  faculties: any = [];
+  carrers: any = [];
   I18N = null;
   user = null;
   person: string = null;
@@ -21,9 +26,11 @@ export class LoansComponent {
     private router: Router,
     private toastr: ToastrService,
     private _service: BooksService,
+    private reader_service: ReaderService,
     private integration_service: IntegrationService,
     private loans_store: BackpackService,
-    private store: StoreService
+    private store: StoreService,
+    private _modalService: NgbModal,
   ) {
     this.user = store.load('user', false) || null;
     this.loans = this.populate(loans_store.load());
@@ -31,22 +38,46 @@ export class LoansComponent {
     integration_service.on((item) => {
       this.user = item;
     });
+    this.search();
+  }
+
+  search() {
+    this.integration_service.get_faculties()
+    .subscribe((items) => {
+      this.faculties = items;
+    }, (error) => {
+      console.log(<any>error);
+    });
+    this.integration_service.get_carrers()
+    .subscribe((items) => {
+      this.carrers = items;
+    }, (error) => {
+      console.log(<any>error);
+    });
   }
 
   populate(loans) {
     return loans.map((loan) => {
       loan.code = [
-         loan.item.material.code_material,
-         loan.item.material.code_author,
-         loan.item.ejemplar.suffix,
-         'Ej.' + loan.item.ejemplar.order
+        loan.item.material.code_material,
+        loan.item.material.code_author,
+        loan.item.ejemplar.suffix,
+        'Ej.' + loan.item.ejemplar.order
       ].join(' ');
       return loan;
     });
   }
 
   booking() {
-    
+    this.reader_service.find_by_id(this.person)
+    .subscribe((item) => {
+      //loan.state = true;
+      console.log(item);
+    }, (error) => {
+      this.toastr.warning('Esta credencial no esta registrado', 'Credencial');
+      this._modalService.open(NgbdModalReaderCreate);
+      console.log(<any>error);
+    });
   }
 
   booking2() {
@@ -91,7 +122,7 @@ export class LoansComponent {
       }, (error) => {
         console.log(<any>error);
       });
-      return ;
+      return;
     });
     this.loans_store.remove_all();
   }

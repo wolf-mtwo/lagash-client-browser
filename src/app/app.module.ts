@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +49,7 @@ import { SearchService } from './service/search.service';
 import { ThesisService } from './service/thesis.service';
 import { MagazinesService } from './service/magazines.service';
 import { NewspapersService } from './service/newspapers.service';
+import { ReaderService } from './service/readers.service';
 import { IntegrationService } from './service/integration.service';
 import { StoreService } from './service/store.service';
 import { BackpackService } from './service/backpack.service';
@@ -55,7 +57,8 @@ import { BackpackService } from './service/backpack.service';
 import { Global } from './service/global.service';
 
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NgbdModalReaderCreate } from './modules/loans/modal';
 
 @NgModule({
   declarations: [
@@ -74,6 +77,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NewspaperComponent,
     NewspapersComponent,
     LoansComponent,
+    NgbdModalReaderCreate
   ],
   imports: [
     BrowserAnimationsModule, // required animations module
@@ -84,6 +88,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     MatIconModule,
+    ReactiveFormsModule,
 
     BrowserModule,
     AppRoutingModule,
@@ -102,6 +107,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ThesisService,
     MagazinesService,
     NewspapersService,
+    ReaderService,
     IntegrationService,
     StoreService,
     BackpackService,

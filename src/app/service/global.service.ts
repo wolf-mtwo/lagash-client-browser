@@ -40,4 +40,8 @@ export class Global {
   get_search_url(sufix) {
     return this.PATH + '/v6/search/' + sufix;
   }
+
+  get_reader_url(sufix) {
+    return this.PATH + '/v6/readers/' + sufix;
+  }
 }
