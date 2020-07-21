@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelect2Module } from 'ng-select2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -85,6 +86,7 @@ import { NgbdModalReaderCreate } from './modules/loans/modal';
     NgbPaginationModule,
     NgbAlertModule,
     NgbModule,
+    NgSelect2Module,
     HttpClientModule,
     FormsModule,
     MatIconModule,

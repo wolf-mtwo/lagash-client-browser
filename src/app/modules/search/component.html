@@ -4,54 +4,102 @@
       
       <div id="accordion">
         <div class="card mb-2">
-          <button class="btn btn-outline-info btn-sm" (click)="reset()">Limpiar</button>
-          <div class="text-left" id="headingOne">
-            <h6 class="">
-              <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-               <b>AÑO</b> 
-              </button>
-            </h6>
-          </div>
-      
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="list-group">
-              <span class="ml-3" *ngFor="let item of items.years">
-                <label><input #filters  type="checkbox" [id]="item" (change)="onChange($event.srcElement, item, 'year', query.listYear)"/> {{item}} </label>
-               </span>
-            </div>
-          </div>
-        </div>
-        <div class="card mb-2">
           <div class="text-left" id="headingTwo">
             <h5 class="mb-0">
               <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-               <b>AUTOR</b>
+               <b>Materias</b>
               </button>
             </h5>
           </div>
           <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="list-group text-left">
-                <span class="ml-3" *ngFor="let item of items.authors">
-                  <label ><input #filters type="checkbox" (change)="onChange($event.srcElement, item, 'autor', query.listAuthor)"/> {{item}}</label>
-                </span>
+                <ng-select2
+                        [options]="options"
+                        [width]="400"
+                        (keyup)="onChange('descriptor')"
+                        class="form=control"
+                        [(ngModel)]="descriptorsValue">
+                </ng-select2>
             </div>
           </div>
         </div>
 
         <div class="card mb-2">
+          <div class="text-left" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+               <b>Temas</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="list-group text-left">
+                <ng-select2
+                        [options]="options"
+                        [width]="400"
+                        class="form=control"
+                        [(ngModel)]="indexesValue">
+                </ng-select2>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="text-left" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+               <b>Año</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="list-group text-left">
+                <ng-select2
+                        [data]="yearData"
+                        [options]="options"
+                        [width]="400"
+                        class="form=control"
+                        [(ngModel)]="yearsValue">
+                </ng-select2>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-2">
+          <div class="text-left" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+               <b>Autor</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="list-group text-left">
+                <ng-select2
+                        [options]="options"
+                        [width]="400"
+                        class="form=control"
+                        [(ngModel)]="authorsValue">
+                </ng-select2>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mb-2">
           <div class="text-left" id="headingThree">
             <h5 class="mb-0">
               <button class="btn" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true " aria-controls="collapseThree">
-               <b>EDITORIAL</b>
+               <b>Editorial</b>
               </button>
             </h5>
           </div>
           <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="list-group text-left">
-              <span class="ml-3" *ngFor="let item of items.editorials">
-                <label><input #filters type="checkbox" (change)="onChange($event.srcElement, item, 'editorial', query.listEditorial)"/> {{item}}</label>
-               </span>
-            </div> 
+            <ng-select2
+                    [options]="options"
+                    [width]="400"
+                    class="form=control"
+                    [(ngModel)]="editorialsValue">
+            </ng-select2>
           </div>
         </div>
       </div>
@@ -59,72 +107,83 @@
     </div>
     <div class="col-10">
       <div class="card-header offset-md-1 col-9 ">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Buscar... " aria-label="Busca algo" [(ngModel)]="query.search" aria-describedby="button-addon2">
+        <div class="input-group">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Buscar... " aria-label="Busca algo"(keyup)="search()"
+            [(ngModel)]="query.search" aria-describedby="button-addon2"
+            style="height:70px;font-size:12pt;padding-top: 20px;">
+            <label for="exampleInputEmail1" style="position:absolute; padding:5px 0 0 10px; font-size:10pt;z-index:10;"><b> TERMINO DE BUSQUEDA</b></label>
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="search()">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2"(click)="search()" >
               <mat-icon>search</mat-icon>
             </button>
           </div>
         </div>
-      </div>
-
-      <br>
-
-      <div class="card-header col-10" style="margin-left: 3.7%;">
+     <br>
         <div class="row">
-          <div class="col-4">
-            <h4>Resultados por pagina:</h4>
+          <div class="col-5">
+            <p style="font-size:15pt">
+              Resultados por pagina:
+              <select>
+                <option (click)="setPage(item)" *ngFor="let item of totalByPage" [value]="item">
+                  {{item}}
+                </option>
+              </select>
+            </p>
           </div>
-          <div class="col-4">Total de Resultados: {{items.totalRows}}</div>
+          <div class="col-3">
+          <p style="font-size:15pt">  Total de Resultados: {{items.totalRows}}</p>
+          </div>
           <div class="col-4 text-right"> 
-            <mat-icon (click)="showList=true">view_headline</mat-icon>
-            <mat-icon (click)="showList=false">view_module</mat-icon>
+            <button><mat-icon (click)="showList=true">view_headline</mat-icon></button> &nbsp;
+            <button><mat-icon (click)="showList=false">view_module</mat-icon></button>
           </div>
         </div>
 
-        <div class="">
-        <div *ngIf="!showList" class="row highlight" > 
-          <div class="col-2 h-100 mb-3" *ngFor="let item of items.data"> 
-             <div class="card card-lagash" (click)="go_to_item(item)">
-              <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}" alt="Card image cap">
-              <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/thesis.png" alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text"><b>{{item.title}}</b> {{item.autor}} </p>
+        <div *ngIf="!showList" class="row" > 
+          <div class="mb-3" *ngFor="let item of items.data" style="width: 20%; padding:2px;">
+             <div class="card-lagash" (click)="go_to_item(item)">
+              <div >
+                <img class="card-img-top shadow img-fluid" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}" 
+                alt="Card image cap">
+                <img class="card-img-top shadow" *ngIf="!item.image"src="./assets/img/default/thesis.png" 
+                 alt="Card image cap">
               </div>
+              <p class="card-text"><b>{{item.title}}</b> 
+                <br />
+                {{item.autor}}
+                <br />
+                <button class="btn btn-warning btn-sm">Reservar</button>
+              </p>
              </div>
           </div>
         </div>
-        </div>
 
-        <div class="card">
-            <table *ngIf="showList" class="table table-bordered table-hover" data-tablesaw-mode="swipe" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap data-tablesaw-mode-switch>
-              <thead>
-                  <tr >
-                      <th style="width:3%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Codigo</th>
-                      <th style="width:15%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Titulo</th>
-                      <th style="width:10%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Autor</th>
-                      <th style="width:10%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Codigo Autor</th>
-                      <th style="width:10%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Editorial</th>
-                      <th style="width:10%" scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Año</th>
-                      <th style="width:1%"></th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let item of items.data">
-                    <td class="title"><a class="link" col="1">{{item.materialCode}}</a></td>
-                    <td class="title"><a class="link" col="1">{{item.title}}</a></td>
-                    <td class="title"><a class="link" col="1">{{item.autor}}</a></td>
-                    <td class="title"><a class="link" col="1">{{item.autorCode}}</a></td>
-                    <td class="title"><a class="link" col="1">{{item.editorial}}</a></td>
-                    <td class="title"><a class="link" col="1">{{item.materialYear}}</a></td>
-                    <td class="text-center">
-                        <button type="button" (click)="go_to_item(item)" class="btn btn-secondary btn-sm"><span class="fa fa-plus"></span> Reservar </button>
-                    </td>
-                  </tr>
-                  <tr> </tr>
-              </tbody>
-          </table>
+        <div class="card" *ngIf="showList">
+          <div class="col-md-12 m-2" *ngFor="let item of items.data">
+            <div class="row">
+              <div class="col-md-3 text-center">
+                <img class="shadow img-thumbnail" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}" 
+                alt="Card image cap">
+                <img class="shadow img-thumbnail" *ngIf="!item.image"src="./assets/img/default/thesis.png" 
+                  alt="Card image img-thumbnail">
+              </div>
+              <div class="col-md-9">
+                <div class="col-md-12">
+                  <h4>{{item.title}}</h4>
+                  <p *ngIf="item.autor">Autor: {{item.autor}}</p>
+                </div>
+                <div class="col-md-6">
+                  <p *ngIf="item.autorCode"> Autor Code: {{item.autorCode}}</p>
+                  <p *ngIf="item.editorial"> Editorial: {{item.editorial}}</p>
+                  <p *ngIf="item.materialYear" >Year: {{item.materialYear}}</p>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-warning btn-sm">Reservar</button>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
         </div>
       </div>
     </div>

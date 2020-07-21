@@ -30,11 +30,13 @@
             "styles": [
               "src/custom-theme.scss",
               "src/styles.sass",
-              "src/main.css"
+              "src/main.css",
+              "node_modules/select2/dist/css/select2.min.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/select2/dist/js/select2.min.js"
             ]
           },
           "configurations": {
