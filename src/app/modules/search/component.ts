@@ -76,6 +76,8 @@ export class SearchComponent {
       isAll: true,
       total: 0,
       listAuthor:'',
+      listDestriptor:'',
+      listIndexer:'',
       listEditorial:'',
       listYear:'',
       page: 1,
@@ -136,6 +138,7 @@ export class SearchComponent {
 
   setPage(item) {
     console.log(item)
-    this.query.limit = item;
+    
+    //this.query.limit = item;
   }
 }
