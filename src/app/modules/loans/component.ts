@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, Type } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Global } from '../../service/global.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BooksService } from '../../service/books.service';
 import { StoreService } from '../../service/store.service';
@@ -8,11 +9,12 @@ import { BackpackService } from '../../service/backpack.service';
 import { ReaderService } from '../../service/readers.service';
 import { IntegrationService } from '../../service/integration.service';
 import { NgbdModalReaderCreate } from './modal';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'module-books',
   templateUrl: './component.html',
-  styleUrls: ['../../wargos.css', './component.css']
+  styleUrls: ['../../wargos.css', './component.sass']
 })
 export class LoansComponent {
   items: any = [];
@@ -22,8 +24,10 @@ export class LoansComponent {
   I18N = null;
   user = null;
   person: string = null;
+
   constructor(
     private router: Router,
+    private global: Global,
     private toastr: ToastrService,
     private _service: BooksService,
     private reader_service: ReaderService,
@@ -68,19 +72,35 @@ export class LoansComponent {
     });
   }
 
-  booking() {
+  load_user(reader) {
+    this.store.save('user', reader, false);
+    this.integration_service.user_emit(reader);
+    this.user = reader;
+  }
+
+  clean() {
+    this.store.remove('user');
+    this.user = null;
+  }
+
+  find() {
     this.reader_service.find_by_id(this.person)
     .subscribe((item) => {
-      //loan.state = true;
-      console.log(item);
+      this.load_user(item);
     }, (error) => {
       this.toastr.warning('Esta credencial no esta registrado', 'Credencial');
-      this._modalService.open(NgbdModalReaderCreate);
+      const modal = this._modalService.open(NgbdModalReaderCreate);
+      modal.componentInstance.person = this.person;
+      modal.result.then((res) => {
+        this.load_user(res);
+      }, (erro) => {
+        console.log('Dismissed action: ' + erro);
+      });
       console.log(<any>error);
     });
   }
 
-  booking2() {
+  booking() {
     var config = null;
     if (!this.user && !this.person) {
         this.toastr.warning('Para realizar una reservacion tiene que llenar en el campo su nombre', 'Nombre completo');
@@ -157,5 +177,13 @@ export class LoansComponent {
   public remove_loan(item, i) {
     this.loans.splice(i, 1);
     this.loans_store.remove_position(i);
+  }
+
+  get_faculty(_id) {
+    return this.faculties.find(o => o._id === _id);
+  }
+
+  get_carrer(_id) {
+    return this.carrers.find(o => o._id === _id);
   }
 }

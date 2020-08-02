@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { StoreService } from './service/store.service';
 import { IntegrationService } from './service/integration.service';
 import { BackpackService } from './service/backpack.service';
 
@@ -11,23 +11,33 @@ import { BackpackService } from './service/backpack.service';
 export class AppComponent {
   title = 'lagash-client-browser';
   user = null;
+  reader = null;
   loans = 0;
   constructor(
     private integration_service: IntegrationService,
-    private store: BackpackService
+    private loan_store: BackpackService,
+    private store: StoreService
   ) {
     this.user = JSON.parse(localStorage.getItem('user')) || null;
-    this.loans = store.load().length;
+    this.loans = this.loan_store.load().length;
     integration_service.on((item) => {
       this.user = item;
     });
-    store.on((item) => {
+    this.loan_store.on((item) => {
       this.update_loans(item);
+    });
+    integration_service.user_on((reader) => {
+      this.user = reader;
     });
   }
 
   update_loans(item) {
     this.loans = item;
+  }
+
+  update_reader(reader) {
+    this.reader = reader;
+    console.log(this.reader);
   }
 
   logout() {

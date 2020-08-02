@@ -1,22 +1,6 @@
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Poppins", sans-serif;
-    /*color: #222222;*/
-    line-height: 1.2em !important;
-    font-weight: 600;
-}
-.container h1 {
-	padding: 20px;
-	text-align: center;
-}
-.container-lagash .lagash-detail {
-	font-family: "Poppins", sans-serif;
-}
-.container-lagash .lagash-detail div div {
-	padding: 0 1%;
-	float: left;
-	width: 49%;
-}
-.container-lagash .lagash-detail .lagash-detail-title {
+
+
+/* .container-lagash .lagash-detail .lagash-detail-title {
 	font-weight: 600;
 	text-align: right;
 }
@@ -28,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .lagash-pointer {
   cursor: pointer;
-}
+} */
 .primary-btn {
   background: #f6214b;
   line-height: 38px;
@@ -47,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   position: relative;
 }
-.primary-btn:focus {
+/* .primary-btn:focus {
   outline: none;
 }
 .container h1 {
@@ -62,10 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-size: 100% 100%;
 	float: left;
 }
-/*.container-lagash img.card-img-top {
-		width: 100%;
-		height: 150px;
-}*/
+
 .container-lagash .card-lagash:hover {
 	filter:brightness(0.4);
 }
@@ -73,8 +54,8 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 25px 15px 0 0;
 }
 .container-lagash .lagash-radio {
-  /*text-align: end;*/
+  
 }
 .container-lagash .lagash-radio label {
   padding: 0px 5px;
-}
+} */

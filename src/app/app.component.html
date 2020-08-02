@@ -23,12 +23,10 @@
         </div>
       </div>
       <div class="lagash-media">
-        <div>
-          <mat-icon>linked_camera</mat-icon>
-        </div>
-        <div>
-          <mat-icon>share</mat-icon>
-        </div>
+        <a class="nav-link" routerLink="/loans">
+          <div><mat-icon>bookmarks</mat-icon></div>
+          <span>{{loans}}</span>
+        </a>
       </div>
     </div>
   </div>
@@ -74,18 +72,12 @@
     </div>
     <div class="col-lg-2">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <div *ngIf="!user">
             <a class="nav-link" routerLink="/login">Iniciar session</a>
           </div>
-        </li>
-        <li class="nav-item">
-          <div *ngIf="!user">
-            <a class="nav-link" routerLink="/loans">{{loans}}</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <!-- // not tested -->
+        </li> -->
+        <!-- <li class="nav-item">
           <div *ngIf="user" class="lagash-user">
             <a class="nav-link" routerLink="/login" class="user"><img src="./assets/img/user.png">{{user.name}}</a>
             <a class="nav-link" routerLink="/loans">{{loans}}</a>
@@ -96,12 +88,11 @@
               </div>
             </div>
           </div>
-          <!-- // not tested -->
-        </li>
+        </li> -->
       </ul>
     </div>
   </nav>
 </div>
 <div class="lagash-container">
-  <router-outlet></router-outlet>  
+  <router-outlet></router-outlet>
 </div>

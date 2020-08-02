@@ -1,7 +1,9 @@
-import { Component, Type } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IntegrationService } from '../../service/integration.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { getLocaleFirstDayOfWeek } from '@angular/common';
 
 @Component({
   selector: 'ngbd-modal-reader-create',
@@ -12,6 +14,8 @@ export class NgbdModalReaderCreate {
   readerForm: FormGroup;
   faculties: any = [];
   carrers: any = [];
+  semesters: any = [];
+  @Input() person;
 
   constructor(
     public modal: NgbActiveModal,
@@ -22,15 +26,18 @@ export class NgbdModalReaderCreate {
   }
 
   ngOnInit() {
+    this.semesters = this.calc_ingress(this.get_years());
     this.readerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      _id: this.next(),
+      auth_type: 'LOCAL',
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
       faculty_id: ['', Validators.required],
-      carrer_id: ['', Validators.required],
+      career_id: ['', Validators.required],
       card_type: ['', Validators.required],
-      card_id: ['', Validators.required],
+      card_id: [this.person, Validators.required],
       semester: ['', Validators.required]
-    })
+    });
   }
 
   search() {
@@ -53,7 +60,12 @@ export class NgbdModalReaderCreate {
     if (this.readerForm.invalid) {
       return;
     }
-    console.log(this.readerForm.value);
+    this.integration_service.store_reader(this.readerForm.value)
+    .subscribe((item) => {
+      this.modal.close(item);
+    }, (error) => {
+      console.log(<any>error);
+    });
   }
 
   get fields() {
@@ -62,6 +74,32 @@ export class NgbdModalReaderCreate {
 
   filter(carrers, fields) {
     return carrers.filter((o)=> o.faculty_id === fields.faculty_id.value);
+  }
+
+  next() {
+    var code = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+    return code;
+  }
+
+  get_years() {
+    let result = [];
+    let year = new Date().getFullYear();
+    for (let index = 0; index < 6; index++) {
+      result.push(year--);
+    }
+    return result;
+  }
+
+  calc_ingress(years) {
+    let result = [];
+    years.forEach((year) => {
+      result.push(`${year}-A`);
+      result.push(`${year}-B`);
+    });
+    return result;
   }
 
   onReset() {
