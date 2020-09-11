@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Global } from './global.service';
+import { Book, Catalog } from '../models';
 
 @Injectable()
 export class BooksService {
@@ -29,7 +31,7 @@ export class BooksService {
   }
 
   paginate(query) {
-    return this.http.get(this.global.get_book_url(`page/${query.page}/limit/${query.limit}`), {
+    return this.http.get<Book[]>(this.global.get_book_url(`page/${query.page}/limit/${query.limit}`), {
       params: {
         search: query.search,
         type: query.type
@@ -37,11 +39,11 @@ export class BooksService {
     });
   }
 
-  get_catalogs(query) {
-    return this.http.get(this.global.get_book_url(`catalogs/page/${query.page}/limit/${query.limit}`));
+  get_catalogs(query) : Observable<Catalog[]> {
+    return this.http.get<Catalog[]>(this.global.get_book_url(`catalogs/page/${query.page}/limit/${query.limit}`));
   }
 
-  catalog_items(_id) {
-    return this.http.get(this.global.get_book_url('catalogs/' + _id));
+  catalog_items(_id) : Observable<Book[]> {
+    return this.http.get<Book[]>(this.global.get_book_url('catalogs/' + _id));
   }
 }

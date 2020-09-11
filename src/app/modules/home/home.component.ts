@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Global } from './../service/global.service';
-import { BooksService } from '../service/books.service';
-import { ThesisService } from '../service/thesis.service';
+
+import { Global } from 'src/app/service/global.service';
+import { BooksService } from 'src/app/service/books.service';
+import { ThesisService } from 'src/app/service/thesis.service';
 
 @Component({
   selector: 'app-home',
@@ -76,7 +77,7 @@ export class HomeComponent {
   go_to_item(item, resource) {
     switch (resource) {
       case 'BOOK':
-        this.router.navigate(['/books', item._id]);    
+        this.router.navigate(['/books', item._id]);
         break;
       case 'THESIS':
         this.router.navigate(['/thesis', item._id]);

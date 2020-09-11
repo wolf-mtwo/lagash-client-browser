@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BooksComponent } from './component';
+import { AppComponentsModule } from 'src/app/components/components.module';
 import { BookComponent } from './book/component';
+import { BooksComponent } from './component';
+
 
 const routes: Routes = [
   { path: 'books', component: BooksComponent },
@@ -9,8 +11,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [
+    RouterModule.forRoot(routes),
+    AppComponentsModule
+  ],
   exports: [ RouterModule ],
-  // declarations: [BookComponent]
+  declarations: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
 })
 export class BooksRoutingModule { }

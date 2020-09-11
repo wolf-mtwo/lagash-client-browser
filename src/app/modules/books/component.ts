@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { Global } from './../../service/global.service';
 import { BooksService } from '../../service/books.service';
 import { Router } from '@angular/router';
-import {Observable, of} from 'rxjs';
-import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, merge} from 'rxjs/operators';
+import { Book, Catalog } from '../../models';
 
 @Component({
   selector: 'module-books',
@@ -11,8 +9,8 @@ import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, mer
   styleUrls: ['../../wargos.css', './component.css']
 })
 export class BooksComponent {
-  items: any = [];
-  catalogs: any = [];
+  public items: Book[] = [];
+  public catalogs: Catalog[] = [];
   query = {
     search: '',
     type: 'TITLE',
@@ -25,13 +23,13 @@ export class BooksComponent {
     page: 1,
     limit: 15
   };
+
   constructor(
-    private global: Global,
     private router: Router,
     private _service: BooksService
   ) {
     this.search();
-    _service.get_catalogs(this.query_catalog).subscribe((items) => {
+    _service.get_catalogs(this.query_catalog).subscribe((items: Catalog[]) => {
         this.catalogs = items;
       }, (error) => {
         console.log(<any>error);
@@ -40,7 +38,7 @@ export class BooksComponent {
   }
 
   search() {
-    this._service.paginate(this.query).subscribe((items) => {
+    this._service.paginate(this.query).subscribe((items: Book[]) => {
         this.items = items;
       }, (error) => {
         console.log(<any>error);
@@ -65,7 +63,7 @@ export class BooksComponent {
   }
 
   go_to_catalog(item) {
-    this._service.catalog_items(item._id).subscribe((items) => {
+    this._service.catalog_items(item._id).subscribe((items: Book[]) => {
         this.items = items;
       }, (error) => {
         console.log(<any>error);

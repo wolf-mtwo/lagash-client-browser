@@ -45,7 +45,8 @@
           <input type="radio" [(ngModel)]="query.type" value="ALL">Todos
         </label>
       </div>
-      <div class="list-group catalogs-lagash">
+      <app-catalog-list [items]="catalogs" (on_clean_up)="reset()" (on_select)="go_to_catalog($event[0])"></app-catalog-list>
+      <!-- <div class="list-group catalogs-lagash">
         <button type="button" class="list-group-item list-group-item-action active">
           Catalogos de libros
         </button>
@@ -60,26 +61,19 @@
                 (click)="go_to_catalog(catalog)">
           {{catalog.title}}
         </button>
-      </div>
+      </div>-->
     </div>
     <div class="col-9">
       <div *ngIf="items.length == 0">
         <div class="alert alert-warning" role="alert">
           No existen resultados para esta busqueda
         </div>
-        <!-- <div class="alert alert-warning" role="alert" *ngIf="query.search != ''">
-          No se encontraron tesis con la palabra <a href="#" class="alert-link">"{{query.search}}"</a>
-        </div> -->
       </div>
       <div class="card card-lagash"
            style="width: 33%;"
            *ngFor="let item of items"
            (click)="go_to_item(item)">
-        <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}" alt="Card image cap">
-        <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/thesis.png" alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text">{{item.title}}</p>
-        </div>
+        <app-book-view [item]="item"></app-book-view>
       </div>
     </div>
   </div>

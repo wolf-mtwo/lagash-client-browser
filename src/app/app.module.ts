@@ -1,16 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
 import { NgSelect2Module } from 'ng-select2';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeModule } from './modules/home/home.module';
 
-import { HomeComponent } from './home/home.component';
+// import { HomeModule } from './home/home.module';
 
 import { InformationComponent } from './modules/information/component';
 import { LoginComponent } from './modules/information/login/component';
@@ -21,10 +22,9 @@ import { BooksComponent } from './modules/books/component';
 import { BooksRoutingModule } from './modules/books/routing.module';
 
 //search
-import { SearchComponent } from './modules/search/component';
-import { SearchDetailComponent } from './modules/search/detail/component';
+//import { SearchComponent } from './modules/search/component';
+//import { SearchDetailComponent } from './modules/search/detail/component';
 import { SearchRoutingModule } from './modules/search/routing.module';
-
 
 // tesis
 import { ThesisComponent } from './modules/thesises/thesis/component';
@@ -57,18 +57,18 @@ import { BackpackService } from './service/backpack.service';
 
 import { Global } from './service/global.service';
 
-import { ToastrModule } from 'ngx-toastr';
-
 import { NgbdModalReaderCreate } from './modules/loans/modal';
+import { AppComponentsModule } from './components/components.module';
+import { PagesModule } from './modules/pages.module';
+import { TemplatesModule } from './templates/templates.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     BookComponent,
     BooksComponent,
-    SearchComponent,
-    SearchDetailComponent,
+    // SearchComponent,
+    // SearchDetailComponent,
     InformationComponent,
     LoginComponent,
     ThesisComponent,
@@ -89,11 +89,9 @@ import { NgbdModalReaderCreate } from './modules/loans/modal';
     NgSelect2Module,
     HttpClientModule,
     FormsModule,
-    MatIconModule,
     ReactiveFormsModule,
-
     BrowserModule,
-    AppRoutingModule,
+    HomeModule,
     BooksRoutingModule,
     // BootstrapAutocompleteModule,
     InformationRoutingModule,
@@ -101,7 +99,11 @@ import { NgbdModalReaderCreate } from './modules/loans/modal';
     MagazinesRoutingModule,
     SearchRoutingModule,
     NewspapersRoutingModule,
-    LoansRoutingModule
+    LoansRoutingModule,
+    AppComponentsModule,
+    CommonModule,
+    TemplatesModule,
+    PagesModule
   ],
   providers: [
     BooksService,
