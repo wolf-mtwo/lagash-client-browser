@@ -7,7 +7,7 @@ import { Catalog } from '../../models';
   styleUrls: ['./catalog-list.component.sass']
 })
 export class CatalogListComponent implements OnInit {
-
+  @Input() title: string = 'Recientes';
   @Input() items: Catalog[] = [];
   @Output() on_clean_up: EventEmitter<any> = new EventEmitter();
   @Output() on_select: EventEmitter<Catalog> = new EventEmitter();
@@ -21,7 +21,7 @@ export class CatalogListComponent implements OnInit {
     this.on_clean_up.emit();
   }
 
-  select_item(data): void {
+  select_item(data: Catalog): void {
     this.on_select.emit(data);
   }
 }

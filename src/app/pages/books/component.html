@@ -45,7 +45,11 @@
           <input type="radio" [(ngModel)]="query.type" value="ALL">Todos
         </label>
       </div>
-      <app-catalog-list [items]="catalogs" (on_clean_up)="reset()" (on_select)="go_to_catalog($event[0])"></app-catalog-list>
+      <app-catalog-list [title]="catalog_title"
+                        [items]="catalogs"
+                        (on_clean_up)="reset()"
+                        (on_select)="go_to_catalog($event[0])">
+      </app-catalog-list>
       <!-- <div class="list-group catalogs-lagash">
         <button type="button" class="list-group-item list-group-item-action active">
           Catalogos de libros

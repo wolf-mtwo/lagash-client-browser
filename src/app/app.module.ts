@@ -9,58 +9,43 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { HomeModule } from './modules/home/home.module';
+import { HomeModule } from './pages/home/home.module';
 
-// import { HomeModule } from './home/home.module';
+import { InformationComponent } from './pages/information/component';
+import { LoginComponent } from './pages/information/login/component';
+import { InformationRoutingModule } from './pages/information/routing.module';
 
-import { InformationComponent } from './modules/information/component';
-import { LoginComponent } from './modules/information/login/component';
-import { InformationRoutingModule } from './modules/information/routing.module';
-
-import { BookComponent } from './modules/books/book/component';
-import { BooksComponent } from './modules/books/component';
-import { BooksRoutingModule } from './modules/books/routing.module';
+import { BookComponent } from './pages/books/book/component';
+import { BooksComponent } from './pages/books/component';
+import { BooksRoutingModule } from './pages/books/routing.module';
 
 //search
-//import { SearchComponent } from './modules/search/component';
-//import { SearchDetailComponent } from './modules/search/detail/component';
-import { SearchRoutingModule } from './modules/search/routing.module';
+import { SearchRoutingModule } from './pages/search/routing.module';
 
 // tesis
-import { ThesisComponent } from './modules/thesises/thesis/component';
-import { ThesisesComponent } from './modules/thesises/component';
-import { ThesisRoutingModule } from './modules/thesises/routing.module';
+import { ThesisComponent } from './pages/thesises/thesis/component';
+import { ThesisesComponent } from './pages/thesises/component';
+import { ThesisRoutingModule } from './pages/thesises/routing.module';
 
 // magazine
-import { MagazineComponent } from './modules/magazines/magazine/component';
-import { MagazinesComponent } from './modules/magazines/component';
-import { MagazinesRoutingModule } from './modules/magazines/routing.module';
+import { MagazineComponent } from './pages/magazines/magazine/component';
+import { MagazinesComponent } from './pages/magazines/component';
+import { MagazinesRoutingModule } from './pages/magazines/routing.module';
 
 // newspapers
-import { NewspaperComponent } from './modules/newspapers/newspaper/component';
-import { NewspapersComponent } from './modules/newspapers/component';
-import { NewspapersRoutingModule } from './modules/newspapers/routing.module';
+import { NewspaperComponent } from './pages/newspapers/newspaper/component';
+import { NewspapersComponent } from './pages/newspapers/component';
+import { NewspapersRoutingModule } from './pages/newspapers/routing.module';
 
 // loans
-import { LoansComponent } from './modules/loans/component';
-import { LoansRoutingModule } from './modules/loans/routing.module';
+import { LoansComponent } from './pages/loans/component';
+import { LoansRoutingModule } from './pages/loans/routing.module';
 
-import { BooksService } from './service/books.service';
-import { SearchService } from './service/search.service';
-import { ThesisService } from './service/thesis.service';
-import { MagazinesService } from './service/magazines.service';
-import { NewspapersService } from './service/newspapers.service';
-import { ReaderService } from './service/readers.service';
-import { IntegrationService } from './service/integration.service';
-import { StoreService } from './service/store.service';
-import { BackpackService } from './service/backpack.service';
-
-import { Global } from './service/global.service';
-
-import { NgbdModalReaderCreate } from './modules/loans/modal';
+import { NgbdModalReaderCreate } from './pages/loans/modal';
 import { AppComponentsModule } from './components/components.module';
-import { PagesModule } from './modules/pages.module';
+import { PagesModule } from './pages/pages.module';
 import { TemplatesModule } from './templates/templates.module';
+import { ServicesModule } from './service/services.module';
 
 @NgModule({
   declarations: [
@@ -91,9 +76,10 @@ import { TemplatesModule } from './templates/templates.module';
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+
     HomeModule,
+    ServicesModule,
     BooksRoutingModule,
-    // BootstrapAutocompleteModule,
     InformationRoutingModule,
     ThesisRoutingModule,
     MagazinesRoutingModule,
@@ -103,19 +89,10 @@ import { TemplatesModule } from './templates/templates.module';
     AppComponentsModule,
     CommonModule,
     TemplatesModule,
-    PagesModule
+    PagesModule,
   ],
   providers: [
-    BooksService,
-    SearchService,
-    ThesisService,
-    MagazinesService,
-    NewspapersService,
-    ReaderService,
-    IntegrationService,
-    StoreService,
-    BackpackService,
-    Global
+    // Global
   ],
   bootstrap: [AppComponent]
 })

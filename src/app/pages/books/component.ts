@@ -9,6 +9,7 @@ import { Book, Catalog } from '../../models';
   styleUrls: ['../../wargos.css', './component.css']
 })
 export class BooksComponent {
+  public catalog_title: string = 'Libros recientes';
   public items: Book[] = [];
   public catalogs: Catalog[] = [];
   query = {

@@ -1,4 +1,4 @@
-export class Catalog {
+export interface Catalog {
   _id: string;
   title: string;
   enabled: boolean;
