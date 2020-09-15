@@ -1,27 +1,23 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatListModule } from '@angular/material/list';
-
 import { ResourceViewComponent } from './resource-view/resource-view.component';
 import { BookViewComponent } from './book-view/book-view.component';
-import { CatalogListComponent } from './catalog-list/catalog-list.component';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
   declarations: [
     ResourceViewComponent,
-    BookViewComponent,
-    CatalogListComponent
+    BookViewComponent
   ],
   exports: [
     ResourceViewComponent,
-    BookViewComponent,
-    CatalogListComponent
+    BookViewComponent
   ],
   imports: [
     MatIconModule,
     BrowserModule,
-    MatListModule
+    SearchModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

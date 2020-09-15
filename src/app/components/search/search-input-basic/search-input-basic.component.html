@@ -1,0 +1,27 @@
+<div>
+  <div class="input-group">
+    <input type="text"
+           class="form-control"
+           aria-label="Default"
+           aria-describedby="inputGroup-sizing-default"
+           [(ngModel)]="query.search"
+           (change)="search_items()">
+    <div class="input-group-append">
+      <span class="input-group-text btn-primary" (click)="search_items()">Buscar</span>
+    </div>
+  </div>
+  <div class="lagash-radio mb-3">
+    <label>
+      <input type="radio" [(ngModel)]="query.type" value="TITLE">Titulo
+    </label>
+    <label>
+      <input type="radio" [(ngModel)]="query.type" value="SUBJECT">Tema
+    </label>
+    <label>
+      <input type="radio" [(ngModel)]="query.type" value="AUTHOR">Autor
+    </label>
+    <label>
+      <input type="radio" [(ngModel)]="query.type" value="ALL">Todos
+    </label>
+  </div>
+</div>

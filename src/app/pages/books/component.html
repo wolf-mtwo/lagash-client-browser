@@ -18,70 +18,67 @@
       </nav>
     </div>
   </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="input-group">
-        <input type="text"
-               class="form-control"
-               aria-label="Default"
-               aria-describedby="inputGroup-sizing-default"
-               [(ngModel)]="query.search"
-               (change)="search()">
-      <div class="input-group-append">
-        <span class="input-group-text btn-primary" (click)="search()">Buscar</span>
-      </div>
-      </div>
-      <div class="lagash-radio mb-3">
-        <label>
-          <input type="radio" [(ngModel)]="query.type" value="TITLE">Titulo
-        </label>
-        <label>
-          <input type="radio" [(ngModel)]="query.type" value="SUBJECT">Tema
-        </label>
-        <label>
-          <input type="radio" [(ngModel)]="query.type" value="AUTHOR">Autor
-        </label>
-        <label>
-          <input type="radio" [(ngModel)]="query.type" value="ALL">Todos
-        </label>
-      </div>
-      <app-catalog-list [title]="catalog_title"
-                        [items]="catalogs"
-                        (on_clean_up)="reset()"
-                        (on_select)="go_to_catalog($event[0])">
-      </app-catalog-list>
-      <!-- <div class="list-group catalogs-lagash">
-        <button type="button" class="list-group-item list-group-item-action active">
-          Catalogos de libros
-        </button>
-        <button type="button"
-                class="list-group-item list-group-item-action"
-                (click)="reset()">
-          <i><b>Todos</b></i>
-        </button>
-        <button type="button"
-                class="list-group-item list-group-item-action"
-                *ngFor="let catalog of catalogs"
-                (click)="go_to_catalog(catalog)">
-          {{catalog.title}}
-        </button>
-      </div>-->
-    </div>
-    <div class="col-9">
-      <div *ngIf="items.length == 0">
-        <div class="alert alert-warning" role="alert">
-          No existen resultados para esta busqueda
-        </div>
-      </div>
-      <div class="card card-lagash"
-           style="width: 33%;"
-           *ngFor="let item of items"
-           (click)="go_to_item(item)">
-        <app-book-view [item]="item"></app-book-view>
-      </div>
-    </div>
+</div>
+<!-- 
+<div fxLayout="row" fxLayoutAlign="space-between">
+  <app-search-empty [items]="items"></app-search-empty>
+  <div class="card card-lagash"
+       style="width: 33%;"
+       *ngFor="let item of items"
+       (click)="go_to_item(item)">
+    <app-book-view [item]="item"></app-book-view>
+  </div>
+
+</div> -->
+<!-- <app-search-input-basic></app-search-input-basic>
+<app-catalog-list [title]="catalog_title"
+                  [items]="catalogs"
+                  (on_clean_up)="reset()"
+                  (on_select)="go_to_catalog($event)">
+</app-catalog-list> -->
+
+<app-search-toolbar [title]="catalog_title"
+                    [items]="catalogs"
+                    [query]="query"
+                    (search)="search()"
+                    (on_clean_up)="reset()"
+                    (on_select)="go_to_catalog($event)">
+</app-search-toolbar>
+
+<div class="container" fxLayout="row wrap" fxLayout.xs="column">
+  <app-search-empty [items]="items"></app-search-empty>
+</div>
+<div class="container" fxLayout="row wrap" fxLayout.xs="column">
+  <div fxFlex="33%"
+       *ngFor="let item of items"
+       (click)="go_to_item(item)">
+    <app-book-view [item]="item"></app-book-view>
   </div>
 </div>
-<style media="screen">
 
-</style>
+
+  <!-- <div class="input-group">
+    <input type="text"
+           class="form-control"
+           aria-label="Default"
+           aria-describedby="inputGroup-sizing-default"
+           [(ngModel)]="query.search"
+           (change)="search()">
+  <div class="input-group-append">
+    <span class="input-group-text btn-primary" (click)="search()">Buscar</span>
+  </div>
+  </div>
+  <div class="lagash-radio mb-3">
+    <label>
+      <input type="radio" [(ngModel)]="query.type" value="TITLE">Titulo
+    </label>
+    <label>
+      <input type="radio" [(ngModel)]="query.type" value="SUBJECT">Tema
+    </label>
+    <label>
+      <input type="radio" [(ngModel)]="query.type" value="AUTHOR">Autor
+    </label>
+    <label>
+      <input type="radio" [(ngModel)]="query.type" value="ALL">Todos
+    </label>
+  </div> -->

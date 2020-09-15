@@ -41,15 +41,6 @@
 .container-lagash {
 	padding: 10px 0px;
 }
-.container-lagash .card-lagash {
-	background: url(../assets/img/legacy/milky.png) no-repeat;
-	background-size: 100% 100%;
-	float: left;
-}
-
-.container-lagash .card-lagash:hover {
-	filter:brightness(0.4);
-}
 .container-lagash nav {
 	padding: 25px 15px 0 0;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Catalog } from '../../models';
+import { Catalog } from '../../../models';
 
 @Component({
   selector: 'app-catalog-list',

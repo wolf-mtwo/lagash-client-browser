@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BooksService } from '../../service/books.service';
 import { Router } from '@angular/router';
-import { Book, Catalog } from '../../models';
+import { Book, Catalog, SearchQuery } from '../../models';
 
 @Component({
   selector: 'module-books',
@@ -12,7 +12,7 @@ export class BooksComponent {
   public catalog_title: string = 'Libros recientes';
   public items: Book[] = [];
   public catalogs: Catalog[] = [];
-  query = {
+  public query: SearchQuery = {
     search: '',
     type: 'TITLE',
     total: 0,
@@ -64,7 +64,9 @@ export class BooksComponent {
   }
 
   go_to_catalog(item) {
-    this._service.catalog_items(item._id).subscribe((items: Book[]) => {
+    console.log(item);
+    this._service.catalog_items(item._id)
+    .subscribe((items: Book[]) => {
         this.items = items;
       }, (error) => {
         console.log(<any>error);

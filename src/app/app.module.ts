@@ -3,6 +3,8 @@ import { NgSelect2Module } from 'ng-select2';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,8 +17,6 @@ import { InformationComponent } from './pages/information/component';
 import { LoginComponent } from './pages/information/login/component';
 import { InformationRoutingModule } from './pages/information/routing.module';
 
-import { BookComponent } from './pages/books/book/component';
-import { BooksComponent } from './pages/books/component';
 import { BooksRoutingModule } from './pages/books/routing.module';
 
 //search
@@ -50,8 +50,6 @@ import { ServicesModule } from './service/services.module';
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
-    BooksComponent,
     // SearchComponent,
     // SearchDetailComponent,
     InformationComponent,
@@ -68,6 +66,8 @@ import { ServicesModule } from './service/services.module';
   imports: [
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
+    FlexLayoutModule,
+    LayoutModule,
     NgbPaginationModule,
     NgbAlertModule,
     NgbModule,

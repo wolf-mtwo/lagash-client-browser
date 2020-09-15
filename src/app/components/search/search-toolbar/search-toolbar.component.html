@@ -1,0 +1,12 @@
+<div class="lagash-search-toolbar">
+   <div>
+      <app-search-input-basic [query]="query"
+                              (search)="search_items()">
+      </app-search-input-basic>
+      <app-catalog-list [title]="title"
+                        [items]="items"
+                        (on_clean_up)="reset()"
+                        (on_select)="select_item($event)">
+      </app-catalog-list>
+   </div>
+</div>
