@@ -33,7 +33,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Carnet de Estudiante or Identidad</span>
         </div>
-        <input type="text" class="form-control" aria-label="Default" name="name" [(ngModel)]="person" aria-describedby="inputGroup-sizing-default">
+        <input type="text" class="form-control" aria-label="Default" name="name" [(ngModel)]="token" aria-describedby="inputGroup-sizing-default">
         <div class="primary-btn" (click)="find()">Buscar</div>
       </div>
     </div>
@@ -75,8 +75,10 @@
       </div>
       <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">Muy bien!</h4>
-        <p>Al hacer una reserva a su nombre puede ir donde los encargados de los bloques para pedir que se los busques el recurso bibliografico.</p>
+        <p>Al hacer una reserva a su nombre puede ir donde los encargados de los bloques para pedir que la busqueda el recurso bibliografico.</p>
         <hr>
+      </div>
+      <div class="alert alert-warning" role="alert">
         <p class="mb-0">Si los libros que hiso reserva no son recogidos, la reserva se eliminara en 3 dias.</p>
       </div>
     </div>

@@ -23,7 +23,7 @@ export class LoansComponent {
   carrers: any = [];
   I18N = null;
   user = null;
-  person: string = null;
+  token: string = null;
 
   constructor(
     private router: Router,
@@ -84,13 +84,13 @@ export class LoansComponent {
   }
 
   find() {
-    this.reader_service.find_by_id(this.person)
+    this.reader_service.find_by_id(this.token)
     .subscribe((item) => {
       this.load_user(item);
     }, (error) => {
       this.toastr.warning('Esta credencial no esta registrado', 'Credencial');
       const modal = this._modalService.open(NgbdModalReaderCreate);
-      modal.componentInstance.person = this.person;
+      modal.componentInstance.token = this.token;
       modal.result.then((res) => {
         this.load_user(res);
       }, (erro) => {
@@ -101,28 +101,16 @@ export class LoansComponent {
   }
 
   booking() {
-    var config = null;
-    if (!this.user && !this.person) {
-        this.toastr.warning('Para realizar una reservacion tiene que llenar en el campo su nombre', 'Nombre completo');
+    if (!this.user) {
+        this.toastr.warning('Para realizar una reservacion tiene que ser un lector', 'Lector');
         return;
     }
     if (!confirm('Esta seguro que quiere reservar estos materiales bibliograficos')) {
         return;
     }
-    if (this.person) {
-      config = {
-        user_id: null,
-        name: this.person,
-        third_system: null
-      };
-    }
-    if (this.user) {
-      config = {
-        user_id: this.user._id,
-        name: this.user.name,
-        third_system: 'api.atendance.ninja'
-      };
-    }
+    console.log('test');
+    console.log(this.user);
+    
     this.loans.forEach((loan) => {
         var item = {
         _id: this.next(),
@@ -132,9 +120,8 @@ export class LoansComponent {
         ejemplar_id: loan.item.ejemplar._id,
         information: JSON.stringify({}),
         state: 'BOOKED',
-        user_id: config._id,
-        name: config.name,
-        third_system: config.third_system
+        reader_id: this.user._id,
+        third_system: 'lagash-default-user'
       }
       this.integration_service.store_loan(item)
       .subscribe((item) => {

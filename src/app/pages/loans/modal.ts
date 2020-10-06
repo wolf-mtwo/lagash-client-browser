@@ -15,7 +15,7 @@ export class NgbdModalReaderCreate {
   faculties: any = [];
   carrers: any = [];
   semesters: any = [];
-  @Input() person;
+  @Input() token;
 
   constructor(
     public modal: NgbActiveModal,
@@ -35,8 +35,9 @@ export class NgbdModalReaderCreate {
       faculty_id: ['', Validators.required],
       career_id: ['', Validators.required],
       card_type: ['', Validators.required],
-      card_id: [this.person, Validators.required],
-      semester: ['', Validators.required]
+      card_id: [this.token, Validators.required],
+      semester: ['', Validators.required],
+      enabled: [true, Validators.required]
     });
   }
 
