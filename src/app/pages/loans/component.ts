@@ -36,7 +36,6 @@ export class LoansComponent {
     private store: StoreService,
     private _modalService: NgbModal,
   ) {
-    this.user = store.load('user', false) || null;
     this.loans = this.populate(loans_store.load());
     this.I18N = loans_store.I18N;
     integration_service.on((item) => {
@@ -55,6 +54,7 @@ export class LoansComponent {
     this.integration_service.get_carrers()
     .subscribe((items) => {
       this.carrers = items;
+      this.user = this.store.load('user', false) || null;
     }, (error) => {
       console.log(<any>error);
     });
@@ -108,23 +108,22 @@ export class LoansComponent {
     if (!confirm('Esta seguro que quiere reservar estos materiales bibliograficos')) {
         return;
     }
-    console.log('test');
-    console.log(this.user);
-    
     this.loans.forEach((loan) => {
-        var item = {
+      if (loan.state) {
+        return;
+      }
+      var item = {
         _id: this.next(),
-        type: loan.key,
+        material_type: loan.key,
         code: loan.code,
         material_id: loan.item.material._id,
         ejemplar_id: loan.item.ejemplar._id,
-        information: JSON.stringify({}),
         state: 'BOOKED',
         reader_id: this.user._id,
         third_system: 'lagash-default-user'
       }
       this.integration_service.store_loan(item)
-      .subscribe((item) => {
+      .subscribe(() => {
         loan.state = true;
       }, (error) => {
         console.log(<any>error);

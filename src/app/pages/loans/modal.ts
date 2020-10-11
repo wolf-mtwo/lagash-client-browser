@@ -95,7 +95,7 @@ export class NgbdModalReaderCreate {
   }
 
   calc_ingress(years) {
-    let result = [];
+    let result = ['OTROS'];
     years.forEach((year) => {
       result.push(`${year}-A`);
       result.push(`${year}-B`);
