@@ -44,4 +44,8 @@ export class Global {
   get_reader_url(sufix) {
     return this.PATH + '/v6/readers/' + sufix;
   }
+
+  get_search_report_url(sufix) {
+    return this.PATH + '/v5/search' + sufix;
+  }
 }

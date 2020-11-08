@@ -11,6 +11,8 @@ import { ReaderService } from './readers.service';
 import { IntegrationService } from './integration.service';
 import { StoreService } from './store.service';
 import { BackpackService } from './backpack.service';
+import { ReportsService } from './reports.service';
+import { UUID } from './UUID.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { BackpackService } from './backpack.service';
     StoreService,
     BackpackService,
     Global,
+    ReportsService,
+    UUID,
   ]
 })
 export class ServicesModule { }

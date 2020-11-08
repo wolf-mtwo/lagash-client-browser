@@ -19,23 +19,6 @@
     </div>
   </div>
 </div>
-<!-- 
-<div fxLayout="row" fxLayoutAlign="space-between">
-  <app-search-empty [items]="items"></app-search-empty>
-  <div class="card card-lagash"
-       style="width: 33%;"
-       *ngFor="let item of items"
-       (click)="go_to_item(item)">
-    <app-book-view [item]="item"></app-book-view>
-  </div>
-
-</div> -->
-<!-- <app-search-input-basic></app-search-input-basic>
-<app-catalog-list [title]="catalog_title"
-                  [items]="catalogs"
-                  (on_clean_up)="reset()"
-                  (on_select)="go_to_catalog($event)">
-</app-catalog-list> -->
 
 <app-search-toolbar [title]="catalog_title"
                     [items]="catalogs"
@@ -55,30 +38,3 @@
     <app-book-view [item]="item"></app-book-view>
   </div>
 </div>
-
-
-  <!-- <div class="input-group">
-    <input type="text"
-           class="form-control"
-           aria-label="Default"
-           aria-describedby="inputGroup-sizing-default"
-           [(ngModel)]="query.search"
-           (change)="search()">
-  <div class="input-group-append">
-    <span class="input-group-text btn-primary" (click)="search()">Buscar</span>
-  </div>
-  </div>
-  <div class="lagash-radio mb-3">
-    <label>
-      <input type="radio" [(ngModel)]="query.type" value="TITLE">Titulo
-    </label>
-    <label>
-      <input type="radio" [(ngModel)]="query.type" value="SUBJECT">Tema
-    </label>
-    <label>
-      <input type="radio" [(ngModel)]="query.type" value="AUTHOR">Autor
-    </label>
-    <label>
-      <input type="radio" [(ngModel)]="query.type" value="ALL">Todos
-    </label>
-  </div> -->
