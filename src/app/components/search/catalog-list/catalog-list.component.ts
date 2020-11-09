@@ -12,7 +12,9 @@ export class CatalogListComponent implements OnInit {
   @Output() on_clean_up: EventEmitter<any> = new EventEmitter();
   @Output() on_select: EventEmitter<Catalog> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+    console.log("cataog list component");
+  }
 
   ngOnInit(): void {
   }

@@ -1,7 +1,7 @@
 <div class="list-group catalogs-lagash">
-  <h4>
+  <h1 class="title">
     {{title}}
-  </h4>
+  </h1>
   <mat-nav-list>
     <a mat-list-item (click)="reset()"><b>Todos</b></a>
     <a mat-list-item *ngFor="let item of items" (click)="select_item(item)">{{item.title}}</a>

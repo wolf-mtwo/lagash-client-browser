@@ -1,0 +1,7 @@
+<div>
+  <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
+  <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/resource.jpg">
+  <div class="card-body">
+    <p class="card-text">{{item.title}}</p>
+  </div>
+</div>

@@ -7,10 +7,10 @@ import { ReportsService } from '../../service/reports.service';
 @Component({
   selector: 'module-books',
   templateUrl: './component.html',
-  styleUrls: ['../../wargos.css', './component.css']
+  styleUrls: ['./component.sass']
 })
 export class BooksComponent {
-  public catalog_title: string = 'Libros recientes';
+  public catalog_title: string = 'Libros';
   public material_type: string = 'BOOK';
   public items: Book[] = [];
   public catalogs: Catalog[] = [];
@@ -19,7 +19,7 @@ export class BooksComponent {
     type: 'TITLE',
     total: 0,
     page: 1,
-    limit: 20
+    limit: 25
   };
   config = 'TITLE';
   query_catalog = {

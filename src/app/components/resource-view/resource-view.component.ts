@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Global } from 'src/app/service/global.service';
 
 @Component({
   selector: 'app-resource-view',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourceViewComponent implements OnInit {
 
-  constructor() { }
+  @Input() items: any[] = [];
+
+  constructor(
+    private global: Global,
+  ) { }
 
   ngOnInit(): void {
   }
-
 }

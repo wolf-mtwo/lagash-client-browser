@@ -11,17 +11,21 @@
     </div>
   </div>
   <div class="lagash-radio mb-3">
-    <label>
-      <input type="radio" [(ngModel)]="query.type" value="TITLE">Titulo
-    </label>
-    <label>
-      <input type="radio" [(ngModel)]="query.type" value="SUBJECT">Tema
-    </label>
-    <label>
-      <input type="radio" [(ngModel)]="query.type" value="AUTHOR">Autor
-    </label>
-    <label>
-      <input type="radio" [(ngModel)]="query.type" value="ALL">Todos
-    </label>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="query.type" value="TITLE">
+      <label class="form-check-label">Titulo</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="query.type" value="SUBJECT">
+      <label class="form-check-label">Tema</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="query.type" value="AUTHOR">
+      <label class="form-check-label">Autor</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" [(ngModel)]="query.type" value="ALL">
+      <label class="form-check-label">Todos</label>
+    </div>
   </div>
 </div>

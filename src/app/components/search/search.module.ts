@@ -6,13 +6,15 @@ import { SearchEmptyComponent } from './search-empty/search-empty.component';
 import { SearchInputBasicComponent } from './search-input-basic/search-input-basic.component';
 import { SearchToolbarComponent } from './search-toolbar/search-toolbar.component';
 import { CatalogListComponent } from './catalog-list/catalog-list.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
     SearchEmptyComponent,
     SearchInputBasicComponent,
     SearchToolbarComponent,
-    CatalogListComponent
+    CatalogListComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,11 @@ import { CatalogListComponent } from './catalog-list/catalog-list.component';
     MatListModule
   ],
   exports: [
-    SearchToolbarComponent
+    SearchToolbarComponent,
+    CatalogListComponent,
+    SearchEmptyComponent,
+    SearchInputBasicComponent,
+    PaginationComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

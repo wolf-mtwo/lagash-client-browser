@@ -1,4 +1,4 @@
-<div class="lagash-navbar-header fixed-top">
+<div class="lagash-navbar-header">
   <app-header></app-header>
   <nav class="navbar navbar-expand-lg navbar-dark lagash-navbar">
     <div class="col-lg-2"></div>
@@ -42,27 +42,23 @@
     </div>
     <div class="col-lg-2">
       <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item">
-          <div *ngIf="!user">
-            <a class="nav-link" routerLink="/login">Iniciar session</a>
-          </div>
-        </li> -->
-        <!-- <li class="nav-item">
-          <div *ngIf="user" class="lagash-user">
-            <a class="nav-link" routerLink="/login" class="user"><img src="./assets/img/user.png">{{user.name}}</a>
-            <a class="nav-link" routerLink="/loans">{{loans}}</a>
-            <div class="dropdown">
-              <span (click)="show_elements()" class="lnr lnr-chevron-down"></span>
-              <div id="myDropdown" class="dropdown-content">
-                <a (click)="logout()">Salir</a>
-              </div>
-            </div>
-          </div>
-        </li> -->
       </ul>
     </div>
   </nav>
 </div>
-<div class="lagash-container">
+<div fxFlex class="lagash-container">
   <router-outlet></router-outlet>
 </div>
+<!--
+<div fxFlex fxLayout="column">
+  <div fxFlex>1. One</div>
+  <div fxFlex>2. Two</div>
+  <div fxFlex>3. Three</div>
+  <div fxFlex>4. Four</div>
+</div>
+<div fxFlex fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="1 1 auto">1. One</div>
+  <div fxFlex="1 1 auto">2. Two</div>
+  <div fxFlex="1 1 auto">3. Three</div>
+  <div fxFlex="1 1 auto">4. Four</div>
+</div> -->

@@ -1,40 +1,42 @@
-<div class="container container-lagash">
-  <div class="row">
-    <h1>Libros</h1>
-    <div style="flex: auto;">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end">
-          <li class="page-item" *ngIf="query.page > 1">
-            <a class="page-link" (click)="pagination(-1)">Anterior</a>
-          </li>
-          <li class="page-item disabled" *ngIf="query.page <= 1">
-            <a class="page-link" (click)="pagination(-1)">Anterior</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">{{query.page}}</a></li>
-          <li class="page-item">
-            <a class="page-link" (click)="pagination(1)">Siguiente</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+<div fxLayout="row">
+  <div class="toolbar">
+    <app-catalog-list [title]="catalog_title"
+                      [items]="catalogs"
+                      (on_clean_up)="reset()"
+                      (on_select)="go_to_catalog($event)">
+    </app-catalog-list>
   </div>
-</div>
+  <div fxFlex="1 1 auto">
+    <div class="container mb-4">
+      <div class="row">
+        <div class="col-9">
+          <app-search-input-basic [query]="query"
+                                  (search)="search()">
+          </app-search-input-basic>
+        </div>
+        <div class="col-3">
+          <app-pagination [query]="query"
+                          (pagination)="pagination($event)">
+          </app-pagination>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <app-search-empty [items]="items"></app-search-empty>
+    </div>
+    <app-resource-view [items]="items">
+    </app-resource-view>
+    <!-- <div class="container" fxLayout="row wrap" fxLayout.xs="column">
+      <div fxFlex="20%"
+           *ngFor="let item of items"
+           (click)="go_to_item(item)">
 
-<app-search-toolbar [title]="catalog_title"
-                    [items]="catalogs"
-                    [query]="query"
-                    (search)="search()"
-                    (on_clean_up)="reset()"
-                    (on_select)="go_to_catalog($event)">
-</app-search-toolbar>
-
-<div class="container" fxLayout="row wrap" fxLayout.xs="column">
-  <app-search-empty [items]="items"></app-search-empty>
-</div>
-<div class="container" fxLayout="row wrap" fxLayout.xs="column">
-  <div fxFlex="33%"
-       *ngFor="let item of items"
-       (click)="go_to_item(item)">
-    <app-book-view [item]="item"></app-book-view>
+        <app-resource-item-view [item]="item">
+        </app-resource-item-view>
+      </div>
+    </div> -->
+    <!-- <app-book-view [item]="item"></app-book-view> -->
+  </div>
+  <div class="toolbar">
   </div>
 </div>
