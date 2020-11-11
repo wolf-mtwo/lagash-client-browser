@@ -24,7 +24,7 @@
     <div class="container">
       <app-search-empty [items]="items"></app-search-empty>
     </div>
-    <app-resource-view [items]="items">
+    <app-resource-view [items]="items" (select_item)="go_to_item($event)">
     </app-resource-view>
     <!-- <div class="container" fxLayout="row wrap" fxLayout.xs="column">
       <div fxFlex="20%"
@@ -36,7 +36,5 @@
       </div>
     </div> -->
     <!-- <app-book-view [item]="item"></app-book-view> -->
-  </div>
-  <div class="toolbar">
   </div>
 </div>

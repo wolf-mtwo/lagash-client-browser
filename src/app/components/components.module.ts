@@ -5,6 +5,7 @@ import { ResourceViewComponent } from './resource-view/resource-view.component';
 import { BookViewComponent } from './book-view/book-view.component';
 import { SearchModule } from './search/search.module';
 import { ResourceItemViewComponent } from './resource-item-view/resource-item-view.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ResourceItemViewComponent } from './resource-item-view/resource-item-vi
   imports: [
     MatIconModule,
     BrowserModule,
+    FlexLayoutModule,
     SearchModule
   ],
   exports: [

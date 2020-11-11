@@ -19,7 +19,7 @@ export class BooksComponent {
     type: 'TITLE',
     total: 0,
     page: 1,
-    limit: 25
+    limit: 21
   };
   config = 'TITLE';
   query_catalog = {
@@ -57,7 +57,7 @@ export class BooksComponent {
       type: 'TITLE',
       total: 0,
       page: 1,
-      limit: 20
+      limit: 21
     };
     this.search();
   }
