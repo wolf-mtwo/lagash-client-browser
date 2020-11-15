@@ -1,5 +1,6 @@
 <div fxLayout="row wrap" fxLayout.xs="column">
-  <div *ngFor="let item of items"
+  <div class="resource-content"
+       *ngFor="let item of items"
        (click)="select_element(item)">
     <!-- <app-book-view [item]="item"></app-book-view> -->
     <app-resource-item-view [item]="item">

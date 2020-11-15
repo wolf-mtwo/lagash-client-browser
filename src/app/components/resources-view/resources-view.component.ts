@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Global } from 'src/app/service/global.service';
 
 @Component({
-  selector: 'app-resource-view',
-  templateUrl: './resource-view.component.html',
-  styleUrls: ['./resource-view.component.sass']
+  selector: 'app-resources-view',
+  templateUrl: './resources-view.component.html',
+  styleUrls: ['./resources-view.component.sass']
 })
-export class ResourceViewComponent implements OnInit {
+export class ResourcesViewComponent implements OnInit {
 
   @Input() items: any[] = [];
   @Output() select_item: EventEmitter<any> = new EventEmitter();

@@ -79,7 +79,9 @@ export class BooksComponent {
   }
 
   public go_to_item(item) {
-     this.router.navigate(['/books', item._id]);
+     //this.router.navigate(['/books', item._id]);
      this.report_service.store_search(this.query, item._id, this.material_type);
+     const url = this.router.serializeUrl(this.router.createUrlTree(['/books', item._id]));
+    window.open(url, '_blank');
   }
 }

@@ -24,17 +24,7 @@
     <div class="container">
       <app-search-empty [items]="items"></app-search-empty>
     </div>
-    <app-resource-view [items]="items" (select_item)="go_to_item($event)">
-    </app-resource-view>
-    <!-- <div class="container" fxLayout="row wrap" fxLayout.xs="column">
-      <div fxFlex="20%"
-           *ngFor="let item of items"
-           (click)="go_to_item(item)">
-
-        <app-resource-item-view [item]="item">
-        </app-resource-item-view>
-      </div>
-    </div> -->
-    <!-- <app-book-view [item]="item"></app-book-view> -->
+    <app-resources-view [items]="items" (select_item)="go_to_item($event)">
+    </app-resources-view>
   </div>
 </div>
