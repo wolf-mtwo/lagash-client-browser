@@ -5,6 +5,7 @@ import { BackpackService } from '../../../service/backpack.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LagashConstants } from 'src/app/service/lagash-constants.service';
 
 @Component({
   selector: 'module-books-id',
@@ -19,6 +20,7 @@ export class BookComponent {
   private sub: any;
 
   constructor(
+    public constant: LagashConstants,
     private global: Global,
     private toastr: ToastrService,
     private route: ActivatedRoute,

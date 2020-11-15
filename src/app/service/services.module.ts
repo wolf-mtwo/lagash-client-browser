@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { Global } from './global.service';
 import { BooksService } from './books.service';
+import { LagashConstants }  from './lagash-constants.service';
 import { SearchService } from './search.service';
 import { ThesisService } from './thesis.service';
 import { MagazinesService } from './magazines.service';
@@ -33,6 +34,7 @@ import { UUID } from './UUID.service';
     Global,
     ReportsService,
     UUID,
+    LagashConstants,
   ]
 })
 export class ServicesModule { }

@@ -1,0 +1,99 @@
+<div class="container container-lagash">
+  <div class="row">
+    <div class="col-3">
+      <div class="row">
+        <h1>Libro</h1>
+      </div>
+      <div *ngIf="ejemplares.length <= 0">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Ups!</strong> El libro no tiene ejemplares disponibles.
+        </div>
+      </div>
+      <div *ngFor="let ejemplar of ejemplares">
+        <div class="card text-white bg-dark mb-3">
+          <div class="card-header">Codigo<span class="lnr lnr-book close" (click)="pick_item(ejemplar)">Reservar</span></div>
+          <div class="card-body" style="text-align: center;">
+            <h5 class="card-title">{{item.code_material}} <br> {{item.code_author}} {{ejemplar.suffix}} <br> Ej.{{ejemplar.order}}</h5>
+            <small>Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{item.title}}</h5>
+          <div class="card-text">
+            Autor:
+            <b *ngFor="let author of authors">
+              |<small class="text-muted">
+                {{author.last_name}} {{author.first_name}}
+              </small>
+            </b>
+          </div>
+        </div>
+        <img class="card-img-top" *ngIf="item.image" src="{{global.get_image(item.image)}}" alt="Card image cap">
+        <img class="card-img-top" *ngIf="!item.image" src="./assets/img/default/thesis.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Información</h5>
+          <div class="lagash-detail">
+            <div>
+              <div class="lagash-detail-title">Incluye</div>
+              <div>
+                <small class="badge badge-info" *ngFor="let bring of item.brings">
+                  {{bring}}
+                </small>
+              </div>
+            </div>
+
+            <div>
+              <div class="lagash-detail-title">Ilustraciones</div>
+              <span class="badge badge-info"
+                    *ngFor="let illustration of item.illustrations">
+                {{illustration}}
+              </span>
+            </div>
+            <div>
+              <div class="lagash-detail-title">ISBN</div>
+              <div>{{item.isbn || 'NO EXISTE'}}</div>
+            </div>
+            <div>
+              <div class="lagash-detail-title">Tamaño</div>
+              <div>{{item.high + ' x ' + item.width}}</div>
+            </div>
+            <div>
+              <div class="lagash-detail-title">Paginas</div>
+              <div>{{item.pages || 'NO EXISTE'}}</div>
+            </div>
+            <div>
+              <div class="lagash-detail-title">Fecha de creación</div>
+              <div>{{item.created | date : 'medium'}}</div>
+            </div>
+            <div>
+              <div class="lagash-detail-title">Año</div>
+              <div>{{item.year}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card bg-light mb-3">
+        <div class="card-header">Descriptores</div>
+        <p class="card-body">
+          <a href="#" class="badge badge-info lagash-tag-link" *ngFor="let tag of item.tags">{{tag}}</a>
+        </p>
+      </div>
+      <div class="card bg-light">
+        <div class="card-header">Indice</div>
+        <div class="card-body">
+          <div *ngFor="let index of item.indexes">
+            <u>
+              {{index}}
+            </u>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

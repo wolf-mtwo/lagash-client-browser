@@ -3,6 +3,7 @@ import { BooksService } from '../../service/books.service';
 import { Router } from '@angular/router';
 import { Book, Catalog, SearchQuery } from '../../models';
 import { ReportsService } from '../../service/reports.service';
+import { LagashConstants } from 'src/app/service/lagash-constants.service';
 
 @Component({
   selector: 'module-books',
