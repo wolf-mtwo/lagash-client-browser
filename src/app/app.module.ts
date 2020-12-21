@@ -65,7 +65,9 @@ import { ServicesModule } from './service/services.module';
   ],
   imports: [
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-left',
+    }),
     FlexLayoutModule,
     LayoutModule,
     NgbPaginationModule,

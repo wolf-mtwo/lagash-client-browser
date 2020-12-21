@@ -50,6 +50,17 @@ export class BackpackService {
     this.emit(items.length);
   }
 
+  remove_ejemplar(_id) {
+    var items = this.store.load(this.KEY, false);
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].item.ejemplar._id === _id) {
+        items.splice(i, 1);
+      }
+    }
+    this.store.save(this.KEY, items, false);
+    this.emit(items.length);
+  }
+
   on(call) {
     this.listeners.push(call);
   }

@@ -21,6 +21,7 @@ export class ResourceViewComponent implements OnInit {
   item: any = {};
   authors: any = [];
   ejemplares: any = [];
+  ejemplar_loans: any = [];
   _service: any = null;
   labels: any = null;
 
@@ -34,16 +35,22 @@ export class ResourceViewComponent implements OnInit {
     private thesis_service: ThesisService,
     private newspapers_service: NewspapersService,
     private magazine_service: MagazinesService,
+    private loans_store: BackpackService,
     private store: BackpackService
   ) {
+    this.ejemplar_loans = loans_store.load().map(loan => loan.item.ejemplar);
   }
 
   ngOnInit() {
+    this.labels = this.get_labels();
     this._service = this.get_typed_service();
     this._service.get_by_id(this._id).subscribe((item) => {
       this.item = this.format_properties(item);
       this._service.get_ejemplares(this._id).subscribe((items) => {
-        this.ejemplares = items;
+        this.ejemplares = items.map((item) => {
+          item.is_on_cart = this.is_on_cart(item);
+          return item;
+        });
       },
       (error) => {
         console.log(<any>error);
@@ -85,6 +92,11 @@ export class ResourceViewComponent implements OnInit {
   }
 
   pick_item(item) {
+    item.is_on_cart = true;
+    let cart_item = this.is_on_cart(item);
+    if (cart_item) {
+      return;
+    }
     this.store.save(this.type, {
       material: this.item,
       authors: this.authors,
@@ -92,24 +104,37 @@ export class ResourceViewComponent implements OnInit {
     });
   }
 
-  get_label() {
+  remove_item(item) {
+    item.is_on_cart = false;
+    this.store.remove_ejemplar(item._id);
+  }
+
+  is_on_cart(item) {
+    return this.ejemplar_loans.find(loan => loan._id === item._id);
+  }
+
+  get_labels() {
     const resource = this.constant.resources();
     switch (this.type) {
       case resource.BOOK:
         return {
-          title: 'Libro'
+          title: 'Libro',
+          sub_title: 'libro',
         };
       case resource.THESIS:
         return {
-          title: 'Tesis'
+          title: 'Tesis',
+          sub_title: 'tesis',
         };
       case resource.NEWSPAPER:
         return {
-          title: 'Periodico'
+          title: 'Periodico',
+          sub_title: 'periodico',
         };
       case resource.MAGAZINE:
         return {
-          title: 'Revista'
+          title: 'Revista',
+          sub_title: 'revista',
         };
       default:
         throw new Error(`Labels for ${this.type} does not exist.`);

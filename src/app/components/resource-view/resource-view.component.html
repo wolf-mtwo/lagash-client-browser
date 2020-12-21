@@ -2,21 +2,56 @@
   <div class="row">
     <div class="col-3">
       <div class="row">
-        <h1>Libro</h1>
+        <h1>{{labels.title}}</h1>
       </div>
       <div *ngIf="ejemplares.length <= 0">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>Ups!</strong> El libro no tiene ejemplares disponibles.
+          <strong>Ups!</strong> El {{labels.sub_title}} no tiene ejemplares disponibles.
         </div>
       </div>
       <div *ngFor="let ejemplar of ejemplares">
-        <div class="card text-white bg-dark mb-3">
-          <div class="card-header">Codigo<span class="lnr lnr-book close" (click)="pick_item(ejemplar)">Reservar</span></div>
-          <div class="card-body" style="text-align: center;">
-            <h5 class="card-title">{{item.code_material}} <br> {{item.code_author}} {{ejemplar.suffix}} <br> Ej.{{ejemplar.order}}</h5>
-            <small>Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}</small>
+        <div class="card text-white bg-dark mb-3 text-center" *ngIf="ejemplar.state === 'STORED' && !ejemplar.is_on_cart">
+          <div class="card-header">
+            Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}
+          </div>
+          <div class="card-body">
+            <h6 class="card-title">
+              {{item.code_material}} <br> {{item.code_author}} {{ejemplar.suffix}} <br> Ej.{{ejemplar.order}}
+            </h6>
+            <a (click)="pick_item(ejemplar)" class="btn btn-primary">
+              Reservar
+            </a>
           </div>
         </div>
+        <div class="card text-white bg-info mb-3 text-center" *ngIf="ejemplar.state === 'STORED' && ejemplar.is_on_cart">
+          <div class="card-header">
+            Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}
+          </div>
+          <div class="card-body">
+            <h6 class="card-title">
+              {{item.code_material}} <br> {{item.code_author}} {{ejemplar.suffix}} <br> Ej.{{ejemplar.order}}
+            </h6>
+            <a (click)="remove_item(ejemplar)" class="btn btn-danger">
+              Quitar
+            </a>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let ejemplar of ejemplares">
+        <div class="card bg-light mb-3 text-center" *ngIf="ejemplar.state !== 'STORED' && ejemplar.is_on_cart">
+          <div class="card-header">
+            Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}
+          </div>
+          <div class="card-body">
+            <h6 class="card-title">
+              {{item.code_material}} <br> {{item.code_author}} {{ejemplar.suffix}} <br> Ej.{{ejemplar.order}}
+            </h6>
+            <a (click)="pick_item(ejemplar)" class="btn btn-primary">
+              Reservar
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="col-6">
