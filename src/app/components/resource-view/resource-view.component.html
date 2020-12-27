@@ -8,44 +8,8 @@
             <img class="card-img-top" *ngIf="item.image" src="{{global.get_image(item.image)}}" alt="Card image cap">
             <img class="card-img-top" *ngIf="!item.image" src="./assets/img/default/thesis.png" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Información</h5>
-              <div class="lagash-detail">
-                <div>
-                  <div class="lagash-detail-title">Incluye</div>
-                  <div>
-                    <small class="badge badge-info" *ngFor="let bring of item.brings">
-                      {{bring}}
-                    </small>
-                  </div>
-                </div>
-                <div>
-                  <div class="lagash-detail-title">Ilustraciones</div>
-                  <span class="badge badge-info"
-                        *ngFor="let illustration of item.illustrations">
-                    {{illustration}}
-                  </span>
-                </div>
-                <div>
-                  <div class="lagash-detail-title">ISBN</div>
-                  <div>{{item.isbn || 'NO EXISTE'}}</div>
-                </div>
-                <div>
-                  <div class="lagash-detail-title">Tamaño</div>
-                  <div>{{item.high + ' x ' + item.width}}</div>
-                </div>
-                <div>
-                  <div class="lagash-detail-title">Paginas</div>
-                  <div>{{item.pages || 'NO EXISTE'}}</div>
-                </div>
-                <div>
-                  <div class="lagash-detail-title">Fecha de creación</div>
-                  <div>{{item.created | date : 'medium'}}</div>
-                </div>
-                <div>
-                  <div class="lagash-detail-title">Año</div>
-                  <div>{{item.year}}</div>
-                </div>
-              </div>
+              <app-resource-information-view [item]="item">
+              </app-resource-information-view>
             </div>
           </div>
         </div>

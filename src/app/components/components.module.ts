@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ResourceViewComponent } from './resource-view/resource-view.component';
 import { ServicesModule } from '../service/services.module';
 import { EjemplaresViewComponent } from './ejemplares-view/ejemplares-view.component';
+import { ResourceInformationViewComponent } from './resource-information-view/resource-information-view.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { EjemplaresViewComponent } from './ejemplares-view/ejemplares-view.compo
     ResourcesListItemViewComponent,
     ResourceViewComponent,
     EjemplaresViewComponent,
+    ResourceInformationViewComponent,
   ],
   imports: [
     MatIconModule,
