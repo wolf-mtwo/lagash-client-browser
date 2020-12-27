@@ -8,6 +8,7 @@ import { ResourceItemViewComponent } from './resource-item-view/resource-item-vi
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ResourceViewComponent } from './resource-view/resource-view.component';
 import { ServicesModule } from '../service/services.module';
+import { EjemplaresViewComponent } from './ejemplares-view/ejemplares-view.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ServicesModule } from '../service/services.module';
     BookViewComponent,
     ResourceItemViewComponent,
     ResourceViewComponent,
+    EjemplaresViewComponent,
   ],
   imports: [
     MatIconModule,
@@ -28,6 +30,7 @@ import { ServicesModule } from '../service/services.module';
     BookViewComponent,
     ResourceItemViewComponent,
     ResourceViewComponent,
+    EjemplaresViewComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
