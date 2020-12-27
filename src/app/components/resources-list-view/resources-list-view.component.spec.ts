@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResourceItemViewComponent } from './resource-item-view.component';
+import { ResourcesListViewComponent } from './resources-list-view.component';
 
-describe('ResourceItemViewComponent', () => {
-  let component: ResourceItemViewComponent;
-  let fixture: ComponentFixture<ResourceItemViewComponent>;
+describe('ResourceViewComponent', () => {
+  let component: ResourcesListViewComponent;
+  let fixture: ComponentFixture<ResourcesListViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResourceItemViewComponent ]
+      declarations: [ ResourcesListViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResourceItemViewComponent);
+    fixture = TestBed.createComponent(ResourcesListViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
