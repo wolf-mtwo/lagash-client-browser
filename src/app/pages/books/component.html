@@ -24,7 +24,7 @@
     <div class="container">
       <app-search-empty [items]="items"></app-search-empty>
     </div>
-    <app-resources-view [items]="items" (select_item)="go_to_item($event)">
-    </app-resources-view>
+    <app-resources-list-view [items]="items" (select_item)="go_to_item($event)">
+    </app-resources-list-view>
   </div>
 </div>

@@ -60,7 +60,7 @@
     <div *ngFor="let item of books" (click)="go_to_item(item, 'BOOK')">
       <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
       <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
-    </div> 
+    </div>
   </div>
   <div class="jumbotron">
     <h1 class="display-4">Tesis recientes</h1>
@@ -71,10 +71,10 @@
     <div *ngFor="let item of theses" (click)="go_to_item(item, 'THESIS')">
       <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
       <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
-    </div> 
+    </div>
   </div>
 </div>
-<div class="container">
+<!-- <div class="container">
   <div class="lagash-main-stats">
     <div class="best">
       <h3>Libros más leídos</h3>
@@ -95,4 +95,4 @@
     </div>
   </div>
 </div>
-<div style="clear: both;"></div>
+<div style="clear: both;"></div> -->

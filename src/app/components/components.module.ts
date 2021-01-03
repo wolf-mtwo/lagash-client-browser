@@ -10,6 +10,7 @@ import { ResourceViewComponent } from './resource-view/resource-view.component';
 import { ServicesModule } from '../service/services.module';
 import { EjemplaresViewComponent } from './ejemplares-view/ejemplares-view.component';
 import { ResourceInformationViewComponent } from './resource-information-view/resource-information-view.component';
+import { LatestResourcesComponent } from './latest-resources/latest-resources.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ResourceInformationViewComponent } from './resource-information-view/re
     ResourceViewComponent,
     EjemplaresViewComponent,
     ResourceInformationViewComponent,
+    LatestResourcesComponent,
   ],
   imports: [
     MatIconModule,

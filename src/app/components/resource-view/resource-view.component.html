@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="col-8">
-          <h3>{{item.title}}</h3>
+          <h2>{{item.title}}</h2>
           <div class="mb-4">
             Autor:
             <b *ngFor="let author of authors">
@@ -38,6 +38,9 @@
             <p class="card-body">
               <a href="#" class="badge badge-info lagash-tag-link mr-1" *ngFor="let tag of item.tags">{{tag}}</a>
             </p>
+          </div>
+          <div>
+            <app-latest-resources [type]="type"></app-latest-resources>
           </div>
         </div>
       </div>

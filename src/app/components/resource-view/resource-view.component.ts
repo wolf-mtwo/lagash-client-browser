@@ -9,7 +9,6 @@ import { ThesisService } from 'src/app/service/thesis.service';
 import { NewspapersService } from 'src/app/service/newspapers.service';
 import { MagazinesService } from 'src/app/service/magazines.service';
 
-
 @Component({
   selector: 'app-resource-view',
   templateUrl: './resource-view.component.html',

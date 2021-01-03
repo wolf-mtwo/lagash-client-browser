@@ -1,0 +1,20 @@
+<div class="lagash-main-lists container">
+  <div *ngIf="type === constant.resources().BOOK">
+    <h2>Libros recientes</h2>
+    <div id="style-1" class="images-list mb-4">
+      <div *ngFor="let item of books" (click)="go_to_item(item, 'BOOK')">
+        <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
+        <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type === constant.resources().THESIS">
+    <h2>Tesis recientes</h2>
+    <div id="style-1" class="images-list mb-4">
+      <div *ngFor="let item of theses" (click)="go_to_item(item, 'THESIS')">
+        <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
+        <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
+      </div>
+    </div>
+  </div>
+</div>
