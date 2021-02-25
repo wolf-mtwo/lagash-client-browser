@@ -18,7 +18,8 @@ export class EjemplaresViewComponent implements OnInit {
   @Input() authors: any = [];
   @Input() labels: any = null;
 
-  ejemplares: any = [];
+  free_ejemplares: any = [];
+  submit_ejemplares: any = [];
   ejemplar_loans: any = [];
   _service: any = null;
 
@@ -36,11 +37,19 @@ export class EjemplaresViewComponent implements OnInit {
 
   ngOnInit() {
     this._service = this.get_typed_service();
-    this._service.get_ejemplares(this._id).subscribe((items) => {
-      this.ejemplares = items.map((item) => {
-        item.is_on_cart = this.is_on_cart(item);
-        return item;
+    this._service.get_ejemplares(this._id)
+    .subscribe((items) => {
+      items.forEach((item) => {
+        ejempl
+        //item.is_on_cart = this.is_on_cart(item);
+        //return item;
       });
+      ejemplar.state === 'STORED
+
+      // this.ejemplares = items.map((item) => {
+      //   item.is_on_cart = this.is_on_cart(item);
+      //   return item;
+      // });
     },
     (error) => {
       console.log(<any>error);
