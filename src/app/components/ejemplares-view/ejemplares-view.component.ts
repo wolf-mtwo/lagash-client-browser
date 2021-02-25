@@ -39,17 +39,14 @@ export class EjemplaresViewComponent implements OnInit {
     this._service = this.get_typed_service();
     this._service.get_ejemplares(this._id)
     .subscribe((items) => {
-      items.forEach((item) => {
-        ejempl
-        //item.is_on_cart = this.is_on_cart(item);
-        //return item;
-      });
-      ejemplar.state === 'STORED
+      this.free_ejemplares = items.find(loan => loan._id !== 'STORED');
+      this.submit_ejemplares = items.find(loan => loan._id === 'STORED');
 
-      // this.ejemplares = items.map((item) => {
-      //   item.is_on_cart = this.is_on_cart(item);
-      //   return item;
-      // });
+
+      this.free_ejemplares = items.map((item) => {
+        item.is_on_cart = this.is_on_cart(item);
+        return item;
+      });
     },
     (error) => {
       console.log(<any>error);

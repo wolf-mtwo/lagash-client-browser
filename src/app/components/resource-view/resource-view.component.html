@@ -40,7 +40,8 @@
             </p>
           </div>
           <div>
-            <app-latest-resources [type]="type"></app-latest-resources>
+            <app-latest-resources [type]="type" (select_item_event)="go_to_item($event)">
+            </app-latest-resources>
           </div>
         </div>
       </div>

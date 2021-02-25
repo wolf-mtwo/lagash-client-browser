@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from '../../service/books.service';
 import { Global } from '../../service/global.service';
 import { LagashConstants } from '../../service/lagash-constants.service';
@@ -12,6 +12,7 @@ import { ThesisService } from '../../service/thesis.service';
 })
 export class LatestResourcesComponent implements OnInit {
   @Input() type: any;
+  @Output() select_item_event: EventEmitter<any> = new EventEmitter();
   books: any = [];
   theses: any = [];
   query = {
@@ -23,6 +24,7 @@ export class LatestResourcesComponent implements OnInit {
   };
 
   constructor(
+    private route: ActivatedRoute,
     public constant: LagashConstants,
     private global: Global,
     private router: Router,
@@ -49,14 +51,22 @@ export class LatestResourcesComponent implements OnInit {
     });
   }
 
-  go_to_item(item, resource) {
-    switch (resource) {
-      case 'BOOK':
-        this.router.navigate(['/books', item._id]);
-        break;
-      case 'THESIS':
-        this.router.navigate(['/thesis', item._id]);
-        break;
-    }
+  select_item(item, resource) {
+    console.log({item, resource});
+    this.select_item_event.emit({item, resource});
+    //console.log('ho', item, resource);
+    // switch (resource) {
+    //   case 'BOOK':
+    //     //this.router.navigate(['books', item._id]);
+    //     this.router.navigate(['/books', item._id], { relativeTo: this.route });
+    //     // this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=> {
+    //     //   this.router.navigate([['books', item._id]]);
+    //     // });
+
+    //     break;
+    //   case 'THESIS':
+    //     this.router.navigate(['thesis', item._id], { relativeTo: this.route });
+    //     break;
+    // }
   }
 }

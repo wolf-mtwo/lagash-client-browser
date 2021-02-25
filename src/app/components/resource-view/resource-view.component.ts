@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BackpackService } from 'src/app/service/backpack.service';
@@ -103,5 +103,24 @@ export class ResourceViewComponent implements OnInit {
       default:
         throw new Error(`Labels for ${this.type} does not exist.`);
     }
+  }
+
+  go_to_item({item, resource}) {
+    // TODO: some how angular implementation does not work had to use js redirect
+    switch (resource) {
+      case 'BOOK':
+        //this.router.navigate(['/books', item._id], { relativeTo: this.route });
+        this.open_new_tab(`/books/${item._id}`);
+        break;
+      case 'THESIS':
+        //this.router.navigate(['thesis', item._id], { relativeTo: this.route });
+        this.open_new_tab(`/thesis/${item._id}`);
+        break;
+    }
+  }
+
+  open_new_tab(url) {
+    var win = window.open(url, '_blank');
+    win.focus();
   }
 }

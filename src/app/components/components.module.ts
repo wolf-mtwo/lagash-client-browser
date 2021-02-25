@@ -11,6 +11,9 @@ import { ServicesModule } from '../service/services.module';
 import { EjemplaresViewComponent } from './ejemplares-view/ejemplares-view.component';
 import { ResourceInformationViewComponent } from './resource-information-view/resource-information-view.component';
 import { LatestResourcesComponent } from './latest-resources/latest-resources.component';
+import { HomeModule } from '../pages/home/home.module';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,10 +26,13 @@ import { LatestResourcesComponent } from './latest-resources/latest-resources.co
     LatestResourcesComponent,
   ],
   imports: [
+    CommonModule,
+    RouterModule,
     MatIconModule,
     BrowserModule,
     FlexLayoutModule,
     SearchModule,
+    HomeModule,
     ServicesModule
   ],
   exports: [

@@ -4,7 +4,8 @@
     <strong>Ups!</strong> El {{labels.sub_title}} no tiene ejemplares disponibles.
   </div>
 </div>
-<div *ngFor="let ejemplar of ejemplares">
+
+<div *ngFor="let ejemplar of free_ejemplares">
   <div class="card text-white bg-dark mb-3 text-center" *ngIf="ejemplar.state === 'STORED' && !ejemplar.is_on_cart">
     <div class="card-header">
       Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}
@@ -18,6 +19,7 @@
       </a>
     </div>
   </div>
+
   <div class="card text-white bg-info mb-3 text-center" *ngIf="ejemplar.state === 'STORED' && ejemplar.is_on_cart">
     <div class="card-header">
       Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}
@@ -32,7 +34,8 @@
     </div>
   </div>
 </div>
-<div *ngFor="let ejemplar of ejemplares">
+
+<div *ngFor="let ejemplar of submit_ejemplares">
   <div class="card bg-light mb-3 text-center" *ngIf="ejemplar.state !== 'STORED' && ejemplar.is_on_cart">
     <div class="card-header">
       Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   { path: 'main', component: HomeComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     MatIconModule,
-    CommonModule
+    CommonModule,
+    NgbModule
   ],
   exports: [
     RouterModule
