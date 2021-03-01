@@ -25,7 +25,7 @@ export class EjemplaresViewComponent implements OnInit {
   _service: any = null;
 
   constructor(
-    private global: Global,
+    public global: Global,
     public constant: LagashConstants,
     private book_service: BooksService,
     private thesis_service: ThesisService,

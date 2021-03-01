@@ -52,7 +52,7 @@
         <div class="" *ngFor="let loan of loans; let i = index">
           <div class="card mb-3">
             <img *ngIf="loan.item.material.image" class="card-img-top load-item-image" src="{{global.get_image(loan.item.material.image)}}">
-            <img *ngIf="!loan.item.material.image" class="card-img-top load-item-image" src="./assets/img/default/resource.jpg">
+            <img *ngIf="!loan.item.material.image" class="card-img-top load-item-image" src="./assets/img/default/resource-default-3.jpg">
             <div class="card-body">
               <h5 class="card-title">{{loan.item.material.title}}</h5>
               <p class="card-text options">

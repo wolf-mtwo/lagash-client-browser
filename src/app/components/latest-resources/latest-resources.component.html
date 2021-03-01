@@ -4,7 +4,7 @@
     <div id="style-1" class="images-list mb-4">
       <div *ngFor="let item of books" (click)="select_item(item, type)">
         <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
-        <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
+        <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/resource-default-3.jpg">
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@
     <div id="style-1" class="images-list mb-4">
       <div *ngFor="let item of theses" (click)="select_item(item, type)">
         <img class="card-img-top" *ngIf="item.image" src="{{global.get_thumbnail(item.image)}}">
-        <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/book-default.png">
+        <img class="card-img-top" *ngIf="!item.image"src="./assets/img/default/resource-default-3.jpg">
       </div>
     </div>
   </div>

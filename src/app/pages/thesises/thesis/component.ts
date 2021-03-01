@@ -5,6 +5,7 @@ import { BackpackService } from '../../../service/backpack.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LagashConstants } from 'src/app/service/lagash-constants.service';
 
 @Component({
   selector: 'module-thesis-id',
@@ -19,6 +20,7 @@ export class ThesisComponent {
   private sub: any;
 
   constructor(
+    public constant: LagashConstants,
     private global: Global,
     private toastr: ToastrService,
     private route: ActivatedRoute,
@@ -42,7 +44,6 @@ export class ThesisComponent {
       (error) => {
         console.log(<any>error);
       });
-
       this._service.get_authors(this._id).subscribe((items) => {
         this.authors = items;
       },

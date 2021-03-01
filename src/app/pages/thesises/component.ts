@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
+import { Thesis, Catalog, SearchQuery } from '../../models';
 import { Global } from './../../service/global.service';
 import { ThesisService } from '../../service/thesis.service';
 import { Router } from '@angular/router';
+import { ReportsService } from 'src/app/service/reports.service';
 
 @Component({
-  selector: 'module-books',
+  selector: 'module-thesises',
   templateUrl: './component.html',
-  styleUrls: ['../../wargos.css', './component.css']
+  styleUrls: ['./component.sass']
 })
 export class ThesisesComponent {
-  items: any = [];
-  catalogs: any = [];
-  query = {
+  public catalog_title: string = 'Tesis';
+  public material_type: string = 'THESIS';
+  public items: Thesis[] = [];
+  public catalogs: Catalog[] = [];
+  public query: SearchQuery = {
     search: '',
     type: 'TITLE',
     total: 0,
     page: 1,
-    limit: 20
+    limit: 21
   };
   config = 'TITLE';
   query_catalog = {
@@ -25,12 +29,12 @@ export class ThesisesComponent {
   };
 
   constructor(
-    private global: Global,
     private router: Router,
-    private _service: ThesisService
+    private _service: ThesisService,
+    private report_service: ReportsService,
   ) {
     this.search();
-    _service.get_catalogs(this.query_catalog).subscribe((items) => {
+    _service.get_catalogs(this.query_catalog).subscribe((items: Catalog[]) => {
         this.catalogs = items;
       }, (error) => {
         console.log(<any>error);
@@ -39,12 +43,13 @@ export class ThesisesComponent {
   }
 
   search() {
-    this._service.paginate(this.query).subscribe((items) => {
+    this._service.paginate(this.query).subscribe((items: Thesis[]) => {
         this.items = items;
       }, (error) => {
         console.log(<any>error);
       }
     );
+    this.report_service.store_search(this.query, null, this.material_type);
   }
 
   reset() {
@@ -53,7 +58,7 @@ export class ThesisesComponent {
       type: 'TITLE',
       total: 0,
       page: 1,
-      limit: 20
+      limit: 21
     };
     this.search();
   }
@@ -64,7 +69,9 @@ export class ThesisesComponent {
   }
 
   go_to_catalog(item) {
-    this._service.catalog_items(item._id).subscribe((items) => {
+    console.log(item);
+    this._service.catalog_items(item._id)
+    .subscribe((items: Thesis[]) => {
         this.items = items;
       }, (error) => {
         console.log(<any>error);
@@ -73,6 +80,9 @@ export class ThesisesComponent {
   }
 
   public go_to_item(item) {
-     this.router.navigate(['/thesis', item._id]);
+     //this.router.navigate(['/books', item._id]);
+     this.report_service.store_search(this.query, item._id, this.material_type);
+     const url = this.router.serializeUrl(this.router.createUrlTree(['/thesis', item._id]));
+    window.open(url, '_blank');
   }
 }

@@ -6,7 +6,7 @@
           <h1>{{labels.title}}</h1>
           <div class="card">
             <img class="card-img-top" *ngIf="item.image" src="{{global.get_image(item.image)}}" alt="Card image cap">
-            <img class="card-img-top" *ngIf="!item.image" src="./assets/img/default/thesis.png" alt="Card image cap">
+            <img class="card-img-top" *ngIf="!item.image" src="./assets/img/default/resource-default-3.jpg" alt="Card image cap">
             <div class="card-body">
               <app-resource-information-view [item]="item">
               </app-resource-information-view>

@@ -23,8 +23,6 @@ import { BooksRoutingModule } from './pages/books/routing.module';
 import { SearchRoutingModule } from './pages/search/routing.module';
 
 // tesis
-import { ThesisComponent } from './pages/thesises/thesis/component';
-import { ThesisesComponent } from './pages/thesises/component';
 import { ThesisRoutingModule } from './pages/thesises/routing.module';
 
 // magazine
@@ -54,8 +52,6 @@ import { ServicesModule } from './service/services.module';
     // SearchDetailComponent,
     InformationComponent,
     LoginComponent,
-    ThesisComponent,
-    ThesisesComponent,
     MagazineComponent,
     MagazinesComponent,
     NewspaperComponent,
