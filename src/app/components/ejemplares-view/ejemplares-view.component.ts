@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BackpackService } from 'src/app/service/backpack.service';
 import { BooksService } from 'src/app/service/books.service';
+import { Global } from 'src/app/service/global.service';
 import { LagashConstants } from 'src/app/service/lagash-constants.service';
 import { MagazinesService } from 'src/app/service/magazines.service';
 import { NewspapersService } from 'src/app/service/newspapers.service';
@@ -24,6 +25,7 @@ export class EjemplaresViewComponent implements OnInit {
   _service: any = null;
 
   constructor(
+    private global: Global,
     public constant: LagashConstants,
     private book_service: BooksService,
     private thesis_service: ThesisService,
@@ -39,13 +41,22 @@ export class EjemplaresViewComponent implements OnInit {
     this._service = this.get_typed_service();
     this._service.get_ejemplares(this._id)
     .subscribe((items) => {
-      this.free_ejemplares = items.find(loan => loan._id !== 'STORED');
-      this.submit_ejemplares = items.find(loan => loan._id === 'STORED');
-
+      this.free_ejemplares = items.filter(loan => loan.state === 'STORED');
+      this.submit_ejemplares = items.filter(loan => loan.state !== 'STORED');
 
       this.free_ejemplares = items.map((item) => {
         item.is_on_cart = this.is_on_cart(item);
         return item;
+      });
+
+      this.submit_ejemplares.forEach((item) => {
+        this._service.get_borrower(item._id)
+        .subscribe((reader) => {
+          item.reader = reader;
+        },
+        (error) => {
+          console.log(<any>error);
+        });
       });
     },
     (error) => {

@@ -1,5 +1,5 @@
 <h1>Ejemplares</h1>
-<div *ngIf="ejemplares.length <= 0">
+<div *ngIf="free_ejemplares.length <= 0">
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <strong>Ups!</strong> El {{labels.sub_title}} no tiene ejemplares disponibles.
   </div>
@@ -35,8 +35,12 @@
   </div>
 </div>
 
+<div *ngIf="submit_ejemplares.length > 0">
+  <h3>No disponibles</h3>
+</div>
+
 <div *ngFor="let ejemplar of submit_ejemplares">
-  <div class="card bg-light mb-3 text-center" *ngIf="ejemplar.state !== 'STORED' && ejemplar.is_on_cart">
+  <div class="card bg-light mb-3 text-center">
     <div class="card-header">
       Ejemplar: {{ejemplar.order}} Inv.: {{ejemplar.inventory}}
     </div>
@@ -44,9 +48,13 @@
       <h6 class="card-title">
         {{item.code_material}} <br> {{item.code_author}} {{ejemplar.suffix}} <br> Ej.{{ejemplar.order}}
       </h6>
-      <a (click)="pick_item(ejemplar)" class="btn btn-primary">
-        Reservar
-      </a>
+      <div *ngIf="ejemplar.reader">
+        <img *ngIf="ejemplar.reader.image"  class="rounded mx-auto d-block ejemplar-view-image" src="{{global.get_image(ejemplar.reader.image)}}">
+        <img *ngIf="!ejemplar.reader.image" class="rounded mx-auto d-block ejemplar-view-image" src="./assets/img/user.png">
+        <p class="text-center">
+          {{ejemplar.reader.first_name}} {{ejemplar.reader.last_name}}
+        </p>
+      </div>
     </div>
   </div>
 </div>

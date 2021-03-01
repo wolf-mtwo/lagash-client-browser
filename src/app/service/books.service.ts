@@ -22,6 +22,10 @@ export class BooksService {
     return this.http.get(this.global.get_book_url(_id + '/authors'));
   }
 
+  get_borrower(ejemplar_id) {
+    return this.http.get(this.global.get_reader_url('ejemplares/' + ejemplar_id));
+  }
+
   search(text) {
     return this.http.get(this.global.get_book_url('page/1/limit/15'), {
       params: {
