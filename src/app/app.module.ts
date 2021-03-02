@@ -26,13 +26,9 @@ import { SearchRoutingModule } from './pages/search/routing.module';
 import { ThesisRoutingModule } from './pages/thesises/routing.module';
 
 // magazine
-import { MagazineComponent } from './pages/magazines/magazine/component';
-import { MagazinesComponent } from './pages/magazines/component';
 import { MagazinesRoutingModule } from './pages/magazines/routing.module';
 
 // newspapers
-import { NewspaperComponent } from './pages/newspapers/newspaper/component';
-import { NewspapersComponent } from './pages/newspapers/component';
 import { NewspapersRoutingModule } from './pages/newspapers/routing.module';
 
 // loans
@@ -52,10 +48,6 @@ import { ServicesModule } from './service/services.module';
     // SearchDetailComponent,
     InformationComponent,
     LoginComponent,
-    MagazineComponent,
-    MagazinesComponent,
-    NewspaperComponent,
-    NewspapersComponent,
     LoansComponent,
     NgbdModalReaderCreate
   ],
